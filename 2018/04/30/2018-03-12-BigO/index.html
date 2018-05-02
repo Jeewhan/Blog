@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title> 빅오표기법 | The Pragmatic Programmer</title><link rel="stylesheet" href="/libs/spoqa-han-sans-kr/css/SpoqaHanSans-kr.css"><link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/highlights/dracula.css"><link rel="canonical" href="https://JeewhanR.github.io/2018/04/30/2018-03-12-BigO/"/>
+<meta name="description" content="실용적인 알고리즘 (1) - 빅오표기법빅오(Big-O)표기법 완전정복  알고리즘의 성능을 수학적으로 표시해주는 표기법 실제 수행시간보다는 데이터의 증가에 따른 증가량을 예측하는 것에 목적을 두므로 상수는 모두…">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" 빅오표기법">
+<meta property="og:url" content="https://JeewhanR.github.io/2018/04/30/2018-03-12-BigO/">
+<meta property="og:site_name" content="The Pragmatic Programmer">
+<meta property="og:description" content="실용적인 알고리즘 (1) - 빅오표기법빅오(Big-O)표기법 완전정복  알고리즘의 성능을 수학적으로 표시해주는 표기법 실제 수행시간보다는 데이터의 증가에 따른 증가량을 예측하는 것에 목적을 두므로 상수는 모두…">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="http://www.jidum.com/upload/ckeditor/2016/09/2016090909541455.jpg">
+<meta property="og:updated_time" content="2018-04-30T17:58:28.624Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" 빅오표기법">
+<meta name="twitter:description" content="실용적인 알고리즘 (1) - 빅오표기법빅오(Big-O)표기법 완전정복  알고리즘의 성능을 수학적으로 표시해주는 표기법 실제 수행시간보다는 데이터의 증가에 따른 증가량을 예측하는 것에 목적을 두므로 상수는 모두…">
+<meta name="twitter:image" content="http://www.jidum.com/upload/ckeditor/2016/09/2016090909541455.jpg"><meta property="article:author" content="Jeewhan"><meta property="twitter:label1" content="Published at"><meta property="twitter:data1" content="2018-04-30 00:55:42"><meta property="twitter:label2" content="Written by"><meta property="twitter:data2" content="Jeewhan"><link rel="icon" href="/images/hollywood.png"><link rel="alternate" href="/atom.xml" type="application/atom+xml" title="The Pragmatic Programmer"></head><body itemscope itemtype="https://schema.org/WebPage"><nav class="menu" id="menu"><div class="menu-inner"><div class="menu__left-area"><div class="menu__item"><a class="menu__item__link menu__item__link--brand" href="/" title="Home" rel="home"><img class="menu__item__link--brand__image" src="/images/hollywood.png" alt="The Pragmatic Programmer"><span class="menu__item__link--brand__label">The Pragmatic Programmer</span></a></div></div><div class="menu__right-area"><div class="menu__item"><a class="menu__item__link" href="/">Home</a></div><div class="menu__item"><a class="menu__item__link" href="/about">About</a></div><div class="menu__item"><a class="menu__item__link" href="/archives">Archives</a></div></div></div></nav><div class="page-background"></div><div class="content-container"><div class="content-outer"><div class="content-inner" itemscope itemtype="https://schema.org/Blog"><article class="article" id="article" itemscope itemtype="https://schema.org/BlogPosting"><h1 class="article__title" itemprop="headline"> 빅오표기법</h1><div class="article__meta"><time class="article__meta__time" datetime="2018-04-29T15:55:42.666Z" itemprop="datePublished">2018-04-30 00:55:42</time><div class="article__meta__categories"><a class="article__meta__categories__item" href="/categories/Algorithm/">Algorithm</a></div></div><hr><div class="article__contents"><h1 id="실용적인-알고리즘-1-빅오표기법"><a href="#실용적인-알고리즘-1-빅오표기법" class="headerlink" title="실용적인 알고리즘 (1) - 빅오표기법"></a>실용적인 알고리즘 (1) - 빅오표기법</h1><p><a href="https://www.youtube.com/watch?v=6Iq5iMCVsXA" target="_blank" rel="noopener">빅오(Big-O)표기법 완전정복</a></p>
+<p><img src="http://www.jidum.com/upload/ckeditor/2016/09/2016090909541455.jpg" alt="img"></p>
+<p>알고리즘의 성능을 수학적으로 표시해주는 표기법</p>
+<p>실제 수행시간보다는 데이터의 증가에 따른 증가량을 예측하는 것에 목적을 두므로 상수는 모두 버린다</p>
+<table>
+<thead>
+<tr>
+<th>BigO</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O(1)</td>
+<td>입력 데이터와 무관하게 일정한 시간이 소요됨</td>
+</tr>
+<tr>
+<td>O(N)</td>
+<td>입력 데이터에 비례해서 처리시간이 소요됨</td>
+</tr>
+<tr>
+<td>O(N^2)</td>
+<td>N개의 데이터를 받으면 각각의 아이템마다 N번의 연산을 수행함</td>
+</tr>
+<tr>
+<td>O(NM)</td>
+<td>N과 M의 변수가 다르다면 N^2과는 분명하게 차이가 존재함, 증가에 따른 변화율은 N^2과 동일</td>
+</tr>
+<tr>
+<td>O(N^3)</td>
+<td>데이터의 증가에 따라 더 급격한 증가</td>
+</tr>
+<tr>
+<td>O(2^N)</td>
+<td>피보나치 수열, N^3보다도 현저한 증가</td>
+</tr>
+<tr>
+<td>O(logN)</td>
+<td>이진검색이 대표적 사례</td>
+</tr>
+<tr>
+<td>O(sqrt(N))</td>
+<td>정사각형을 만들어서 맨 위의 한 줄이 제곱근</td>
+</tr>
+</tbody>
+</table>
+<p>피보나치 나선형</p>
+<p><img src="http://roulettegeeks.com/wp-content/uploads/2015/09/Fibonacci-Roulette-System.jpg" alt="img"></p>
+<p>상수는 과감히 버린다, 상수는 데이터의 증가에 대해 상수만큼만 영향을 미치므로 증가하지 않는 숫자는 무시한다</p>
+</div><div class="article__tags"><a class="article__tags__item" href="/tags/Algorithm/">Algorithm</a></div><div class="article__author" itemscope itemprop="author" itemtype="https://schema.org/Person"><img class="article__author__image" src="/images/avatar.jpg" alt="Jeewhan"><a class="article__author__link" title="About Jeewhan" rel="author">Jeewhan</a><p class="article__author__desc">Dev Blog</p><div class="article__author__socials"><a class="article__author__socials__item" href="/atom.xml" title="rss" target="_blank"><i class="fa fa-rss"></i></a></div><meta itemprop="name" content="Jeewhan"></div><div class="sharer" id="sharer"><div class="sharer-inner"><div class="sharer__right"><button class="sharer__item" id="sharer-facebook"><i class="fa fa-facebook-official"></i></button><button class="sharer__item" id="sharer-twitter"><i class="fa fa-twitter"></i></button><button class="sharer__item" id="sharer-pinterest"><i class="fa fa-pinterest"></i></button><button class="sharer__item" id="sharer-pocket"><i class="fa fa-get-pocket"></i></button></div></div></div><!-- Disqus Code--><!-- Meta Tags for Structured Data--><meta itemprop="dateModified" content="2018-04-30T17:58:28.624Z"><meta itemprop="articleBody" content="실용적인 알고리즘 (1) - 빅오표기법빅오(Big-O)표기법 완전정복
+
+알고리즘의 성능을 수학적으로 표시해주는 표기법
+실제 수행시간보다는 데이터의 증가에 따른 증가량을 예측하는 것에 목적을 두므로 상수는 모두 버린다
+
+
+
+BigO
+설명
+
+
+
+
+O(1)
+입력 데이터와 무관하게 일정한 시간이 소요됨
+
+
+O(N)
+입력 데이터에 비례해서 처리시간이..."><meta itemprop="url" content="https://JeewhanR.github.io/2018/04/30/2018-03-12-BigO/"><meta itemprop="mainEntityOfPage" content="https://JeewhanR.github.io/2018/04/30/2018-03-12-BigO/"><div itemscope itemtype="https://schema.org/Organization" itemprop="publisher"><meta itemprop="name" content="The Pragmatic Programmer"><div itemscope itemprop="logo" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://JeewhanR.github.io/images/hollywood.png"></div></div><div itemscope itemtype="https://schema.org/ImageObject" itemprop="image"><meta itemprop="contentUrl" content="https://JeewhanR.github.io/images/hollywood.jpg"><meta itemprop="url" content="https://JeewhanR.github.io/images/hollywood.jpg"><meta itemprop="width" content="800"><meta itemprop="height" content="800"></div></article><section class="related-posts"><h3>Related posts</h3><div class="related-posts__item__wrapper"><a class="related-posts__item" href="/2018/03/12/2018-03-13-Codility4/"><div class="related-posts__item__background" style="background-image:url('/images/hollywood.jpg');"></div><div class="related-posts__item__overlay"></div><span class="related-posts__item__title">Codility ~4</span></a></div><div class="related-posts__item__wrapper"><a class="related-posts__item" href="/2018/03/12/2018-04-22-Codility7/"><div class="related-posts__item__background" style="background-image:url('/images/hollywood.jpg');"></div><div class="related-posts__item__overlay"></div><span class="related-posts__item__title">Codility ~7</span></a></div></section></div></div></div><footer id="footer"><div class="widgets"><div class="widgets-inner"><!-- Jade doesn't support dynamic inclusion with `each`.--><!-- So, I just hard coded the file names that will be included.--><div class="widgets__item"><h3 class="widgets__item__heading">Recent posts</h3><ul class="recent-posts"><li class="recent-posts__item"><a href="/2018/05/01/2018-05-01-ok-word/">괜찮아 ! 너만 모르는 건 아니야 - 어휘편</a></li><li class="recent-posts__item"><a href="/2018/04/30/2018-03-12-BigO/"> 빅오표기법</a></li><li class="recent-posts__item"><a href="/2018/04/22/2018-04-22-React-Fundamental/">React Fundamental</a></li><li class="recent-posts__item"><a href="/2018/03/24/2018-04-23-Array-String/">배열과 문자열</a></li><li class="recent-posts__item"><a href="/2018/03/24/2018-03-24-BigO/">Big O Notation</a></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Tag cloud</h3><div class="tag-cloud"><a href="/tags/Algorithm/" style="font-size: 1.5rem;">Algorithm</a> <a href="/tags/CtCI/" style="font-size: 1.13rem;">CtCI</a> <a href="/tags/English/" style="font-size: 0.75rem;">English</a> <a href="/tags/Essay/" style="font-size: 1.13rem;">Essay</a> <a href="/tags/JS/" style="font-size: 0.75rem;">JS</a> <a href="/tags/Python/" style="font-size: 0.75rem;">Python</a> <a href="/tags/React/" style="font-size: 1.13rem;">React</a></div></div><div class="widgets__item"><h3 class="widgets__item__heading">Categories</h3><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CtCI/">CtCI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Essay/">Essay</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><span class="category-list-count">2</span></li></ul></div></div></div><p class="copyright"><small>© 2018 Jeewhan<br>Powered by <a href="https://hexo.io" rel="external" target="_blank">Hexo</a>, Theme by <a href="https://github.com/hyunseob" rel="external" target="_blank">HyunSeob</a></small></p></footer><!--[if lt IE 10]><script src="/js/classList.min.js"></script><![endif]--><script src="/js/index.min.js"></script></body></html>
