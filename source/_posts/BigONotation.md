@@ -4,9 +4,8 @@ title: "Big O Notation"
 subtitle: "코딩인터뷰 완전 분석"
 categories: CtCI
 tags: CtCI
+date: 2018-03-24
 ---
-
-# 코딩인터뷰 완전 분석 - Big O Notation
 
 ### 시간복잡도
 

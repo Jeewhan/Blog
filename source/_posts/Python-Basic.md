@@ -4,10 +4,7 @@ title: " 파이썬 기초"
 subtitle: "파이썬 기초"
 categories: Python
 tags: Python
----
-
-### 파이썬 기초
-
+date: 2018-03-07
 ---
 
 1일차

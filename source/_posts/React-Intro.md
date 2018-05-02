@@ -4,15 +4,12 @@ title: "React 입문"
 subtitle: "React"
 categories: React
 tags: React
+date: 2018-03-07
 ---
-
-# React 입문
 
 미리 밝히자면 아래 내용은 결과론적일 수 있고, 필자의 개인적인 추측들이 담겨있으며, 마지막으로 필자는 Angular 또는 Vue로 프로젝트를 해본 경험이 전혀 없습니다.
 
-
-
-
+---
 
 React는 Anti-Angular 목적이 담긴 라이브러리였다고 생각합니다.
 

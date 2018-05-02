@@ -4,9 +4,8 @@ title: "Codility ~4"
 subtitle: "실용적인 알고리즘"
 categories: Algorithm
 tags: Algorithm
+date: 2018-03-13
 ---
-
-# 실용적인 알고리즘 (2) - Codility ~4
 
 > 문제 앞에 * 이 붙어있으면 어려웠던 문제이다
 

@@ -4,9 +4,8 @@ title: "글쓰기 시작"
 subtitle: "글쓰기"
 categories: Essay
 tags: Essay
+date: 2018-02-12
 ---
-
-### 글쓰기 시작
 
 글쓰기는 내게 가장 어려운 일 중 하나였다.
 

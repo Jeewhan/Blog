@@ -4,9 +4,8 @@ title: "반대로 하는 법"
 subtitle: "글쓰기"
 categories: Essay
 tags: Essay
+date: 2017-11-05
 ---
-
-### 반대로 하는 법
 
 오늘 체형교정 관련한 세션에 다녀왔다.
 

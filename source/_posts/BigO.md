@@ -4,9 +4,8 @@ title:  " 빅오표기법"
 subtitle:   "실용적인 알고리즘"
 categories: Algorithm
 tags: Algorithm
+date: 2018-03-12
 ---
-
-# 실용적인 알고리즘 (1) - 빅오표기법
 
 [빅오(Big-O)표기법 완전정복](https://www.youtube.com/watch?v=6Iq5iMCVsXA)
 

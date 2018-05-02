@@ -4,9 +4,8 @@ title: "이벤트 델리게이션"
 subtitle: "자바스크립트"
 categories: JS
 tags: JS
+date: 2017-10-08
 ---
-
-# 이벤트 델리게이션
 
 ### Concept
   - Javascript Event
