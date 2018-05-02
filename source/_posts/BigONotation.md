@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Big O Notation"
-subtitle: "코딩인터뷰 완전 분석"
 categories: CtCI
 tags: CtCI
 date: 2018-03-24

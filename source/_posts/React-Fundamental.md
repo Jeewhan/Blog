@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "React Fundamental"
-subtitle: "React"
 categories: React
 tags: React
 date: 2018-04-22

@@ -1,7 +1,6 @@
 ---
 layout: post
-title: " 파이썬 기초"
-subtitle: "파이썬 기초"
+title: "파이썬 기초"
 categories: Python
 tags: Python
 date: 2018-03-07

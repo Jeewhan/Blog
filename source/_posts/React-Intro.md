@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "React 입문"
-subtitle: "React"
 categories: React
 tags: React
 date: 2018-03-07

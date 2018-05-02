@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Codility ~4"
-subtitle: "실용적인 알고리즘"
 categories: Algorithm
 tags: Algorithm
 date: 2018-03-13

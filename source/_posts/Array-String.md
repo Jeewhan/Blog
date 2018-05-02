@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "배열과 문자열"
-subtitle: "코딩인터뷰 완전 분석"
 categories: CtCI
 tags: CtCI
 date: 2018-04-23

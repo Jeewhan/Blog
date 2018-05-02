@@ -1,7 +1,6 @@
 ---
 layout: post
-title:  " 빅오표기법"
-subtitle:   "실용적인 알고리즘"
+title: "빅오표기법"
 categories: Algorithm
 tags: Algorithm
 date: 2018-03-12

@@ -7,7 +7,7 @@ tags: English
 date: 2018-05-01
 ---
 
-## OT
+![img](https://img.kaidee.com/prd/20180427/337728869/b/0cf1987d-78e7-4f60-acd1-310d5c427af9.jpg)
 
 ### 1. 생각의 틀을 확장하라
 
@@ -76,6 +76,84 @@ bring up 이라는 단어를 기르다 로 외운다면 아래 문장을 제대�
 She brought up what she had for lunch
 
 bring up 은 위로 가져오(가)다 로 이해되어야 한다
+
+---
+
+## Accident
+
+핵심이미지 : 내가 의도하지 않은, 우연히 일어난 일
+
+design : 반대되는 단어 ( 고의 )
+
+영영 풀이
+
+1. An unfortunate incident that happens unexpectedly and unintentionally, typically resulting in damage or injury.
+2. An event that happens by chance or that is without apparent or deliberate cause.
+
+---
+
+## Address
+
+핵심 이미지 : 접근
+
+한 사람 : 말 걸다, 여러 사람 : 연설하다, 문제 : 해결하다
+
+영영 풀이
+
+1. The particulars of the place where someone lives or an organization is situated.
+2. A formal speech delivered to an audience.
+3. Speak to (a person or an assembly), typically in a formal way.
+4. Say or write remarks or a protest to (someone).
+5. Name someone in a specified way when talking or writing.
+6. Think about and begin to deal with (an issue or problem).
+
+
+---
+
+## Assume
+
+핵심 이미지 : 취하다
+
+입장이나 태도, 직위, 책임을 지다, 분위기를 취하다
+
+영영 풀이
+
+1. Suppose to be the case, without proof.
+2. Take or begin to have (power or responsibility).
+3. Take on (a specified quality, appearance, or extent).
+
+---
+
+## Available
+
+핵심 이미지 : (무엇인가를) 할 수 있는
+
+탈 수 있는, 구매할 수 있는
+
+영영 풀이
+
+1. Able to be used or obtained; at someone's disposal.
+
+until : 기존 동작이 종료되고, 신규 동작이 시작되는 시점; 부정문이 함께 있으면 그러다가 로 해석
+
+---
+
+## Appreciate
+
+핵심 이미지 : 진가를 알다
+
+가치를 알다, 감사하다, 이해하다, 감상하다, 가치가 올라가다
+
+영영 풀이
+
+1. Recognize the full worth of.
+2. Be grateful for (something).
+3. Understand (a situation) fully; recognize the full implications of.
+4. Rise in value or price.
+
+ever : 강조
+
+I would appreciate if : ~해주신다면 감사하겠습니다
 
 ---
 

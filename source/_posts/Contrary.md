@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "반대로 하는 법"
-subtitle: "글쓰기"
 categories: Essay
 tags: Essay
 date: 2017-11-05

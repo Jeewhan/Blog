@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "글쓰기 시작"
-subtitle: "글쓰기"
 categories: Essay
 tags: Essay
 date: 2018-02-12
