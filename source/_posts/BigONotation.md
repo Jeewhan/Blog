@@ -6,6 +6,8 @@ tags: CtCI
 date: 2018-03-24
 ---
 
+![img](http://slideplayer.com/5041115/16/images/6/Examples+of+Algorithms+and+their+big-O+complexity.jpg)
+
 ### 시간복잡도
 
 - 점근적 실행 시간
