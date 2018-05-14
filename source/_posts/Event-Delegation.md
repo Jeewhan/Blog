@@ -133,3 +133,9 @@ true일 경우 `Window`부터 이벤트가 발생한 `node`까지 `Event`가 전
 - [Javascript에서 이벤트 전파를 중단하는 네 가지 방법](http://programmingsummaries.tistory.com/313)
 - [왜 이벤트 위임(delegation)을 해야 하는가?](https://github.com/nhnent/fe.javascript/wiki/August-22-August-26,-2016)
 - [PoiemaWeb Javascript Event](http://poiemaweb.com/js-event)
+
+
+
+관련하여 매우 좋은 글이 있어 공유해봅니다
+
+[이벤트 버블링, 이벤트 캡처 그리고 이벤트 위임까지](https://joshua1988.github.io/web-development/javascript/event-propagation-delegation/)
