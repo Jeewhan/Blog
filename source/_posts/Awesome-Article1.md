@@ -62,19 +62,19 @@ TDD, Design 등에 관심이 있다면 꼭 팔로우하시길 추천드리고 �
 
 납기에 쫓기거나 귀찮거나 번거롭더라도 꼭 테스트 코드를 먼저 작성해보는 습관을 들여야겠다는 다짐을 다시 한 번!
 
-### 
+### [프론트엔드 인터뷰 핸드북](https://github.com/yangshun/front-end-interview-handbook/blob/master/Translations/Korean/README.md)
 
 면접 준비할 때, 내가 무엇을 모르는지 알고자 확인할 때 유용하다고 생각된다.
 
 관련하여 아래와 같은 여러 레퍼런스들이 존재한다.
-
-- [프론트엔드 인터뷰 핸드북](https://github.com/yangshun/front-end-interview-handbook/blob/master/Translations/Korean/README.md)
 
 - [프론트엔드 면접 문제 은행](https://github.com/h5bp/Front-end-Developer-Interview-Questions/tree/master/Translations/Korean)
 
 - [Awesome Interviews](https://github.com/MaximAbramchuck/awesome-interview-questions)
 
 - [프론트엔드 체크리스트](https://github.com/kesuskim/Front-End-Checklist/blob/master/README.md)
+
+---
 
 https://medium.com/@Jbee_/프로젝트를-마치며-회고한-경험-14d37e066d1c
 
