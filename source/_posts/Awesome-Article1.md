@@ -84,6 +84,10 @@ TDD, Design 등에 관심이 있다면 꼭 팔로우하시길 추천드리고 �
 
 - [Web Developer Roadmap](https://github.com/kamranahmedse/developer-roadmap)
 
+또한 실제적으로 따라할 수 있도록 직접적인 가이드가 제시된 너무나 좋은 레퍼런스도 있다!
+
+- [Knowre web development curriculum 2018](https://github.com/Knowre-Dev/WebDevCurriculum)
+
 ### [좋은 git 커밋 메시지를 작성하기 위한 7가지 약속](http://meetup.toast.com/posts/106)
 
 하루에도 여러 차례 변수명과 더불어 명명이 얼마나 어려운 것인가를 느끼게 해주는 과정이 커밋이다.
@@ -181,8 +185,6 @@ https://medium.com/@kpak/훌륭한-소프트웨어-엔지니어란-답-카멜레
 https://www.vobour.com/개발자처럼-생각하는-방법-문제-해결의-교훈-how-to-think-l
 
 https://brunch.co.kr/@supims/302
-
-https://github.com/Knowre-Dev/WebDevCurriculum
 
 http://blog.sonim1.com/224
 
