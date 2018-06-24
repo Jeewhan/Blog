@@ -43,6 +43,10 @@ p b3 # #<BookInStock:0x00007f93fa986738 @isbn="isbn3", @price=5.67>
 puts b3 # ISBN: isbn3, price: 5.67
 ```
 
+initialize 메서드는 객체의 환경을 초기화해서 이를 사용 가능한 상태로 만들어두어야 한다, 그러면 다른 메서드들에서는 이 상태를 사용한다
+
+
+
 매개변수는 지역변수와 동일한 스코프이므로 initialize 메서드가 끝나면 함께 사라져버린다, 따라서 필요한 정보를 인스턴스 변수에 저장해야 한다 (@를 붙이면 인스턴스 변수가 된다)
 
 
@@ -55,7 +59,7 @@ p는 객체의 상태를 보여주고 자기 자신을 리턴하는 것에 비�
 
 ---
 
-### 3.1 객체와 속성
+## 3.1 객체와 속성
 
 위의 코드대로라면 객체의 내부 상태는 각 객체 내부에 저장된 정보로 다른 객체에서는 접근할 수 없다, 일반적으로 객체의 일관성을 지키기 위한 책임이 하나의 객체에 전적으로 맡겨진다는 것은 좋은 의미이다
 
@@ -213,3 +217,216 @@ price_in_cents는 객체 밖에서는 객체의 속성(attribute)로 보이지�
 
 
 클래스를 설계할 때는 내부적으로 어떤 상태를 가지고, 이 상태를 외부(그 클래스의 사용자)에 어떤 모습으로 노출할지 결정해야 한다, 여기서 내부 상태는 인스턴스 변수에 저장한다, 외부에 보이는 상태는 속성(attribute)이라고 부르는 메서드를 통해야만 한다, 그 밖에 클래스가 할 수 있는 모든 행동은 일반 메서드를 통해야만 한다, 이런 구분법이 아주 중요한 것은 아니지만, 그래도 객체의 외부 상태를 속성이라고 부른다면 클래스를 사용하는 사람이 우리가 만든 클래스를 어떻게 봐야 하는지에 대한 힌트를 줄 수 있을 것이다
+
+---
+
+## 3.2 다른 클래스와 함께 사용하기
+
+
+
+객체지향 설계에서는 외부의 대상을 파악하고 이를 코드를 통해 클래스로 만든다, 하지만 설계상에서 클래스의 대상이 되는 또 다른 대상이 있다, 이는 외부가 아닌 내부 코드 자체에 대응하는 클래스다
+
+
+
+예를 들어 헌책방의 CSV 데이터를 읽어 들여 여러 가지 보고서를 만들어야 한다면, CSV 데이터를 읽어 들여 통계를 내고 요약해야 한다
+
+
+
+어떻게 통계를 내고 요약할지에 따라서 설계 방향이 결정된다, 그리고 그 답은 CSV 리더에 있다 (각각의 CSV 데이터가 어떻게 생겼을지는 앞의 BookInStock에서 정의했다)
+
+
+
+```ruby
+# book_in_stock.rb
+class BookInStock
+  attr_reader :isbn, :price
+
+  def initialize(isbn, price)
+    @isbn = isbn
+    @price = Float(price)
+  end
+end
+```
+
+```ruby
+# csv_reaedr.rb
+require 'csv'
+require_relative 'book_in_stock' # require_relative을 사용하는 것은 로드하려는 파일의 위치가 로드하는 파일을 기준으로 상대 위치에 있기 때문이다. 여기서 두 파일은 모두 같은 위치에 있다
+
+class CsvReader
+  def initialize
+    @books_in_stock = []
+  end
+    
+  def read_in_csv_data(csv_file_name)
+    CSV.foreach(csv_file_name, headers: true) do |row|
+      @books_in_stock << BookInStock.new(row["ISBN"], row["Price"])
+    end
+  end
+    
+  def total_value_in_stock
+    sum = 0.0
+    @books_in_stock.each {|book| sum += book.price}
+    sum
+  end
+    
+  def number_of_each_isbn
+  end
+end
+```
+
+```ruby
+# stock_stats.rb
+require_relative 'csv_reader'
+
+reader = CsvReader.new ARGV.each do |csv_file_name|
+  STDERR.puts "Processing #{csv_file_name}"
+  reader.read_in_csv_data(csv_file_name)
+end
+
+puts "Total value = #{reader.total_value_in_stock}"
+```
+
+---
+
+## 3.3 접근 제어
+
+클래스 인터페이스를 설계할 때, 클래스를 외부에 어느 정도까지 노출할지 결정하는 것은 중요한 일이다
+
+
+
+클래스에 너무 깊이 접근하도록 허용하면 각 요소 간의 결합도가 높아질 우려가 있다, 다시 말해 이 클래스의 사용자 코드는 클래스 내부 구현의 세세한 부분에까지 종속적이 되기 쉽다는 것이다
+
+
+
+루비에서 객체 상태를 변경하는 방법은 메서드를 호출하는 것일 뿐이므로 메서드에 대한 접근을 적절히 설정하면 객체에 대한 접근을 제어할 수 있다, 경험적으로 볼 때 객체의 상태를 망가뜨릴 수 있는 메서드는 노출해서는 안 된다
+
+
+
+루비의 세 가지 보호 단계는 다음과 같다
+
+- public : 접근 제어가 없음, 메서드는 기본적으로 public (단, initialize는 예외적으로 항상 private)
+- protected : 이 메서드는 그 객체를 정의한 클래스와 하위 클래스에서만 호출할 수 있다
+- private : 메서드는 수신자를 지정해서 호출할 수 없다, 오직 현재 객체에서만 호출 가능
+
+
+- [ ] 루비는 접근 제어가 동적으로 결정된다, 따라서 접근 위반 예외는 제한된 메서드를 실제로 호출한 그 때에만 발생한다
+
+
+
+### 접근 제어 기술하기
+
+```ruby
+class Account
+  attr_accessor :balance
+    
+  def initialize(balance)
+    @balance = balance
+  end
+end
+
+class Transaction
+  def initialize(account_a, account_b)
+    @account_a = account_a
+    @account_b = account_b
+  end
+    
+  def transfer(amount)
+    debit(@account_a, amount)
+    credit(@account_b, amount)
+  end
+    
+  private
+  
+  def debit(account, amount)
+    account.balance -= amount
+  end
+
+  def credit(account, amount)
+    account.balance += amount
+  end
+end
+
+savings = Account.new(100)
+checking = Account.new(200)
+trans = Transaction.new(checking, savings)
+trans.transfer(50)
+```
+
+
+
+protected 접근은 객체가 같은 클래스에서 생성된 다른 객체의 상태에 접근할 필요가 있을 때 사용한다. 예를 들어 각각의 Account 객체의 결산 잔액을 비교 하고 싶은데, 잔액 자체는 (아마 다른 형식으로 보여주고자 하기 때문에) 외부에 보여주고 싶지는 않은 경우를 보자.
+
+
+
+```ruby
+class Account
+  attr_reader :cleared_balance # 접근자 메서드 'cleared_balance'를 만든다.
+  protected :cleared_balance # 접근자 메서드를 protected 메서드로 설정한다.
+
+  def greater_balance_than?(other)
+    @cleared_balance > other.cleared_balance
+  end
+end
+```
+
+---
+
+## 3.4 변수
+
+```ruby
+person = "Tim"
+puts "The object in 'person' is a #{person.class}" # The object in 'person' is a String
+puts "The object has an id of #{person.object_id}" # The object has an id of 70264079641280
+puts "and a value of '#{person}'" # and a value of 'Tim'
+```
+
+변수는 객체가 아니라 객체에 대한 참조를 가지고 있을 뿐이다, 힙 메모리에 있는 객체를 변수가 가리키고 있다
+
+
+
+```ruby
+person1 = "Tim"
+person2 = person1
+person1[0] = 'J'
+puts "person1 is #{person1}" # person1 is Jim
+puts "person2 is #{person2}" # person2 is Jim
+```
+
+person2에 person1을 대입해도 새로운 객체는 생성되지 않으며, 단지 person1 객체에 대한 참조를 person2에 복사해서 같은 객체를 참조하도록 만들 뿐이다
+
+
+
+대입은 객체의 별명을 늘려서 결과적으로 여러 개의 변수가 하나의 객체를 참조하도록 한다
+
+
+
+dup 메서드를 사용한다면 같은 내용을 담은 객체를 새로 생성한다
+
+
+
+```ruby
+person1 = "Tim"
+person2 = person1.dup person1[0] = "J"
+puts "person1 is #{person1}" # person1 is Jim
+puts "person2 is #{person2}" # person2 is Tim
+```
+
+
+
+객체를 동결해서 객체의 상태를 변경할 수 없도록 할 수도 있다, 동결된 객체를 수정하려고 하면 루비는 RuntimeError 예외를 발생시킨다
+
+```ruby
+person1 = "Tim"
+person2 = person1
+person1.freeze # 객체 수정을 막는다.
+person2[0] = "J"
+
+# 실행 결과:
+# from prog.rb:4:in `<main>'
+# prog.rb:4:in `[]=': can't modify frozen String (RuntimeError)
+```
+
+
+
+클래스 메서드, 믹스인, 상속 등의 개념은 
