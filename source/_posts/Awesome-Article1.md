@@ -62,17 +62,27 @@ TDD, Design 등에 관심이 있다면 꼭 팔로우하시길 추천드리고 �
 
 납기에 쫓기거나 귀찮거나 번거롭더라도 꼭 테스트 코드를 먼저 작성해보는 습관을 들여야겠다는 다짐을 다시 한 번!
 
-### [프론트엔드 인터뷰 핸드북](https://github.com/yangshun/front-end-interview-handbook/blob/master/Translations/Korean/README.md)
+### [Technical Interview Guidelines for beginners](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
 
 면접 준비할 때, 내가 무엇을 모르는지 알고자 확인할 때 유용하다고 생각된다.
 
 관련하여 아래와 같은 여러 레퍼런스들이 존재한다.
+
+- [프론트엔드 인터뷰 핸드북](https://github.com/yangshun/front-end-interview-handbook/blob/master/Translations/Korean/README.md)
 
 - [프론트엔드 면접 문제 은행](https://github.com/h5bp/Front-end-Developer-Interview-Questions/tree/master/Translations/Korean)
 
 - [Awesome Interviews](https://github.com/MaximAbramchuck/awesome-interview-questions)
 
 - [프론트엔드 체크리스트](https://github.com/kesuskim/Front-End-Checklist/blob/master/README.md)
+
+### [신입 프론트엔드 개발자가 되려면 무엇을 학습해야 하나요?](https://medium.com/@Jbee_/신입-프론트엔드-개발자가-되려면-무엇을-학습해야-하나요-1dd59a14e084)
+
+사실 어떤 분야의 개발자가 되고 싶다고 생각을 했거나, 또는 정하지 못 하고 있을 때 정확히 해당 분야의 개발자가 되기 위해 무엇 무엇을 공부해야 하는지, 한다면 어떤 순서로 공부해야 하는지 잘 알기 어려운 때가 많다. 그럴 때 참고하기 참 좋은 글이다.
+
+위 글 외에도 아래와 같은 레퍼런스도 있다.
+
+- [Web Developer Roadmap](https://github.com/kamranahmedse/developer-roadmap)
 
 ---
 
@@ -127,8 +137,6 @@ http://blog.kivol.net/post/173442457743/좋은-기술-인터뷰-질문은-어떤
 https://blog.naver.com/skabin/221261551265
 
 https://okky.kr/article/461670
-
-https://medium.com/@Jbee_/신입-프론트엔드-개발자가-되려면-무엇을-학습해야-하나요-1dd59a14e084
 
 http://channy.creation.net/blog/1186
 
