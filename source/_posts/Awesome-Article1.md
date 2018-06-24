@@ -20,7 +20,7 @@ date: 2018-06-24
 
 ### [4) 3번째 직장에 오기까지 - 4. 두번째직장 #1](http://jojoldu.tistory.com/284)
 
-지금은 우아한 형제들에 계신 조동욱님의 이직기를 자세히 다룬 시리즈이다.
+지금은 우아한 형제들에 계신 이동욱님의 이직기를 자세히 다룬 시리즈이다.
 
 프로그래밍 공부는 어느 정도 했지만, 아직 취업에 이르지 못했던 때에 대체 어느 정도 실력이 있어야 취업을 할 수 있는 것인지, 어떤 방향으로 노력을 해야 하는 것인지 등 너무 궁금한 것이 많은데 주변에 물어볼 수 있는 사람도 없는 시기도 있었다. ( 마치 [Link](https://www.facebook.com/hee072794/posts/605474039817221) 에 나오는 질문들처럼 ) 그럴 때 참고하기 정말 좋은 글이었다.
 
@@ -84,6 +84,16 @@ TDD, Design 등에 관심이 있다면 꼭 팔로우하시길 추천드리고 �
 
 - [Web Developer Roadmap](https://github.com/kamranahmedse/developer-roadmap)
 
+### [좋은 git 커밋 메시지를 작성하기 위한 7가지 약속](http://meetup.toast.com/posts/106)
+
+하루에도 여러 차례 변수명과 더불어 명명이 얼마나 어려운 것인가를 느끼게 해주는 과정이 커밋이다.
+
+누군가에게 커밋 메시지를 어떻게 잘 쓸 수 있냐고 질문하면 유명한 오픈소스를 분석해보라는 답변을 받을 때가 있는데, 그 옥석을 가리는 것이 저를 포함하여 누구에게나 가능하다고 생각하지는 않고, 잘 정리된 글을 보고 참고하고 싶은 분들에게 추천하고 싶은 글들이다.
+
+- [좋은 깃(Git) 커밋 메시지 작성하기](https://tech.ssut.me/2015/06/24/write-a-good-git-commit-message/)
+
+- [Conventional Commits 1.0.0-beta.2](https://conventionalcommits.org/)
+
 ---
 
 https://medium.com/@Jbee_/프로젝트를-마치며-회고한-경험-14d37e066d1c
@@ -95,8 +105,6 @@ http://d2.naver.com/helloworld/3259111
 https://krasimir.gitbooks.io/react-in-patterns/content/
 
 https://medium.com/netscape/whats-new-in-react-16-1608390ffe39
-
-https://conventionalcommits.org/
 
 https://brunch.co.kr/@nerf-this/111
 
@@ -123,8 +131,6 @@ http://www.inven.co.kr/webzine/news/?news=198238
 https://www.facebook.com/drawthebook/videos/803788546477026/
 
 https://www.prettyawesomelists.com/
-
-https://tech.ssut.me/2015/06/24/write-a-good-git-commit-message/
 
 https://www.holaxprogramming.com/2018/04/15/react-optimizing-virtual-dom-explained/
 
