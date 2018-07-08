@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Functional Programming Intro"
+title:  "실용적인 함수형 자바스크립트 Intro"
 date: 2018-07-09
 tags: [FP]
 ---
