@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://JeewhanR.github.io/"/>
-  <updated>2018-07-08T15:46:56.661Z</updated>
+  <updated>2018-08-12T14:28:09.520Z</updated>
   <id>https://JeewhanR.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Node.js 교과서</title>
+    <link href="https://JeewhanR.github.io/2018/08/12/NodeJS-TextBook/"/>
+    <id>https://JeewhanR.github.io/2018/08/12/NodeJS-TextBook/</id>
+    <published>2018-08-11T15:00:00.000Z</published>
+    <updated>2018-08-12T14:28:09.520Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Node-js-교과서"><a href="#Node-js-교과서" class="headerlink" title="Node.js 교과서"></a>Node.js 교과서</h1><p>Node.js란 무엇인가?</p><p>Node.js, JavaScript Runtime Environment</p><p>런타임은 특정 언어로 만든 프로그램들을 실행할 수 있는 환경</p><p>따라서 는 자바스크립트를 웹 브라우저 밖에서 실행할 수 있게 해주는 환경</p><p>Node.js는 두 가지 버전 체계를 운영함, LTS(Long Term Support) / Current</p><p>LTS의 대상이 되는 버전은 짝수버전이며, LTS 스케쥴은 여기에서 확인할 수 있다 <a href="https://github.com/nodejs/Release#release-schedule" target="_blank" rel="noopener">Link</a></p><p>Node.js 설치 방법은 다양하나, 여러 가지 버전을 동시에 관리해야 한다면 <a href="https://github.com/nodenv/nodenv" target="_blank" rel="noopener">nodenv</a> 를 추천함</p><p>Node.js 내부 구조는 Node.js Core Library, Node.js Bindings, V8(자바스크립트 엔진), libuv(비동기 I/O) 로 되어있다고 함</p><p>Node.js는 libuv 라이브러리를 통해 이벤트 기반, 논 블록킹 I/O 모델을 차용했다고 하는데, 두 가지는 각각 어떤 의미인가?</p><hr><p>이후 책의 설명을 보기 전에, Blocking, NonBlocking, Sync, Async 에 대해 살펴보자</p><p>Blocking에 대한 요구사항은 내가 만들고자 하는 애플리케이션이 속한 업계마다 다를 것, 전화통화를 처리해야 한다면 Blocking에 대한 요구사항이 대단히 높을 것, 이 외에도 브라우저는 5초 등 OS 레벨에서 제한을 두는 경우도 있다, Blocking 시에는 멈춰져있지만 OS에서 제어하는 영역 내에서 실행되는 코드들은 OS가 강제 중단이 얼마든지 가능하다, 스마트폰에서 전화가 오면 그 어떤 동작보다 우선할 수 있는 것도 동일한 원리, Window에서 blue screen이 뜨는 것은 애플리케이션을 잘못 만든 경우인 것이 다반사이고, MacOS에서는 OS에서 제어할 수 있는 영역만 쓸 수 있게 하므로 권한이 제한되어있어 그런 경우가 없어 보이는 것일 뿐이다</p><p>Blocking Function 여부는 우리가 함수에 어떤 인자를 전달하느냐에 따라 블록킹 현상이 심해지느냐에 달려있다</p><p>weakset 자료구조를 사용하면 담겨있는 값의 개수와 무관하게 값이 담겨있는지 여부를 확인하는데 소요되는 비용이 같으므로 이런 식의 접근 방법이 필요할 것</p><p>일부가 Blocking Function인 것만으로도 애플리케이션 전체가 Blocking에 빠질 수 있다, Blocking의 조합으로 인한 결과는 예측할 수 없다</p><p>안타깝게도 우리가 짜는 대부분의 로직은 흔히 Blocking이기 마련이다</p><p>엔터프라이즈 레벨을 지향한다는 것의 첫 걸음은 하나의 함수를 짤 때라도 Blocking Function이 아니도록 하는 것</p><p>배열 순회, 정렬은 배열 크기에 따라, DOM 순회는 DOM의 하위구조에 따라, 이미지 프로세싱은 이미지 크기에 따라 Blocking을 유발할 것</p><p>개발자가 되기 위해 6년에 걸쳐서 의사가 된다는 마음가짐으로 임한다면 함부로 Blocking Function을 짜지 못할 것</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> f = <span class="function"><span class="params">v</span> =&gt;</span> other(something(v), v * <span class="number">2</span>); f(<span class="number">10</span>);</span><br></pre></td></tr></table></figure><p>위와 같은 코드가 있을 때, Blocking 여부를 예측할 수 있는가?</p><p>Blocking으로 인한 에러는 로그를 찍어보기도 전에 애플리케이션이 죽기 때문에 파악하기도 대단히 어려울 것</p><p>Blocking 회피방법</p><ul><li>시분한 운영체제의 동시 실행 : 순차적인 실행에 비해 컨텍스트 스위칭으로 인해 훨씬 오래 걸림</li><li>자바스크립트 쓰레드<ul><li>자바스크립트는 싱글 쓰레드라고 알려져있지만 그렇지 않다, UI와 자바스크립트를 처리하는 쓰레드가 싱글일 뿐, 하지만 현대의 대부분 OS는 UI를 변경하거나 메인 스크립트를 구동하는 쓰레드를 싱글 쓰레드로 제약한다, 그리고 그 해당 쓰레드를 감시한다</li><li>HTML5 스펙에는 우리가 직접 Background로 사용할 수 있는 Web Worker Thread가 존재함</li><li>자바스크립트 쓰레드는 무한루프를 돌고 있고 배열을 바라보고 있다, 해당 배열에 쌓이는 명령들에 언제 실행되어야 할지에 대한 프레임이 붙는다, 루프가 한 번 돌 때마다 1틱이 진행된다, 그러므로 메인 쓰레드는 명령큐에 있는 프레임들을 실행할 뿐이고, 그 외 쓰레드들에서 명령큐에 명령들을 프레임에 따라 담아둔다, 이러한 패턴을 서스펜션 패턴이라고 부른다, 다수의 공급자 쓰레드와 소비자 쓰레드를 나누어 중간에 명령큐와 같은 쿠션층을 만들어서 공급자는 쓰기만 하고 소비자는 해당하는 프레임마다 꺼내서 읽기(소비 및 명령 수행)만 한다, 따라서 메인 쓰레드가 하나의 명령을 꺼내서 처리하는 시간이 5초 이내여야 한다, 자바스크립트에서는 기본적으로 회피방식은 타임슬라이싱을 통해 여러 쓰레드에 스프레드시키는 것</li></ul></li></ul><hr>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Node-js-교과서&quot;&gt;&lt;a href=&quot;#Node-js-교과서&quot; class=&quot;headerlink&quot; title=&quot;Node.js 교과서&quot;&gt;&lt;/a&gt;Node.js 교과서&lt;/h1&gt;&lt;p&gt;Node.js란 무엇인가?&lt;/p&gt;
+&lt;p&gt;Node.js, Jav
+      
+    
+    </summary>
+    
+      <category term="node" scheme="https://JeewhanR.github.io/categories/node/"/>
+    
+    
+      <category term="node" scheme="https://JeewhanR.github.io/tags/node/"/>
+    
+  </entry>
   
   <entry>
     <title>실용적인 함수형 자바스크립트 Intro</title>
