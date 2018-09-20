@@ -549,7 +549,7 @@ break 는 외부 제어 통제이므로 elementNode 함수 안에서 통제할 �
 
 적절한 역할모델로 위임되어서 그것들간의 통신과 협업만 볼 수 있는 코드가 가독성 높은 코드입니다
 
-`console.log(parser(`<div>a<a>b</a>c<img/>d</div>`));`
+console.log(parser(`<div>a<a>b</a>c<img/>d</div>`));
 
 HTML 에서 태그간 엔터만 쳐도 텍스트노드가 생성됩니다
 
