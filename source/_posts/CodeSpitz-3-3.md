@@ -166,7 +166,7 @@ const parser = input => {
 </div>
 ```
 
-<div> 뒤부터 <a> 앞까지는 모두 텍스트로 볼 수 있다
+`<div>` 뒤부터 `<a>` 앞까지는 모두 텍스트로 볼 수 있다
 
 현재 바라보고 있는 스택에 있는 tag 의 자식에 텍스트 노드를 집어넣는다
 
@@ -511,8 +511,8 @@ const elementNode = (input, cursor, idx, curr, stack) => {
 const textNode = (input, cursor, curr) => {...};
 const parser = input => {
   input = input.trim();
-  const result = { name: 'ROOT', type: 'node', children: [] }, stack = [];
-  let curr = { tag: result }, i = 0, j = input.length;
+  const result = { name: 'ROOT', type: 'node', children: [] }, stack = [{ tag: result }];
+  let curr, i = 0, j = input.length;
   while (curr = stack.pop()) {
     while (i < j) {
       const cursor = i;
@@ -527,6 +527,7 @@ const parser = input => {
       } else i = textNode(input, cursor, curr);
     }
   }
+  return result;
 }
 ```
 
@@ -548,7 +549,7 @@ break 는 외부 제어 통제이므로 elementNode 함수 안에서 통제할 �
 
 적절한 역할모델로 위임되어서 그것들간의 통신과 협업만 볼 수 있는 코드가 가독성 높은 코드입니다
 
-console.log(parser(`<div>a<a>b</a>c<img/>d</div>`));
+`console.log(parser(`<div>a<a>b</a>c<img/>d</div>`));`
 
 HTML 에서 태그간 엔터만 쳐도 텍스트노드가 생성됩니다
 
@@ -616,11 +617,35 @@ const elementNode = (input, cursor, idx, curr, stack) => {
 스타일은 별로 중요하지 않습니다
 
 ```javascript
+const textNode = (input, cursor, curr) => {
+  const idx = input.indexOf("<", cursor);
+  curr.tag.children.push({
+    type: "text",
+    text: input.substring(cursor, idx)
+  });
+  return idx;
+};
+
+const elementNode = (input, cursor, idx, curr, stack) => {
+  const isClose = input[idx - 1] === "/";
+  const tag = {
+    name: input.substring(cursor + 1, idx - (isClose ? 1 : 0)),
+    type: "node",
+    children: []
+  };
+  curr.tag.children.push(tag);
+  if (!isClose) {
+    stack.push({ tag, back: curr });
+    return true;
+  }
+  return false;
+};
+
 const parser = input => {
   input = input.trim();
   const result = { name: "ROOT", type: "node", children: [] },
-    stack = [];
-  let curr = { tag: result },
+    stack = [{ tag: result }];
+  let curr,
     i = 0,
     j = input.length;
   while ((curr = stack.pop())) {
@@ -637,7 +662,10 @@ const parser = input => {
       } else i = textNode(input, cursor, curr);
     }
   }
+  return result;
 };
+
+console.log(parser(`<div>a<a>b</a>c<img/>d</div>`));
 ```
 
 HTML 은 멀티 스택 상황이 발생하지 않습니다, 컨텍스트가 동시에 두 개가 진행되지 않습니다, 이런 경우에는 스택 배열이 필요없고 하나의 변수에서만 교체해주면 됩니다, 하지만 많은 경우에는 여러 개를 동시에 유지하면서 따로 따로 주기를 가지고 컨텍스트가 교체되곤 합니다, 지금은 curr 하나만 가지고 있으면 됩니다
