@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://JeewhanR.github.io/"/>
+  <link href="https://eclatant.io/"/>
   <updated>2018-08-12T14:30:24.927Z</updated>
-  <id>https://JeewhanR.github.io/</id>
+  <id>https://eclatant.io/</id>
   
   <author>
     <name>Jeewhan</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Node.js 교과서</title>
-    <link href="https://JeewhanR.github.io/2018/08/12/NodeJS-TextBook/"/>
-    <id>https://JeewhanR.github.io/2018/08/12/NodeJS-TextBook/</id>
+    <link href="https://eclatant.io/2018/08/12/NodeJS-TextBook/"/>
+    <id>https://eclatant.io/2018/08/12/NodeJS-TextBook/</id>
     <published>2018-08-11T15:00:00.000Z</published>
     <updated>2018-08-12T14:30:24.927Z</updated>
     
@@ -34,17 +34,17 @@
     
     </summary>
     
-      <category term="node" scheme="https://JeewhanR.github.io/categories/node/"/>
+      <category term="node" scheme="https://eclatant.io/categories/node/"/>
     
     
-      <category term="node" scheme="https://JeewhanR.github.io/tags/node/"/>
+      <category term="node" scheme="https://eclatant.io/tags/node/"/>
     
   </entry>
   
   <entry>
     <title>실용적인 함수형 자바스크립트 Intro</title>
-    <link href="https://JeewhanR.github.io/2018/07/09/Functional-Programming-Intro/"/>
-    <id>https://JeewhanR.github.io/2018/07/09/Functional-Programming-Intro/</id>
+    <link href="https://eclatant.io/2018/07/09/Functional-Programming-Intro/"/>
+    <id>https://eclatant.io/2018/07/09/Functional-Programming-Intro/</id>
     <published>2018-07-08T15:00:00.000Z</published>
     <updated>2018-08-20T04:28:37.749Z</updated>
     
@@ -67,14 +67,14 @@
     </summary>
     
     
-      <category term="FP" scheme="https://JeewhanR.github.io/tags/FP/"/>
+      <category term="FP" scheme="https://eclatant.io/tags/FP/"/>
     
   </entry>
   
   <entry>
     <title>실용적인 아티클 1</title>
-    <link href="https://JeewhanR.github.io/2018/06/24/Awesome-Article1/"/>
-    <id>https://JeewhanR.github.io/2018/06/24/Awesome-Article1/</id>
+    <link href="https://eclatant.io/2018/06/24/Awesome-Article1/"/>
+    <id>https://eclatant.io/2018/06/24/Awesome-Article1/</id>
     <published>2018-06-23T15:00:00.000Z</published>
     <updated>2018-06-24T16:15:27.463Z</updated>
     
@@ -90,17 +90,17 @@
     
     </summary>
     
-      <category term="Article" scheme="https://JeewhanR.github.io/categories/Article/"/>
+      <category term="Article" scheme="https://eclatant.io/categories/Article/"/>
     
     
-      <category term="Article" scheme="https://JeewhanR.github.io/tags/Article/"/>
+      <category term="Article" scheme="https://eclatant.io/tags/Article/"/>
     
   </entry>
   
   <entry>
     <title>루비 곡괭이 3장 클래스, 객체, 변수</title>
-    <link href="https://JeewhanR.github.io/2018/05/27/Ruby-Pickaxe-chapter3/"/>
-    <id>https://JeewhanR.github.io/2018/05/27/Ruby-Pickaxe-chapter3/</id>
+    <link href="https://eclatant.io/2018/05/27/Ruby-Pickaxe-chapter3/"/>
+    <id>https://eclatant.io/2018/05/27/Ruby-Pickaxe-chapter3/</id>
     <published>2018-05-26T15:00:00.000Z</published>
     <updated>2018-06-02T01:11:48.775Z</updated>
     
@@ -116,17 +116,17 @@
     
     </summary>
     
-      <category term="Ruby" scheme="https://JeewhanR.github.io/categories/Ruby/"/>
+      <category term="Ruby" scheme="https://eclatant.io/categories/Ruby/"/>
     
     
-      <category term="Ruby" scheme="https://JeewhanR.github.io/tags/Ruby/"/>
+      <category term="Ruby" scheme="https://eclatant.io/tags/Ruby/"/>
     
   </entry>
   
   <entry>
     <title>루비 곡괭이 2장 Ruby.new</title>
-    <link href="https://JeewhanR.github.io/2018/05/13/Ruby-Pickaxe-chapter2/"/>
-    <id>https://JeewhanR.github.io/2018/05/13/Ruby-Pickaxe-chapter2/</id>
+    <link href="https://eclatant.io/2018/05/13/Ruby-Pickaxe-chapter2/"/>
+    <id>https://eclatant.io/2018/05/13/Ruby-Pickaxe-chapter2/</id>
     <published>2018-05-12T15:00:00.000Z</published>
     <updated>2018-05-27T14:56:10.045Z</updated>
     
@@ -141,17 +141,17 @@
     
     </summary>
     
-      <category term="Ruby" scheme="https://JeewhanR.github.io/categories/Ruby/"/>
+      <category term="Ruby" scheme="https://eclatant.io/categories/Ruby/"/>
     
     
-      <category term="Ruby" scheme="https://JeewhanR.github.io/tags/Ruby/"/>
+      <category term="Ruby" scheme="https://eclatant.io/tags/Ruby/"/>
     
   </entry>
   
   <entry>
     <title>레일즈 기초</title>
-    <link href="https://JeewhanR.github.io/2018/05/08/Rails-Intro/"/>
-    <id>https://JeewhanR.github.io/2018/05/08/Rails-Intro/</id>
+    <link href="https://eclatant.io/2018/05/08/Rails-Intro/"/>
+    <id>https://eclatant.io/2018/05/08/Rails-Intro/</id>
     <published>2018-05-07T15:00:00.000Z</published>
     <updated>2018-05-08T20:57:17.828Z</updated>
     
@@ -169,17 +169,17 @@
     
     </summary>
     
-      <category term="Rails" scheme="https://JeewhanR.github.io/categories/Rails/"/>
+      <category term="Rails" scheme="https://eclatant.io/categories/Rails/"/>
     
     
-      <category term="Rails" scheme="https://JeewhanR.github.io/tags/Rails/"/>
+      <category term="Rails" scheme="https://eclatant.io/tags/Rails/"/>
     
   </entry>
   
   <entry>
     <title>루비 기초</title>
-    <link href="https://JeewhanR.github.io/2018/05/06/Ruby-Intro2/"/>
-    <id>https://JeewhanR.github.io/2018/05/06/Ruby-Intro2/</id>
+    <link href="https://eclatant.io/2018/05/06/Ruby-Intro2/"/>
+    <id>https://eclatant.io/2018/05/06/Ruby-Intro2/</id>
     <published>2018-05-05T15:00:00.000Z</published>
     <updated>2018-05-08T19:56:29.488Z</updated>
     
@@ -194,17 +194,17 @@
     
     </summary>
     
-      <category term="Ruby" scheme="https://JeewhanR.github.io/categories/Ruby/"/>
+      <category term="Ruby" scheme="https://eclatant.io/categories/Ruby/"/>
     
     
-      <category term="Ruby" scheme="https://JeewhanR.github.io/tags/Ruby/"/>
+      <category term="Ruby" scheme="https://eclatant.io/tags/Ruby/"/>
     
   </entry>
   
   <entry>
     <title>괜찮아 ! 너만 모르는 건 아니야 - 어휘편</title>
-    <link href="https://JeewhanR.github.io/2018/05/01/OK-Word/"/>
-    <id>https://JeewhanR.github.io/2018/05/01/OK-Word/</id>
+    <link href="https://eclatant.io/2018/05/01/OK-Word/"/>
+    <id>https://eclatant.io/2018/05/01/OK-Word/</id>
     <published>2018-04-30T15:00:00.000Z</published>
     <updated>2018-05-02T16:06:04.951Z</updated>
     
@@ -220,17 +220,17 @@
     
     </summary>
     
-      <category term="English" scheme="https://JeewhanR.github.io/categories/English/"/>
+      <category term="English" scheme="https://eclatant.io/categories/English/"/>
     
     
-      <category term="English" scheme="https://JeewhanR.github.io/tags/English/"/>
+      <category term="English" scheme="https://eclatant.io/tags/English/"/>
     
   </entry>
   
   <entry>
     <title>배열과 문자열</title>
-    <link href="https://JeewhanR.github.io/2018/04/23/Array-String/"/>
-    <id>https://JeewhanR.github.io/2018/04/23/Array-String/</id>
+    <link href="https://eclatant.io/2018/04/23/Array-String/"/>
+    <id>https://eclatant.io/2018/04/23/Array-String/</id>
     <published>2018-04-22T15:00:00.000Z</published>
     <updated>2018-05-02T15:18:27.507Z</updated>
     
@@ -246,17 +246,17 @@
     
     </summary>
     
-      <category term="CtCI" scheme="https://JeewhanR.github.io/categories/CtCI/"/>
+      <category term="CtCI" scheme="https://eclatant.io/categories/CtCI/"/>
     
     
-      <category term="CtCI" scheme="https://JeewhanR.github.io/tags/CtCI/"/>
+      <category term="CtCI" scheme="https://eclatant.io/tags/CtCI/"/>
     
   </entry>
   
   <entry>
     <title>React Fundamental</title>
-    <link href="https://JeewhanR.github.io/2018/04/22/React-Fundamental/"/>
-    <id>https://JeewhanR.github.io/2018/04/22/React-Fundamental/</id>
+    <link href="https://eclatant.io/2018/04/22/React-Fundamental/"/>
+    <id>https://eclatant.io/2018/04/22/React-Fundamental/</id>
     <published>2018-04-21T15:00:00.000Z</published>
     <updated>2018-05-02T15:18:59.915Z</updated>
     
@@ -273,17 +273,17 @@
     
     </summary>
     
-      <category term="React" scheme="https://JeewhanR.github.io/categories/React/"/>
+      <category term="React" scheme="https://eclatant.io/categories/React/"/>
     
     
-      <category term="React" scheme="https://JeewhanR.github.io/tags/React/"/>
+      <category term="React" scheme="https://eclatant.io/tags/React/"/>
     
   </entry>
   
   <entry>
     <title>Codility ~7</title>
-    <link href="https://JeewhanR.github.io/2018/04/22/Codility7/"/>
-    <id>https://JeewhanR.github.io/2018/04/22/Codility7/</id>
+    <link href="https://eclatant.io/2018/04/22/Codility7/"/>
+    <id>https://eclatant.io/2018/04/22/Codility7/</id>
     <published>2018-04-21T15:00:00.000Z</published>
     <updated>2018-05-02T15:18:42.860Z</updated>
     
@@ -301,17 +301,17 @@
     
     </summary>
     
-      <category term="Algorithm" scheme="https://JeewhanR.github.io/categories/Algorithm/"/>
+      <category term="Algorithm" scheme="https://eclatant.io/categories/Algorithm/"/>
     
     
-      <category term="Algorithm" scheme="https://JeewhanR.github.io/tags/Algorithm/"/>
+      <category term="Algorithm" scheme="https://eclatant.io/tags/Algorithm/"/>
     
   </entry>
   
   <entry>
     <title>Big O Notation</title>
-    <link href="https://JeewhanR.github.io/2018/03/24/BigONotation/"/>
-    <id>https://JeewhanR.github.io/2018/03/24/BigONotation/</id>
+    <link href="https://eclatant.io/2018/03/24/BigONotation/"/>
+    <id>https://eclatant.io/2018/03/24/BigONotation/</id>
     <published>2018-03-23T15:00:00.000Z</published>
     <updated>2018-05-07T16:03:09.698Z</updated>
     
@@ -327,17 +327,17 @@
     
     </summary>
     
-      <category term="CtCI" scheme="https://JeewhanR.github.io/categories/CtCI/"/>
+      <category term="CtCI" scheme="https://eclatant.io/categories/CtCI/"/>
     
     
-      <category term="CtCI" scheme="https://JeewhanR.github.io/tags/CtCI/"/>
+      <category term="CtCI" scheme="https://eclatant.io/tags/CtCI/"/>
     
   </entry>
   
   <entry>
     <title>Codility ~4</title>
-    <link href="https://JeewhanR.github.io/2018/03/13/Codility4/"/>
-    <id>https://JeewhanR.github.io/2018/03/13/Codility4/</id>
+    <link href="https://eclatant.io/2018/03/13/Codility4/"/>
+    <id>https://eclatant.io/2018/03/13/Codility4/</id>
     <published>2018-03-12T15:00:00.000Z</published>
     <updated>2018-05-02T15:18:39.994Z</updated>
     
@@ -355,17 +355,17 @@
     
     </summary>
     
-      <category term="Algorithm" scheme="https://JeewhanR.github.io/categories/Algorithm/"/>
+      <category term="Algorithm" scheme="https://eclatant.io/categories/Algorithm/"/>
     
     
-      <category term="Algorithm" scheme="https://JeewhanR.github.io/tags/Algorithm/"/>
+      <category term="Algorithm" scheme="https://eclatant.io/tags/Algorithm/"/>
     
   </entry>
   
   <entry>
     <title>빅오표기법</title>
-    <link href="https://JeewhanR.github.io/2018/03/12/BigO/"/>
-    <id>https://JeewhanR.github.io/2018/03/12/BigO/</id>
+    <link href="https://eclatant.io/2018/03/12/BigO/"/>
+    <id>https://eclatant.io/2018/03/12/BigO/</id>
     <published>2018-03-11T15:00:00.000Z</published>
     <updated>2018-05-02T15:18:32.389Z</updated>
     
@@ -381,17 +381,17 @@
     
     </summary>
     
-      <category term="Algorithm" scheme="https://JeewhanR.github.io/categories/Algorithm/"/>
+      <category term="Algorithm" scheme="https://eclatant.io/categories/Algorithm/"/>
     
     
-      <category term="Algorithm" scheme="https://JeewhanR.github.io/tags/Algorithm/"/>
+      <category term="Algorithm" scheme="https://eclatant.io/tags/Algorithm/"/>
     
   </entry>
   
   <entry>
     <title>파이썬 기초</title>
-    <link href="https://JeewhanR.github.io/2018/03/07/Python-Basic/"/>
-    <id>https://JeewhanR.github.io/2018/03/07/Python-Basic/</id>
+    <link href="https://eclatant.io/2018/03/07/Python-Basic/"/>
+    <id>https://eclatant.io/2018/03/07/Python-Basic/</id>
     <published>2018-03-06T15:00:00.000Z</published>
     <updated>2018-05-02T15:18:57.292Z</updated>
     
@@ -414,17 +414,17 @@
     
     </summary>
     
-      <category term="Python" scheme="https://JeewhanR.github.io/categories/Python/"/>
+      <category term="Python" scheme="https://eclatant.io/categories/Python/"/>
     
     
-      <category term="Python" scheme="https://JeewhanR.github.io/tags/Python/"/>
+      <category term="Python" scheme="https://eclatant.io/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>React 입문</title>
-    <link href="https://JeewhanR.github.io/2018/03/07/React-Intro/"/>
-    <id>https://JeewhanR.github.io/2018/03/07/React-Intro/</id>
+    <link href="https://eclatant.io/2018/03/07/React-Intro/"/>
+    <id>https://eclatant.io/2018/03/07/React-Intro/</id>
     <published>2018-03-06T15:00:00.000Z</published>
     <updated>2018-05-02T15:19:05.239Z</updated>
     
@@ -441,17 +441,17 @@
     
     </summary>
     
-      <category term="React" scheme="https://JeewhanR.github.io/categories/React/"/>
+      <category term="React" scheme="https://eclatant.io/categories/React/"/>
     
     
-      <category term="React" scheme="https://JeewhanR.github.io/tags/React/"/>
+      <category term="React" scheme="https://eclatant.io/tags/React/"/>
     
   </entry>
   
   <entry>
     <title>글쓰기 시작</title>
-    <link href="https://JeewhanR.github.io/2018/02/12/Start/"/>
-    <id>https://JeewhanR.github.io/2018/02/12/Start/</id>
+    <link href="https://eclatant.io/2018/02/12/Start/"/>
+    <id>https://eclatant.io/2018/02/12/Start/</id>
     <published>2018-02-11T15:00:00.000Z</published>
     <updated>2018-05-02T15:19:08.779Z</updated>
     
@@ -469,17 +469,17 @@
     
     </summary>
     
-      <category term="Essay" scheme="https://JeewhanR.github.io/categories/Essay/"/>
+      <category term="Essay" scheme="https://eclatant.io/categories/Essay/"/>
     
     
-      <category term="Essay" scheme="https://JeewhanR.github.io/tags/Essay/"/>
+      <category term="Essay" scheme="https://eclatant.io/tags/Essay/"/>
     
   </entry>
   
   <entry>
     <title>반대로 하는 법</title>
-    <link href="https://JeewhanR.github.io/2017/11/05/Contrary/"/>
-    <id>https://JeewhanR.github.io/2017/11/05/Contrary/</id>
+    <link href="https://eclatant.io/2017/11/05/Contrary/"/>
+    <id>https://eclatant.io/2017/11/05/Contrary/</id>
     <published>2017-11-04T15:00:00.000Z</published>
     <updated>2018-05-02T15:18:46.024Z</updated>
     
@@ -497,17 +497,17 @@
     
     </summary>
     
-      <category term="Essay" scheme="https://JeewhanR.github.io/categories/Essay/"/>
+      <category term="Essay" scheme="https://eclatant.io/categories/Essay/"/>
     
     
-      <category term="Essay" scheme="https://JeewhanR.github.io/tags/Essay/"/>
+      <category term="Essay" scheme="https://eclatant.io/tags/Essay/"/>
     
   </entry>
   
   <entry>
     <title>이벤트 델리게이션</title>
-    <link href="https://JeewhanR.github.io/2017/10/08/Event-Delegation/"/>
-    <id>https://JeewhanR.github.io/2017/10/08/Event-Delegation/</id>
+    <link href="https://eclatant.io/2017/10/08/Event-Delegation/"/>
+    <id>https://eclatant.io/2017/10/08/Event-Delegation/</id>
     <published>2017-10-07T15:00:00.000Z</published>
     <updated>2018-05-08T09:03:14.701Z</updated>
     
@@ -529,10 +529,10 @@
     
     </summary>
     
-      <category term="JS" scheme="https://JeewhanR.github.io/categories/JS/"/>
+      <category term="JS" scheme="https://eclatant.io/categories/JS/"/>
     
     
-      <category term="JS" scheme="https://JeewhanR.github.io/tags/JS/"/>
+      <category term="JS" scheme="https://eclatant.io/tags/JS/"/>
     
   </entry>
   
