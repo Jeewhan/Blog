@@ -339,8 +339,7 @@ mapper : 무엇과 무엇을 매핑하는 함수
 >
 > 객체지향은 상태 변화가 문제가 아니라 객체지향의 해법이기 때문에 어느지점까지를 함수형으로 할지에 대한 선택이 필요하다고 생각합니다.
 >
-> 상태를 변경하는 일이 특정 함수나 동작의 마지막 즈음에서만 이러난다면,
-> 좀 더 상태를 다루기 쉽지 않으실까 생각됩니다. 반대 되는 경우를 설명해보자면 객체의 특정 값을 변경해둔 상태에 의존해서 다음 메서드가 실행되어 그것에 따라 달리 동작하도록 하는식으로 코딩한다면 상대적으로 거미줄 처럼 전체 코드들이 엮이면서 관리가 어려워지기 시작합니다.
+> 상태를 변경하는 일이 특정 함수나 동작의 마지막 즈음에서만 이러난다면, 좀 더 상태를 다루기 쉽지 않으실까 생각됩니다. 반대 되는 경우를 설명해보자면 객체의 특정 값을 변경해둔 상태에 의존해서 다음 메서드가 실행되어 그것에 따라 달리 동작하도록 하는식으로 코딩한다면 상대적으로 거미줄 처럼 전체 코드들이 엮이면서 관리가 어려워지기 시작합니다.
 >
 > 함수형과 조합할 때는 뷰를 갱신하기위한 최종 상태만 변경하는 식으로 코딩하는 것이 유리합니다. 하나씩 해보시면 감이 오실거라 생각이 됩니다.
 
@@ -350,15 +349,185 @@ mapper : 무엇과 무엇을 매핑하는 함수
 
 커링은 함수와 인자를 다루는 기법, 함수에 인자를 하나씩 저장해나가다가 필요한 인자가 모두 채워지면 함수의 본체를 실행하는 기법, 일급함수가 지원되고 평가시점를 자유롭게 다룰 수 있으므로 구현 가능하다
 
-커링 함수는 인자로 함수를 받고, 함수를 리턴합니다, 해당 함수는 첫 번째 인자를 받고 또 다시 함수를 리턴합니다, 인자를 모두 받으면 받았던 인자들을 함수 본체에 넘겨주면서 실행합니다
+커링 함수는 인자로 함수를 받고, 함수를 리턴합니다, 해당 함수는 첫 번째 인자를 받고 또 다시 함수를 리턴합니다, 인자를 모두 받으면 받았던 인자들을 미리 받아두었던 함수에 적용하면서 평가하는 함수입니다
 
 ```javascript
 function _curry(fn) {
-    
+  return function(a) {
+    return function(b) {
+      return fn(a, b);
+    }
+  }
 }
 ```
 
+```javascript
+var add = function(a, b) {
+  return a + b;
+}
 
+console.log(add(10, 5)); // 15
+
+var add = _curry(function(a, b) {
+  return a + b;
+});
+
+var add10 = add(10);
+console.log(add10(5));
+console.log(add(5)(3));
+console.log(add(10)(3));
+```
+
+본체 함수를 값으로 들고 있다가 원하는 시점까지 평가를 지연시켰다가 최종 시점에 평가하는 기법입니다
+
+함수가 함수를 대신 실행하거나 함수가 함수를 리턴할 수 있도록 함수를 조합해나가는 방식으로 프로그래밍하는 것이 함수형 프로그래밍입니다
+
+```javascript
+function _curry(fn) {
+  return function(a) {
+    if (arguments.length == 2) return fn(a, b);
+    return function(b) {
+      return fn(a, b);
+    }
+  }
+}
+
+function _curry(fn) {
+  return function(a, b) {
+    return arguments.length == 2 ? fn(a, b) : function(b) { return fn(a, b); };
+  }
+}
+```
+
+```javascript
+var sub = _curry(function(a, b) {
+  return a - b;
+})
+
+var sub10 = sub(10);
+console.log(sub10(5)); // 5
+```
+
+\_curry 만으로는 표현력이 아쉽다고 느껴지므로 오른쪽에서부터 인자를 적용해나가는 \_curryr을 만들면 좋을 것
+
+```javascript
+function _curryr(fn) {
+  return function(a, b) {
+    return arguments.length == 2 ? fn(a, b) : function(b) { return fn(b, a); };
+  }
+}
+
+var sub = _curryr(function(a, b) {
+  return a - b;
+})
+
+console.log(sub(10, 5)); // 5
+var sub10 = sub(10);
+console.log(sub10(5)); // -5
+```
+
+\_get : object에 있는 값을 안전하게 참조하는 함수
+
+```javascript
+function _get(obj, key) {
+  return obj == null ? undefined : obj[key];
+  // if (obj && obj.hasOwnProperty(key)) { return obj[key]; }
+}
+
+var user1 = { id: 1, name: "ID", age: 36 };
+console.log(user1.name);
+console.log(_get(user1, 'name'));
+
+var _get = _curryr(_get);
+var get_name = _get('name');
+console.log(get_name(user1));
+
+console.log(
+  _map(
+    _filter(users, function(user) { return user.age >= 30; }),
+    _get('name') // function(user) { return user.name; }
+  )
+);
+
+console.log(
+  _map(
+    _filter(users, function(user) { return user.age < 30; }),
+    _get('age') // function(user) { return user.age; }
+  )
+);
+```
+
+함수를 통해서 또 다른 함수를 만들어서 map의 iteratee로 활용할 수 있다
+
+---
+
+### reduce
+
+재귀적으로 연속적으로 실행한 결과를 만들어주는 함수
+
+데이터를 받아 보조함수로 축약시킨 새로운 값을 반환, 입력된 자료구조를 축약시킨 자료구조로 만들 때 주로 사용함
+
+map, filter 는 array로 들어온 것을 array로 리턴하기 위해서 보통 사용
+
+```javascript
+function _reduce(list, iter, memo) {
+  _each(list, function(val) {
+    memo = iter(memo, val);
+  }
+  return memo;
+}
+
+_reduce([1, 2, 3], function(a, b) {
+    return a + b;
+  }, 0)
+);
+```
+
+복잡하거나 어려운 로직을 단순하게 구현할 수 있도록 도와주는 함수
+
+어떻게 memo를 축약해나갈지와 데이터 모두에 보조함수를 적용한 결과를 반환하겠다는 내용이 추상화되고 선언적인 코드만 존재함
+
+```javascript
+function _reduce(list, iter, memo) {
+  if (arguments.length == 2) {
+    memo = list[0];
+    list = list.slice(1);
+  }
+  _each(list, function(val) {
+    memo = iter(memo, val);
+  })
+  return memo;
+}
+```
+
+slice라는 method를 활용하게 되면 Array가 아닐 때 사용할 수 없게 됨, 아래와 같이 활용할 수도 있음
+
+```javascript
+var a = document.querySelectorAll('*');
+var slice = Array.prototype.slice;
+slice.call(a, 2);
+slice.call(a, 2).constructor; // function Array() { [native code] }
+
+function _rest(list, num) {
+  return slice.call(list, num || 1);
+}
+
+function _reduce(list, iter, memo) {
+  if (arguments.length == 2) {
+    memo = list[0];
+    list = _rest(list);
+  }
+  _each(list, function(val) {
+    memo = iter(memo, val);
+  })
+  return memo;
+}
+
+console.log(_reduce([1, 2, 3, 4], add)); // 10
+console.log(_reduce([1, 2, 3, 4], add, 10)); // 20
+```
+
+reduce는 받은 iteratee를 연속적으로 적용하면서 결과로 축약해나가는 함수
 
 ---
 
