@@ -509,6 +509,7 @@ slice.call(a, 2);
 slice.call(a, 2).constructor; // function Array() { [native code] }
 
 function _rest(list, num) {
+  var slice = Array.prototype.slice;
   return slice.call(list, num || 1);
 }
 
@@ -527,7 +528,113 @@ console.log(_reduce([1, 2, 3, 4], add)); // 10
 console.log(_reduce([1, 2, 3, 4], add, 10)); // 20
 ```
 
-reduce는 받은 iteratee를 연속적으로 적용하면서 결과로 축약해나가는 함수
+reduce는 받은 iteratee를 list의 값들에 연속적으로 적용하면서 memo라는 결과로 축약해나가는 함수
+
+---
+
+### 파이프라인, \_go, \_pipe, 화살표 함수
+
+pipe는 reduce를 활용해서 만들 수 있습니다, 함수를 리턴해주는 함수인데, 함수들을 인자로 받아서 이 함수들을 연속적으로 실행해주는 함수를 리턴해주는 함수입니다
+
+```javascript
+function _pipe() {
+  var fns = arguments;
+  return function(arg) {
+    return _reduce(fns, function(arg, fn) {
+      return fn(arg);
+    }, arg)
+  }
+}
+
+var f1 = _pipe(
+  function(a) { return a + 1; },
+  function(a) { return a * 2; }
+)
+console.log(f1(1));
+```
+
+함수형 프로그래밍에서는 이와 같이 함수를 다루는 함수를 많이 사용합니다
+
+pipe는 결국 reduce입니다, pipe의 보다 추상화된 레벨이 reduce입니다, pipe는 reduce를 좀 더 특화시킨 함수입니다
+
+pipe는 함수들이라는 배열에 있는 값들을 인자에 연속적으로 적용하여 축약하는 함수라고 볼 수 있습니다
+
+go는 pipe 함수인데 즉시실행되는 함수입니다, 첫 번째 인자로는 시작값을 받고, 두 번째 인자부터는 함수를 받아 결과를 바로 만드는 함수입니다
+
+```javascript
+function _go(arg) {
+  var fns = _rest(arguments);
+  return _pipe.apply(null, fns)(arg);
+}
+
+_go(1,
+  function(a) { return a + 1; },
+  function(a) { return a * 2; },
+  console.log
+)
+```
+
+그간 만든 함수들을 가지고 실제 사용을 해보도록 하겠습니다
+
+```javascript
+console.log(
+  _map(
+    _filter(users, function(user) { return user.age >= 30; }),
+    _get('name')
+  )
+)
+
+_go(users,
+  function(users) {
+    return _filter(users, function(user) {
+      return user.age >= 30;
+    });
+  },
+  function(users) {
+    return _map(users, _get('name');
+  },
+  console.log
+)
+```
+
+curryr을 통해 표현력을 높여보도록 하겠습니다
+
+```javascript
+var _map = _curryr(_map), _filter = _curryr(_filter);
+
+_map([1, 2, 3], function(val) { return val * 2}));
+_map(function(val) { return val * 2})([1, 2, 3]);
+
+_go(users,
+  _filter(function(users) { return user.age >= 30; }),
+  _map(_get('name')),
+  console.log
+)
+
+_go(users,
+  _filter(user => user.age < 30),
+  _map(_get('age')),
+  console.log
+)
+```
+
+\_filter 함수를 만들 때, curryr을 사용해서 만들었고, \_filter에 인자를 하나만 넘겼을 때 인자가 오른쪽에서부터 적용될 또 다른 함수를 리턴하게 되고, \_go라는 함수는 함수들을 받아서 함수들을 연속적으로 실행하면서 결과를 다음 함수에게 전달하는 방식으로, 함수가 함수를 실행하고 함수가 함수를 리턴하는 방식으로 프로그래밍을 하는 것이 함수형 프로그래밍입니다
+
+함수의 평가시점이나 인자가 적용되어가는 과정에서 하나 하나의 함수들이 모두 부수효과가 없고 순수함수들로 구성될 때 이런 조합성을 만들어낼 수 있습니다
+
+순수함수들을 평가시점을 다루면서 조합성을 강조하는 프로그래밍, 추상화의 단위를 함수로 하는 프로그래밍을 함수형 프로그래밍이라고 합니다
+
+화살표 함수은 아래와 같이 사용할 수 있습니다
+
+```javascript
+var a = function(user) { return user.age >= 30; };
+var a = user => user.age >= 30;
+
+var add = function(a, b) { return a + b; };
+var = (a, b) => a + b;
+var = (a, b) => { return a + b; };
+var add = (a, b) => ({ val: a + b});
+```
 
 ---
 
