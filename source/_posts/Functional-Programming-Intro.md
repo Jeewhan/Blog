@@ -577,6 +577,17 @@ _go(1,
 그간 만든 함수들을 가지고 실제 사용을 해보도록 하겠습니다
 
 ```javascript
+var users = [
+  { id: 1, name: 'ID', age: 36 },
+  { id: 2, name: 'BJ', age: 32 },
+  { id: 3, name: 'JM', age: 32 },
+  { id: 4, name: 'PJ', age: 27 },
+  { id: 5, name: 'HA', age: 25 },
+  { id: 6, name: 'JE', age: 26 },
+  { id: 7, name: 'JI', age: 31 },
+  { id: 8, name: 'MP', age: 23 },
+];
+
 console.log(
   _map(
     _filter(users, function(user) { return user.age >= 30; }),
@@ -624,7 +635,7 @@ _go(users,
 
 순수함수들을 평가시점을 다루면서 조합성을 강조하는 프로그래밍, 추상화의 단위를 함수로 하는 프로그래밍을 함수형 프로그래밍이라고 합니다
 
-화살표 함수은 아래와 같이 사용할 수 있습니다
+화살표 함수는 아래와 같이 사용할 수 있습니다
 
 ```javascript
 var a = function(user) { return user.age >= 30; };
@@ -638,7 +649,103 @@ var add = (a, b) => ({ val: a + b});
 
 ---
 
+### 다형성 높이기, \_keys, 에러
 
+다형성, 데이터 다루는 방법, 에러를 다루는 방법 등을 이야기해보도록 하겠습니다
+
+함수형 프로그래밍에서는 예외적인 데이터가 들어오는 것에 대해 다형성을 통해 대응하기도 합니다
+
+\_each에 null이 들어와도 에러가 나지 않도록 하는 케이스
+
+```javascript
+function _curryr(fn) {
+  return function(a, b) {
+    return arguments.length == 2 ? fn(a, b) : function(b) { return fn(b, a); };
+  }
+}
+
+var _get = _curryr(function(obj, key) {
+  return obj == null ? undefined : obj[key];
+});
+
+var _length = _get('length');
+
+function _each(list, iter) {
+  // for (var i = 0; i < list.length; i++) {
+  for (var i = 0, len = _length(list); i < len; i++) {
+    iter(list[i]);
+  }
+  return list;
+}
+
+_each(null, console.log);
+console.log(_map(null, function(v) { return v; })); // []
+console.log(_filter(null, function(v) { return v; })); // []
+```
+
+\_map과 \_filter 모두 \_each를 활용하고 있기에 null에 대해 적절한 다형성을 가지게 되었습니다
+
+함수형 프로그래밍에서는 함수의 연속 실행을 할 때, 잘못된 값이 들어와도 에러가 발생하지 않고 흘려보낼 수 있도록 하는 전략을 많이 취합니다
+
+언더스코어에서도 서로가 return하는 값이 무엇이냐와 무관하게 그럴싸한 결과값들을 내도록 코드가 많이 고려가 되어있습니다
+
+형체크를 하지 않고 try catch를 하지 않는 이런식의 에러 처리가 불안하다고 느낄 수도 있지만, 데이터를 다루는 라이브러리들도 언더스코어나 로대시 등을 내부에서 많이 사용하고 있습니다
+
+실용적이고 장점이 많고 에러를 내지 않고 정확하게 데이터를 다룰 수 있게 해주는 좋은 방법입니다
+
+\_keys 만들기
+
+```javascript
+console.log(Object.keys({ name: 'ID', age: 33 })); // ["name", "age"]
+console.log(Object.keys([1, 2, 3, 4])); // ["0", "1", "2", "3"]
+console.log(Object.keys(10)); // []
+console.log(Object.keys(null)); // Error
+
+function _is_object(obj) {
+  return typeof obj == 'object' && !!obj;
+}
+
+function _keys(obj) {
+  return _is_object(obj) ? Object.keys(obj) : [];
+}
+
+console.log(_keys(null)); // []
+```
+
+\_each 외부 다형성 높이기
+
+```javascript
+// 기존 each로는, 객체에 length가 없고, index가 0부터가 아니어서 에러 발생
+_each({
+  13: 'ID',
+  19: 'HD',
+  29: 'YD'
+}, function(name) {
+  console.log(name);
+})
+
+function _is_object(obj) {
+  return typeof obj == 'object' && !!obj;
+}
+
+function _keys(obj) {
+  return _is_object(obj) ? Object.keys(obj) : [];
+}
+
+function _each(list, iter) {
+  var keys = _keys(list); // keys는 반드시 올바른 배열을 리턴
+  for (var i = 0, len = keys.length; i < len; i++) { // 따라서 length가 반드시 있을 것이라 확신할 수 있다
+    iter(list[keys[i]]); // array, key/value 모두 잘 동작
+  }
+  return list;
+}
+```
+
+함수형 프로그래밍에서는 해당하는 고차함수가 주재료로 받는 인자의 데이터 형에 따라 내부 동작을 모두 지원하도록 최대한 다형성이 높도록 코드를 구성하고, 인자가 하나만 들어오면 함수를 리턴하는 등 인자와 함수를 잘 다루는 방식으로 프로그래밍합니다, 어떤 데이터가 들어오든지 최대한 흘러갈 수 있도록 하여 연속 실행에  큰 문제가 없도록 하는 방식으로 함수를 구성합니다
+
+형을 굉장히 강하게 체크하면서 프로그래밍하는 방식도 있지만, 이렇게 다형성을 극대화시키면서 프로그래밍하는 방식도 있습니다
+
+---
 ## 컬렉션 중심 프로그래밍
 
 ## 자바스크립트에서의 지연 평가
@@ -649,10 +756,7 @@ var add = (a, b) => ({ val: a + b});
 
 ## 비동기
 
-
-
 ---
-
 ## 특강
 
 - 부수효과가 나쁜 것이 아니라, 결론에 해당함 (Just Side Effect, Not 부작용)
