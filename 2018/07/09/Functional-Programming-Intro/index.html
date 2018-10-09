@@ -1,20 +1,24 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>실용적인 함수형 자바스크립트 Intro | The Pragmatic Programmer</title><link rel="stylesheet" href="/libs/spoqa-han-sans-kr/css/SpoqaHanSans-kr.css"><link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/highlights/dracula.css"><link rel="canonical" href="https://eclatant.io/2018/07/09/Functional-Programming-Intro/"/>
-<meta name="description" content="자바스크립트로 알아보는 함수형 프로그래밍함수형 프로그래밍 개요함수형 프로그래밍 정의, 순수함수성공적인 프로그래밍이란?  좋은 프로그램을 만드는 일 사용성, 성능, 확장성, 기획 변경에 대한 대응력이 좋은 것   위 사항들을 효율적이고 생산적으로…">
+<meta name="description" content="자바스크립트로 알아보는 함수형 프로그래밍 함수형 프로그래밍 개요 함수형 프로그래밍 정의, 순수함수 성공적인 프로그래밍이란?  좋은 프로그램을 만드는 일  사용성, 성능, 확장성, 기획 변경에 대한 대응력이 좋은 것   위 사항들을 효율적이고…">
 <meta name="keywords" content="FP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="실용적인 함수형 자바스크립트 Intro">
 <meta property="og:url" content="https://eclatant.io/2018/07/09/Functional-Programming-Intro/">
 <meta property="og:site_name" content="The Pragmatic Programmer">
-<meta property="og:description" content="자바스크립트로 알아보는 함수형 프로그래밍함수형 프로그래밍 개요함수형 프로그래밍 정의, 순수함수성공적인 프로그래밍이란?  좋은 프로그램을 만드는 일 사용성, 성능, 확장성, 기획 변경에 대한 대응력이 좋은 것   위 사항들을 효율적이고 생산적으로…">
+<meta property="og:description" content="자바스크립트로 알아보는 함수형 프로그래밍 함수형 프로그래밍 개요 함수형 프로그래밍 정의, 순수함수 성공적인 프로그래밍이란?  좋은 프로그램을 만드는 일  사용성, 성능, 확장성, 기획 변경에 대한 대응력이 좋은 것   위 사항들을 효율적이고…">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https://eclatant.io/images/hollywood.jpg">
-<meta property="og:updated_time" content="2018-10-08T22:56:26.687Z">
+<meta property="og:updated_time" content="2018-10-09T18:35:05.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="실용적인 함수형 자바스크립트 Intro">
-<meta name="twitter:description" content="자바스크립트로 알아보는 함수형 프로그래밍함수형 프로그래밍 개요함수형 프로그래밍 정의, 순수함수성공적인 프로그래밍이란?  좋은 프로그램을 만드는 일 사용성, 성능, 확장성, 기획 변경에 대한 대응력이 좋은 것   위 사항들을 효율적이고 생산적으로…">
-<meta name="twitter:image" content="https://eclatant.io/images/hollywood.jpg"><meta property="article:author" content="Jeewhan"><meta property="twitter:label1" content="Published at"><meta property="twitter:data1" content="2018-07-09 00:00:00"><meta property="twitter:label2" content="Written by"><meta property="twitter:data2" content="Jeewhan"><link rel="icon" href="/images/hollywood.png"><link rel="alternate" href="/atom.xml" type="application/atom+xml" title="The Pragmatic Programmer"></head><body itemscope itemtype="https://schema.org/WebPage"><nav class="menu" id="menu"><div class="menu-inner"><div class="menu__left-area"><div class="menu__item"><a class="menu__item__link menu__item__link--brand" href="/" title="Home" rel="home"><img class="menu__item__link--brand__image" src="/images/hollywood.png" alt="The Pragmatic Programmer"><span class="menu__item__link--brand__label">The Pragmatic Programmer</span></a></div></div><div class="menu__right-area"><div class="menu__item"><a class="menu__item__link" href="/">Home</a></div><div class="menu__item"><a class="menu__item__link" href="/about">About</a></div><div class="menu__item"><a class="menu__item__link" href="/archives">Archives</a></div></div></div></nav><div class="page-background"></div><div class="content-container"><div class="content-outer"><div class="content-inner" itemscope itemtype="https://schema.org/Blog"><article class="article" id="article" itemscope itemtype="https://schema.org/BlogPosting"><h1 class="article__title" itemprop="headline">실용적인 함수형 자바스크립트 Intro</h1><div class="article__meta"><time class="article__meta__time" datetime="2018-07-08T15:00:00.000Z" itemprop="datePublished">2018-07-09 00:00:00</time></div><hr><div class="article__contents"><h1 id="자바스크립트로-알아보는-함수형-프로그래밍"><a href="#자바스크립트로-알아보는-함수형-프로그래밍" class="headerlink" title="자바스크립트로 알아보는 함수형 프로그래밍"></a>자바스크립트로 알아보는 함수형 프로그래밍</h1><h2 id="함수형-프로그래밍-개요"><a href="#함수형-프로그래밍-개요" class="headerlink" title="함수형 프로그래밍 개요"></a>함수형 프로그래밍 개요</h2><h3 id="함수형-프로그래밍-정의-순수함수"><a href="#함수형-프로그래밍-정의-순수함수" class="headerlink" title="함수형 프로그래밍 정의, 순수함수"></a>함수형 프로그래밍 정의, 순수함수</h3><p>성공적인 프로그래밍이란?</p>
+<meta name="twitter:description" content="자바스크립트로 알아보는 함수형 프로그래밍 함수형 프로그래밍 개요 함수형 프로그래밍 정의, 순수함수 성공적인 프로그래밍이란?  좋은 프로그램을 만드는 일  사용성, 성능, 확장성, 기획 변경에 대한 대응력이 좋은 것   위 사항들을 효율적이고…">
+<meta name="twitter:image" content="https://eclatant.io/images/hollywood.jpg"><meta property="article:author" content="Jeewhan"><meta property="twitter:label1" content="Published at"><meta property="twitter:data1" content="2018-07-09 00:00:00"><meta property="twitter:label2" content="Written by"><meta property="twitter:data2" content="Jeewhan"><link rel="icon" href="/images/hollywood.png"><link rel="alternate" href="/atom.xml" type="application/atom+xml" title="The Pragmatic Programmer"></head><body itemscope itemtype="https://schema.org/WebPage"><nav class="menu" id="menu"><div class="menu-inner"><div class="menu__left-area"><div class="menu__item"><a class="menu__item__link menu__item__link--brand" href="/" title="Home" rel="home"><img class="menu__item__link--brand__image" src="/images/hollywood.png" alt="The Pragmatic Programmer"><span class="menu__item__link--brand__label">The Pragmatic Programmer</span></a></div></div><div class="menu__right-area"><div class="menu__item"><a class="menu__item__link" href="/">Home</a></div><div class="menu__item"><a class="menu__item__link" href="/about">About</a></div><div class="menu__item"><a class="menu__item__link" href="/archives">Archives</a></div></div></div></nav><div class="page-background"></div><div class="content-container"><div class="content-outer"><div class="content-inner" itemscope itemtype="https://schema.org/Blog"><article class="article" id="article" itemscope itemtype="https://schema.org/BlogPosting"><h1 class="article__title" itemprop="headline">실용적인 함수형 자바스크립트 Intro</h1><div class="article__meta"><time class="article__meta__time" datetime="2018-07-08T15:00:00.000Z" itemprop="datePublished">2018-07-09 00:00:00</time></div><hr><div class="article__contents"><h1>자바스크립트로 알아보는 함수형 프로그래밍</h1>
+<h2>함수형 프로그래밍 개요</h2>
+<h3>함수형 프로그래밍 정의, 순수함수</h3>
+<p>성공적인 프로그래밍이란?</p>
 <ul>
-<li>좋은 프로그램을 만드는 일<ul>
+<li>좋은 프로그램을 만드는 일
+<ul>
 <li>사용성, 성능, 확장성, 기획 변경에 대한 대응력이 좋은 것</li>
 </ul>
 </li>
@@ -22,9 +26,12 @@
 </ul>
 <p>함수형 프로그래밍은 성공적인 프로그래밍을 위해 부수효과를 미워하고 조합성을 강조하는 프로그래밍 패러다임</p>
 <ul>
-<li>부수효과를 미워한다 =&gt; 순수함수를 만든다<ul>
-<li>순수함수란?<ul>
-<li>부수효과가 없음<ul>
+<li>부수효과를 미워한다 =&gt; 순수함수를 만든다
+<ul>
+<li>순수함수란?
+<ul>
+<li>부수효과가 없음
+<ul>
 <li>외부의 대상에 영향을 끼치지 않음</li>
 <li>인자를 변경하지 않음</li>
 <li>리턴 값 외에는 외부와 소통하는 것이 없음</li>
@@ -40,9 +47,11 @@
 </li>
 </ul>
 <ul>
-<li>조합성을 강조한다 =&gt; 모듈화 수준을 높인다<ul>
+<li>조합성을 강조한다 =&gt; 모듈화 수준을 높인다
+<ul>
 <li>순수함수의 조합으로 프로그래밍 진행</li>
-<li>모듈화 수준이 높다 = 생산성을 높인다<ul>
+<li>모듈화 수준이 높다 = 생산성을 높인다
+<ul>
 <li>모듈화 수준이 높다는 것은 성공적인 프로그래밍의 척도</li>
 <li>재사용성이 높고 팀웍도 좋고 기획 변경에 대한 대응력이 높음</li>
 </ul>
@@ -52,13 +61,17 @@
 </ul>
 <p>순수함수란?</p>
 <ul>
-<li>인자가 동일하면 동일한 결과를 반환<ul>
-<li>평가 시점이 중요하지 않음<ul>
-<li>평가시점을 개발자가 다룰 수 있음<ul>
+<li>인자가 동일하면 동일한 결과를 반환
+<ul>
+<li>평가 시점이 중요하지 않음
+<ul>
+<li>평가시점을 개발자가 다룰 수 있음
+<ul>
 <li>다양한 로직과 이점을 취할 수 있음</li>
 </ul>
 </li>
-<li>항상 동일한 결과를 리턴할 것이기에 안전하고 다루기 쉬운 함수이고 따라서 조합성을 강조시킬 수 있음<ul>
+<li>항상 동일한 결과를 리턴할 것이기에 안전하고 다루기 쉬운 함수이고 따라서 조합성을 강조시킬 수 있음
+<ul>
 <li>다른 함수의 인자로 넘겨주거나, 전혀 다른 곳에서 함수를 평가시켜도 항상 동일한 결과를 리턴</li>
 </ul>
 </li>
@@ -69,9 +82,11 @@
 </li>
 </ul>
 <ul>
-<li>부수효과가 없음<ul>
+<li>부수효과가 없음
+<ul>
 <li>리턴 외의 출력이 없음</li>
-<li>인자를 변경하지 않음<ul>
+<li>인자를 변경하지 않음
+<ul>
 <li>원하는 부분이 변형된 새로운 값을 만들어 리턴하는 방식으로 진행</li>
 </ul>
 </li>
@@ -79,15 +94,18 @@
 </li>
 </ul>
 <hr>
-<h3 id="일급함수-add-maker-함수로-함수-실행하기"><a href="#일급함수-add-maker-함수로-함수-실행하기" class="headerlink" title="일급함수, add_maker, 함수로 함수 실행하기"></a>일급함수, add_maker, 함수로 함수 실행하기</h3><p>일급함수</p>
+<h3>일급함수, add_maker, 함수로 함수 실행하기</h3>
+<p>일급함수</p>
 <ul>
-<li>함수를 값으로 다룰 수 있음<ul>
+<li>함수를 값으로 다룰 수 있음
+<ul>
 <li>변수에 담을 수 있음</li>
 <li>인자로 넘겨줄 수 있음</li>
 </ul>
 </li>
 <li>런타임에서 언제든 정의할 수 있다</li>
-<li>원할 때 평가할 수 있다<ul>
+<li>원할 때 평가할 수 있다
+<ul>
 <li>다른 함수가 실행하도록 할 수 있음</li>
 </ul>
 </li>
@@ -112,7 +130,8 @@
 <p>순수함수를 만들고 조합하는 평가시점과 방법, 어떤 로직 사이에서 평가를 할 것인지 결정하면서 큰 로직을 구성</p>
 <p>비동기, 동시성을 확보할 수 있도록 원하는 시점까지 값으로 함수를 가지고 다니다가 원하는 시점 또는 필요한 부분에서 받아둔 함수를 여러 번 실행하는 등의 로직을 구현 가능</p>
 <hr>
-<h3 id="요즘-개발-이야기-함수형-프로그래밍-정의"><a href="#요즘-개발-이야기-함수형-프로그래밍-정의" class="headerlink" title="요즘 개발 이야기, 함수형 프로그래밍 정의"></a>요즘 개발 이야기, 함수형 프로그래밍 정의</h3><p>요즘 개발 이야기</p>
+<h3>요즘 개발 이야기, 함수형 프로그래밍 정의</h3>
+<p>요즘 개발 이야기</p>
 <ul>
 <li>재미/실시간성 : 라이브 방송, 실시간 댓글, 협업, 메신저</li>
 <li>독창성/완성도 : 애니메이션, 무한스크롤, Masonry</li>
@@ -137,7 +156,9 @@
 </ul>
 <p>왜? 보다는 어떻게!를 다루겠다고 하셨음, 어떻게를 알려면 어떻게 전환하는가? 전환해왔는가? 를 아는 것이 중요함</p>
 <hr>
-<h2 id="함수형으로-전환하기"><a href="#함수형으로-전환하기" class="headerlink" title="함수형으로 전환하기"></a>함수형으로 전환하기</h2><h3 id="회원-목록-map-filter"><a href="#회원-목록-map-filter" class="headerlink" title="회원 목록, map, filter"></a>회원 목록, map, filter</h3><p>응용형 함수, 콜렉션을 다루는 함수</p>
+<h2>함수형으로 전환하기</h2>
+<h3>회원 목록, map, filter</h3>
+<p>응용형 함수, 콜렉션을 다루는 함수</p>
 <p>함수형 프로그래밍에서는 원래 있는 값을 직접 변경하지 않고 변형된 새로운 값을 리턴합니다</p>
 <p>중복을 제거하거나 추상화할 때 함수를 이용해서 프로그래밍하는 것이 함수형 프로그래밍</p>
 <p>조건을 인자로 올 함수에게 위임</p>
@@ -154,16 +175,20 @@
 <p>값을 만들어놓고 문장을 내려가면서 변형해가는 것이 아니라, 함수를 통과해가면서 한 번에 값을 새롭게 만들어가는 방식으로 함수형 프로그래밍이 진행됨</p>
 <p>대입문이 없으면 보다 간결한 코드를 만들 수 있습니다</p>
 <hr>
-<h3 id="each"><a href="#each" class="headerlink" title="each"></a>each</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Loop를 돌면서 적용할 로직에 대해선 인자에 올 함수에게 위임</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_each</span>(<span class="params">list, iterate</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">    iterate(list[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_map</span>(<span class="params">list, mapper</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newList = [];</span><br><span class="line">  </span><br><span class="line">  _each(list, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    newList.push(mapper(val));</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> newList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_filter</span>(<span class="params">list, predicate</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newList = [];</span><br><span class="line">  </span><br><span class="line">  _each(list, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (predicate(val)) newList.push(val);</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> newList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>each</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Loop를 돌면서 적용할 로직에 대해선 인자에 올 함수에게 위임</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_each</span>(<span class="params">list, iterate</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">    iterate(list[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_map</span>(<span class="params">list, mapper</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newList = [];</span><br><span class="line">  </span><br><span class="line">  _each(list, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    newList.push(mapper(val));</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> newList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_filter</span>(<span class="params">list, predicate</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newList = [];</span><br><span class="line">  </span><br><span class="line">  _each(list, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (predicate(val)) newList.push(val);</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> newList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>코드가 점점 간결해지고, 명령적인 코드가 숨고 선언적인 코드표현, 단순해지고 오류가 줄어들고 보다 정확하게 코딩을 하고 있다는 확신을 쉽게 느낄 수 있음</p>
 <hr>
-<h3 id="다형성"><a href="#다형성" class="headerlink" title="다형성"></a>다형성</h3><p>이미 자바스크립트에는 map, filter와 같은 함수들이 구현되어있는데, 우리는 왜 또다시 구현했을까?</p>
+<h3>다형성</h3>
+<p>이미 자바스크립트에는 map, filter와 같은 함수들이 구현되어있는데, 우리는 왜 또다시 구현했을까?</p>
 <p>자바스크립트에 이미 있는 그것들은 함수가 아니라 메소드이다 (순수함수 X, 객체의 상태에 따라 결과가 달라지는)</p>
 <p>메소드는 해당 클래스의 인스턴스에서만 사용가능 (jQuery 객체나 document.querySelectorAll 의 결과인 array-like에서는 array method 사용불가) 다형성을 지원하기 어려움</p>
 <p>함수가 기준이 되는 함수형 프로그래밍에서는 함수를 먼저 만들고 그 함수에 맞는 데이터를 구성하여 함수에게 전달하는 식으로 프로그래밍하므로 높은 다형성을 만들어내고 유용하고 실용적일 수 있게 된다</p>
 <p>배열이 아니더라도 length property가 숫자이면 map이나 each 모두 사용가능하게 됨</p>
-<p>함수가 먼저 나오는 프로그래밍 VS 데이터가 먼저 나오는 프로그래밍<br>(데이터가 먼저 나오는 프로그래밍은 데이터가 있어야만 메소드가 생길 수 있다, 그래서 객체지향에서는 평가의 순서가 대단히 중요해진다, 해당 객체가 있어야만 기능 수행 가능)</p>
-<p>함수가 먼저 나오는 프로그래밍은 평가시점에 있어 훨씬 유연해질 수 있다 =&gt; 더 높은 조합성<br>(함수가 먼저 나오는 프로그래밍은 함수가 우선 먼저 홀로 존재하기 때문에 데이터가 없더라도 평가 시점이 상대적으로 훨씬 유연해진다)</p>
+<p>함수가 먼저 나오는 프로그래밍 VS 데이터가 먼저 나오는 프로그래밍<br>
+(데이터가 먼저 나오는 프로그래밍은 데이터가 있어야만 메소드가 생길 수 있다, 그래서 객체지향에서는 평가의 순서가 대단히 중요해진다, 해당 객체가 있어야만 기능 수행 가능)</p>
+<p>함수가 먼저 나오는 프로그래밍은 평가시점에 있어 훨씬 유연해질 수 있다 =&gt; 더 높은 조합성<br>
+(함수가 먼저 나오는 프로그래밍은 함수가 우선 먼저 홀로 존재하기 때문에 데이터가 없더라도 평가 시점이 상대적으로 훨씬 유연해진다)</p>
 <p>응용형 함수의 장점</p>
 <p>함수형 프로그래밍에서는 보조함수가 어떤 역할을 하느냐에 따라 굉장히 다양한 이름을 갖게 되는 점이 중요합니다</p>
 <p>콜백함수는 어떤 일들을 수행한 뒤에 맨 끝에서 다시 돌려주는 함수만을 뜻함</p>
@@ -181,7 +206,8 @@
 <p>함수형과 조합할 때는 뷰를 갱신하기위한 최종 상태만 변경하는 식으로 코딩하는 것이 유리합니다. 하나씩 해보시면 감이 오실거라 생각이 됩니다.</p>
 </blockquote>
 <hr>
-<h3 id="커링-curry-curryr"><a href="#커링-curry-curryr" class="headerlink" title="커링, curry, curryr"></a>커링, curry, curryr</h3><p>커링은 함수와 인자를 다루는 기법, 함수에 인자를 하나씩 저장해나가다가 필요한 인자가 모두 채워지면 함수의 본체를 실행하는 기법, 일급함수가 지원되고 평가시점를 자유롭게 다룰 수 있으므로 구현 가능하다</p>
+<h3>커링, curry, curryr</h3>
+<p>커링은 함수와 인자를 다루는 기법, 함수에 인자를 하나씩 저장해나가다가 필요한 인자가 모두 채워지면 함수의 본체를 실행하는 기법, 일급함수가 지원되고 평가시점를 자유롭게 다룰 수 있으므로 구현 가능하다</p>
 <p>커링 함수는 인자로 함수를 받고, 함수를 리턴합니다, 해당 함수는 첫 번째 인자를 받고 또 다시 함수를 리턴합니다, 인자를 모두 받으면 받았던 인자들을 미리 받아두었던 함수에 적용하면서 평가하는 함수입니다</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_curry</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">b</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> fn(a, b);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">10</span>, <span class="number">5</span>)); <span class="comment">// 15</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = _curry(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add10 = add(<span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(add10(<span class="number">5</span>));</span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">5</span>)(<span class="number">3</span>));</span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">10</span>)(<span class="number">3</span>));</span><br></pre></td></tr></table></figure>
@@ -195,7 +221,8 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_get</span>(<span class="params">obj, key</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> obj == <span class="literal">null</span> ? <span class="literal">undefined</span> : obj[key];</span><br><span class="line">  <span class="comment">// if (obj &amp;&amp; obj.hasOwnProperty(key)) &#123; return obj[key]; &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> user1 = &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">"ID"</span>, <span class="attr">age</span>: <span class="number">36</span> &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(user1.name);</span><br><span class="line"><span class="built_in">console</span>.log(_get(user1, <span class="string">'name'</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _get = _curryr(_get);</span><br><span class="line"><span class="keyword">var</span> get_name = _get(<span class="string">'name'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(get_name(user1));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">  _map(</span><br><span class="line">    _filter(users, <span class="function"><span class="keyword">function</span>(<span class="params">user</span>) </span>&#123; <span class="keyword">return</span> user.age &gt;= <span class="number">30</span>; &#125;),</span><br><span class="line">    _get(<span class="string">'name'</span>) <span class="comment">// function(user) &#123; return user.name; &#125;</span></span><br><span class="line">  )</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">  _map(</span><br><span class="line">    _filter(users, <span class="function"><span class="keyword">function</span>(<span class="params">user</span>) </span>&#123; <span class="keyword">return</span> user.age &lt; <span class="number">30</span>; &#125;),</span><br><span class="line">    _get(<span class="string">'age'</span>) <span class="comment">// function(user) &#123; return user.age; &#125;</span></span><br><span class="line">  )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p>함수를 통해서 또 다른 함수를 만들어서 map의 iteratee로 활용할 수 있다</p>
 <hr>
-<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><p>재귀적으로 연속적으로 실행한 결과를 만들어주는 함수</p>
+<h3>reduce</h3>
+<p>재귀적으로 연속적으로 실행한 결과를 만들어주는 함수</p>
 <p>데이터를 받아 보조함수로 축약시킨 새로운 값을 반환, 입력된 자료구조를 축약시킨 자료구조로 만들 때 주로 사용함</p>
 <p>map, filter 는 array로 들어온 것을 array로 리턴하기 위해서 보통 사용</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_reduce</span>(<span class="params">list, iter, memo</span>) </span>&#123;</span><br><span class="line">  _each(list, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    memo = iter(memo, val);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> memo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_reduce([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
@@ -206,7 +233,8 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">document</span>.querySelectorAll(<span class="string">'*'</span>);</span><br><span class="line"><span class="keyword">var</span> slice = <span class="built_in">Array</span>.prototype.slice;</span><br><span class="line">slice.call(a, <span class="number">2</span>);</span><br><span class="line">slice.call(a, <span class="number">2</span>).constructor; <span class="comment">// function Array() &#123; [native code] &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_rest</span>(<span class="params">list, num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> slice = <span class="built_in">Array</span>.prototype.slice;</span><br><span class="line">  <span class="keyword">return</span> slice.call(list, num || <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_reduce</span>(<span class="params">list, iter, memo</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">arguments</span>.length == <span class="number">2</span>) &#123;</span><br><span class="line">    memo = list[<span class="number">0</span>];</span><br><span class="line">    list = _rest(list);</span><br><span class="line">  &#125;</span><br><span class="line">  _each(list, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    memo = iter(memo, val);</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> memo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(_reduce([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], add)); <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">console</span>.log(_reduce([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], add, <span class="number">10</span>)); <span class="comment">// 20</span></span><br></pre></td></tr></table></figure>
 <p>reduce는 받은 iteratee를 list의 값들에 연속적으로 적용하면서 memo라는 결과로 축약해나가는 함수</p>
 <hr>
-<h3 id="파이프라인-go-pipe-화살표-함수"><a href="#파이프라인-go-pipe-화살표-함수" class="headerlink" title="파이프라인, _go, _pipe, 화살표 함수"></a>파이프라인, _go, _pipe, 화살표 함수</h3><p>pipe는 reduce를 활용해서 만들 수 있습니다, 함수를 리턴해주는 함수인데, 함수들을 인자로 받아서 이 함수들을 연속적으로 실행해주는 함수를 리턴해주는 함수입니다</p>
+<h3>파이프라인, _go, _pipe, 화살표 함수</h3>
+<p>pipe는 reduce를 활용해서 만들 수 있습니다, 함수를 리턴해주는 함수인데, 함수들을 인자로 받아서 이 함수들을 연속적으로 실행해주는 함수를 리턴해주는 함수입니다</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_pipe</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fns = <span class="built_in">arguments</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">arg</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> _reduce(fns, <span class="function"><span class="keyword">function</span>(<span class="params">arg, fn</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> fn(arg);</span><br><span class="line">    &#125;, arg)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f1 = _pipe(</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123; <span class="keyword">return</span> a + <span class="number">1</span>; &#125;,</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123; <span class="keyword">return</span> a * <span class="number">2</span>; &#125;</span><br><span class="line">)</span><br><span class="line"><span class="built_in">console</span>.log(f1(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
 <p>함수형 프로그래밍에서는 이와 같이 함수를 다루는 함수를 많이 사용합니다</p>
 <p>pipe는 결국 reduce입니다, pipe의 보다 추상화된 레벨이 reduce입니다, pipe는 reduce를 좀 더 특화시킨 함수입니다</p>
@@ -223,7 +251,8 @@
 <p>화살표 함수는 아래와 같이 사용할 수 있습니다</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params">user</span>) </span>&#123; <span class="keyword">return</span> user.age &gt;= <span class="number">30</span>; &#125;;</span><br><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="params">user</span> =&gt;</span> user.age &gt;= <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123; <span class="keyword">return</span> a + b; &#125;;</span><br><span class="line"><span class="keyword">var</span> = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b;</span><br><span class="line"><span class="keyword">var</span> = <span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123; <span class="keyword">return</span> a + b; &#125;;</span><br><span class="line"><span class="keyword">var</span> add = <span class="function">(<span class="params">a, b</span>) =&gt;</span> (&#123; <span class="attr">val</span>: a + b&#125;);</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="다형성-높이기-keys-에러"><a href="#다형성-높이기-keys-에러" class="headerlink" title="다형성 높이기, _keys, 에러"></a>다형성 높이기, _keys, 에러</h3><p>다형성, 데이터 다루는 방법, 에러를 다루는 방법 등을 이야기해보도록 하겠습니다</p>
+<h3>다형성 높이기, _keys, 에러</h3>
+<p>다형성, 데이터 다루는 방법, 에러를 다루는 방법 등을 이야기해보도록 하겠습니다</p>
 <p>함수형 프로그래밍에서는 예외적인 데이터가 들어오는 것에 대해 다형성을 통해 대응하기도 합니다</p>
 <p>_each에 null이 들어와도 에러가 나지 않도록 하는 케이스</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_curryr</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">arguments</span>.length == <span class="number">2</span> ? fn(a, b) : <span class="function"><span class="keyword">function</span>(<span class="params">b</span>) </span>&#123; <span class="keyword">return</span> fn(b, a); &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _get = _curryr(<span class="function"><span class="keyword">function</span>(<span class="params">obj, key</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> obj == <span class="literal">null</span> ? <span class="literal">undefined</span> : obj[key];</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _length = _get(<span class="string">'length'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_each</span>(<span class="params">list, iter</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// for (var i = 0; i &lt; list.length; i++) &#123;</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = _length(list); i &lt; len; i++) &#123;</span><br><span class="line">    iter(list[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_each(<span class="literal">null</span>, <span class="built_in">console</span>.log);</span><br><span class="line"><span class="built_in">console</span>.log(_map(<span class="literal">null</span>, <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123; <span class="keyword">return</span> v; &#125;)); <span class="comment">// []</span></span><br><span class="line"><span class="built_in">console</span>.log(_filter(<span class="literal">null</span>, <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123; <span class="keyword">return</span> v; &#125;)); <span class="comment">// []</span></span><br></pre></td></tr></table></figure>
@@ -239,21 +268,46 @@
 <p>함수형 프로그래밍에서는 해당하는 고차함수가 주재료로 받는 인자의 데이터 형에 따라 내부 동작을 모두 지원하도록 최대한 다형성이 높도록 코드를 구성하고, 인자가 하나만 들어오면 함수를 리턴하는 등 인자와 함수를 잘 다루는 방식으로 프로그래밍합니다, 어떤 데이터가 들어오든지 최대한 흘러갈 수 있도록 하여 연속 실행에  큰 문제가 없도록 하는 방식으로 함수를 구성합니다</p>
 <p>형을 굉장히 강하게 체크하면서 프로그래밍하는 방식도 있지만, 이렇게 다형성을 극대화시키면서 프로그래밍하는 방식도 있습니다</p>
 <hr>
-<h2 id="컬렉션-중심-프로그래밍"><a href="#컬렉션-중심-프로그래밍" class="headerlink" title="컬렉션 중심 프로그래밍"></a>컬렉션 중심 프로그래밍</h2><h2 id="자바스크립트에서의-지연-평가"><a href="#자바스크립트에서의-지연-평가" class="headerlink" title="자바스크립트에서의 지연 평가"></a>자바스크립트에서의 지연 평가</h2><h2 id="실전코드조각-1"><a href="#실전코드조각-1" class="headerlink" title="실전코드조각 1"></a>실전코드조각 1</h2><h2 id="실전코드조각-2"><a href="#실전코드조각-2" class="headerlink" title="실전코드조각 2"></a>실전코드조각 2</h2><h2 id="비동기"><a href="#비동기" class="headerlink" title="비동기"></a>비동기</h2><hr>
-<h2 id="특강"><a href="#특강" class="headerlink" title="특강"></a>특강</h2><ul>
-<li>부수효과가 나쁜 것이 아니라, 결론에 해당함 (Just Side Effect, Not 부작용)<ul>
+<h2>컬렉션 중심 프로그래밍</h2>
+<h3>수집하기 - map, values, pluck 등</h3>
+<p>컬렉션은 배열이나 돌림직한 데이터를 뜻한다<br>
+컬렉션을 잘 다루는 함수 세트들을 구성해나가는 프로그래밍 방식을 컬렉션 중심 프로그래밍이라고 합니다</p>
+<p>대표적인 컬렉션을 위한 함수들을 map, filter, reduce 입니다</p>
+<p>크게 네 가지 유형으로 나누어서 바라볼 수 있습니다</p>
+<ul>
+<li>수집하기 - map, values, pluck 등</li>
+<li>거르기 - filter, reject, compact, without 등</li>
+<li>찾아내기 - find, some, every 등</li>
+<li>접기 - reduce, min, max, group_by, count_by</li>
+</ul>
+<p>가장 앞에 있는 함수들이 가장 추상화 레벨이 높기 때문에 대표함수라고 지칭합니다, 각 유형별 대표함수들을 활용해서 케이스별 특화함수들을 만들 수 있게 됩니다</p>
+<p>이러한 기준으로 문제를 바라보고 해결해나가는 식으로 프로그래밍하는 것이 컬렉션 중심 프로그래밍이라고 할 수 있고, map/filter/reduce/find 등의 고차함수들을 중심으로 하는 프로그래밍이라고 볼 수 있습니다</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_identity</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(_identity(a)); <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 값을 수집하는 함수</span></span><br><span class="line"><span class="comment">// function _values(data) &#123;</span></span><br><span class="line"><span class="comment">//   return _map(data, _identity);</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _values = _map(_identity);</span><br><span class="line">_values(users[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(users[<span class="number">0</span>]); <span class="comment">// &#123;id: 10, name: "ID", age: 36&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(_keys(users[<span class="number">0</span>])); <span class="comment">// ["id", "name", "age"]</span></span><br><span class="line"><span class="built_in">console</span>.log(_values(users[<span class="number">0</span>])); <span class="comment">// [10, "ID", 36]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 배열 내부에 있는 객체에 있는 키를 통해서 꺼내진 값들을 수집하는 함수</span></span><br><span class="line"><span class="comment">// 내부에 있는 값을 수집한다면 _map을 활용하면 됩니다</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_pluck</span>(<span class="params">data, key</span>) </span>&#123;</span><br><span class="line"><span class="comment">//   return _map(data, function(obj) &#123;</span></span><br><span class="line"><span class="comment">//     return obj[key];</span></span><br><span class="line"><span class="comment">//   &#125;);</span></span><br><span class="line">  <span class="keyword">return</span> _map(data, _get(key));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(_pluck(users, <span class="string">'age'</span>)); <span class="comment">// [36, 32, 32, ...]</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2>자바스크립트에서의 지연 평가</h2>
+<h2>실전코드조각 1</h2>
+<h2>실전코드조각 2</h2>
+<h2>비동기</h2>
+<hr>
+<h2>특강</h2>
+<ul>
+<li>부수효과가 나쁜 것이 아니라, 결론에 해당함 (Just Side Effect, Not 부작용)
+<ul>
 <li>다만 디테일하게 쫒아가면서 다루지 않으면, 에러를 유발하기가 매우 쉬움</li>
 <li>부원인, 부작용</li>
 <li>부수효과를 일으키는 대상을 리턴하도록 짜면 조합성을 높이는데 큰 도움이 됨</li>
 </ul>
 </li>
 <li>참조 투명성</li>
-<li>일급함수와 클로저가 함수형 프로그래밍을 지탱하는 두 축<ul>
-<li>일급함수<ul>
+<li>일급함수와 클로저가 함수형 프로그래밍을 지탱하는 두 축
+<ul>
+<li>일급함수
+<ul>
 <li>함수를 변수, 인자, 리턴, 평가(=실행)</li>
 </ul>
 </li>
-<li>클로저<ul>
+<li>클로저
+<ul>
 <li>값과 변수, 함수를 통칭해서 클로저라고 함</li>
 <li>호출하여 할당함으로서 클로저가 됨</li>
 <li>메모리에서 자유변수를 유지시켜야만 클로저</li>
@@ -270,9 +324,11 @@
 <p>새로운 값을 리턴하는 순수함수</p>
 <p>고차함수(함수를 값으로 다루는 함수)</p>
 <ul>
-<li><p>함수를 리턴해주는 함수</p>
+<li>
+<p>함수를 리턴해주는 함수</p>
 </li>
-<li><p>함수를 인자로 받아서 안에서 실행하는 함수 (응용형 프로그래밍)</p>
+<li>
+<p>함수를 인자로 받아서 안에서 실행하는 함수 (응용형 프로그래밍)</p>
 <ul>
 <li>function repeat(count, fn) { var i = 0; while (count–) fn(i++); }</li>
 <li>var i = -1; while (++i &lt; count) fn(i);</li>
@@ -288,17 +344,20 @@
 <ul>
 <li>결과를 리턴해주는 식으로 외부와 소통한다</li>
 <li>기존 값을 수정하지 않고, 새로운 값을 만들어서 리턴한다</li>
-<li>조건을 함수로 추상화하여 인자로 받는다<ul>
+<li>조건을 함수로 추상화하여 인자로 받는다
+<ul>
 <li>predicate(products[i]) : 로직을 완전히 위임</li>
 <li>while (++i &lt; l) predicate(list[i]) &amp;&amp; new_list.push(list[i]))</li>
 </ul>
 </li>
-<li>추상화의 단위가 함수<ul>
+<li>추상화의 단위가 함수
+<ul>
 <li>객체지향은 객체 또는 메소드 단위</li>
 </ul>
 </li>
 <li>표현식만으로 코딩하는 습관</li>
-<li>데이터가 먼저인 프로그래밍은 다형성이 낮을 수 밖에 없음, 특정 데이터에 종속됨<ul>
+<li>데이터가 먼저인 프로그래밍은 다형성이 낮을 수 밖에 없음, 특정 데이터에 종속됨
+<ul>
 <li>함수형은 함수를 먼저 만들고 함수에 맞는 형태의 데이터를 전달</li>
 <li>외부의 값에 대한 다형성을 높이고, 내부 값에 대한 다형성은 보조 함수로 커버</li>
 </ul>
@@ -360,12 +419,16 @@
 <p>ES6는 학습자를 배려해서 의도적으로 배제? (rest parameter, Promise.all) =&gt; 그것이기도 하지만, Promise는 모든 로직을 비동기로 처리하기에 적절한 조합을 할 수 없음</p>
 <p>_each의 가치를 언어에서 기본적으로 지원해주는 map, call, apply, Array.from에 대항하여 어떻게 내세울 수 있을지 (_go : method chaining) =&gt; forEach는 return 이 undefined라는 큰 차이가 존재하며, 리습 계열의 컨벤션은 언어에 부족한 점이 있다면 개발자가 보완하는 방향</p>
 <p>언어에서 기본적으로 제공해주는 것에 비해, 로직 즉 탈언어적 요소 위주의 방향으로 코딩하는 것이 우선적인 지향점으로 더 좋을지 =&gt; 그게 실력향상에도 좋음</p>
-</div><div class="article__tags"><a class="article__tags__item" href="/tags/FP/">FP</a></div><div class="article__author" itemscope itemprop="author" itemtype="https://schema.org/Person"><img class="article__author__image" src="/images/avatar.jpg" alt="Jeewhan"><a class="article__author__link" title="About Jeewhan" rel="author">Jeewhan</a><p class="article__author__desc">Dev Blog</p><div class="article__author__socials"><a class="article__author__socials__item" href="/atom.xml" title="rss" target="_blank"><i class="fa fa-rss"></i></a></div><meta itemprop="name" content="Jeewhan"></div><div class="sharer" id="sharer"><div class="sharer-inner"><div class="sharer__right"><button class="sharer__item" id="sharer-facebook"><i class="fa fa-facebook-official"></i></button><button class="sharer__item" id="sharer-twitter"><i class="fa fa-twitter"></i></button><button class="sharer__item" id="sharer-pinterest"><i class="fa fa-pinterest"></i></button><button class="sharer__item" id="sharer-pocket"><i class="fa fa-get-pocket"></i></button></div></div></div><!-- Disqus Code--><!-- Meta Tags for Structured Data--><meta itemprop="dateModified" content="2018-10-08T22:56:26.687Z"><meta itemprop="articleBody" content="자바스크립트로 알아보는 함수형 프로그래밍함수형 프로그래밍 개요함수형 프로그래밍 정의, 순수함수성공적인 프로그래밍이란?
+</div><div class="article__tags"><a class="article__tags__item" href="/tags/FP/">FP</a></div><div class="article__author" itemscope itemprop="author" itemtype="https://schema.org/Person"><img class="article__author__image" src="/images/avatar.jpg" alt="Jeewhan"><a class="article__author__link" title="About Jeewhan" rel="author">Jeewhan</a><p class="article__author__desc">Dev Blog</p><div class="article__author__socials"><a class="article__author__socials__item" href="/atom.xml" title="rss" target="_blank"><i class="fa fa-rss"></i></a></div><meta itemprop="name" content="Jeewhan"></div><div class="sharer" id="sharer"><div class="sharer-inner"><div class="sharer__right"><button class="sharer__item" id="sharer-facebook"><i class="fa fa-facebook-official"></i></button><button class="sharer__item" id="sharer-twitter"><i class="fa fa-twitter"></i></button><button class="sharer__item" id="sharer-pinterest"><i class="fa fa-pinterest"></i></button><button class="sharer__item" id="sharer-pocket"><i class="fa fa-get-pocket"></i></button></div></div></div><!-- Disqus Code--><!-- Meta Tags for Structured Data--><meta itemprop="dateModified" content="2018-10-09T18:35:05.279Z"><meta itemprop="articleBody" content="자바스크립트로 알아보는 함수형 프로그래밍
+함수형 프로그래밍 개요
+함수형 프로그래밍 정의, 순수함수
+성공적인 프로그래밍이란?
 
 좋은 프로그램을 만드는 일
+
 사용성, 성능, 확장성, 기획 변경에 대한 대응력이 좋은 것
 
 
 위 사항들을 효율적이고 생산적으로 이루어지는 것이 성공적인 프로그래밍
 
-함수형 프로그래밍은 성공적인 프로그래밍을 위해 부수효과를 미워하고..."><meta itemprop="url" content="https://eclatant.io/2018/07/09/Functional-Programming-Intro/"><meta itemprop="mainEntityOfPage" content="https://eclatant.io/2018/07/09/Functional-Programming-Intro/"><div itemscope itemtype="https://schema.org/Organization" itemprop="publisher"><meta itemprop="name" content="The Pragmatic Programmer"><div itemscope itemprop="logo" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://eclatant.io/images/hollywood.png"></div></div><div itemscope itemtype="https://schema.org/ImageObject" itemprop="image"><meta itemprop="contentUrl" content="https://eclatant.io/images/hollywood.jpg"><meta itemprop="url" content="https://eclatant.io/images/hollywood.jpg"><meta itemprop="width" content="800"><meta itemprop="height" content="800"></div></article></div></div></div><footer id="footer"><div class="widgets"><div class="widgets-inner"><!-- Jade doesn't support dynamic inclusion with `each`.--><!-- So, I just hard coded the file names that will be included.--><div class="widgets__item"><h3 class="widgets__item__heading">Recent posts</h3><ul class="recent-posts"><li class="recent-posts__item"><a href="/2018/09/20/CodeSpitz-3-3/">코드스피츠 3기 함수와 OOP - 3강</a></li><li class="recent-posts__item"><a href="/2018/08/12/NodeJS-TextBook/">Node.js 교과서</a></li><li class="recent-posts__item"><a href="/2018/07/09/Functional-Programming-Intro/">실용적인 함수형 자바스크립트 Intro</a></li><li class="recent-posts__item"><a href="/2018/06/24/Awesome-Article1/">실용적인 아티클 1</a></li><li class="recent-posts__item"><a href="/2018/05/27/Ruby-Pickaxe-chapter3/">루비 곡괭이 3장 클래스, 객체, 변수</a></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Tag cloud</h3><div class="tag-cloud"><a href="/tags/Algorithm/" style="font-size: 1.5rem;">Algorithm</a> <a href="/tags/Article/" style="font-size: 0.75rem;">Article</a> <a href="/tags/CtCI/" style="font-size: 1.13rem;">CtCI</a> <a href="/tags/Dev/" style="font-size: 0.75rem;">Dev</a> <a href="/tags/English/" style="font-size: 0.75rem;">English</a> <a href="/tags/Essay/" style="font-size: 1.13rem;">Essay</a> <a href="/tags/FP/" style="font-size: 0.75rem;">FP</a> <a href="/tags/JS/" style="font-size: 0.75rem;">JS</a> <a href="/tags/Python/" style="font-size: 0.75rem;">Python</a> <a href="/tags/Rails/" style="font-size: 0.75rem;">Rails</a> <a href="/tags/React/" style="font-size: 1.13rem;">React</a> <a href="/tags/Ruby/" style="font-size: 1.5rem;">Ruby</a> <a href="/tags/node/" style="font-size: 0.75rem;">node</a></div></div><div class="widgets__item"><h3 class="widgets__item__heading">Categories</h3><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Article/">Article</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CtCI/">CtCI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dev/">Dev</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Essay/">Essay</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rails/">Rails</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ruby/">Ruby</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li></ul></div></div></div><p class="copyright"><small>© 2018 Jeewhan<br>Powered by <a href="https://hexo.io" rel="external" target="_blank">Hexo</a>, Theme by <a href="https://github.com/hyunseob" rel="external" target="_blank">HyunSeob</a></small></p></footer><!--[if lt IE 10]><script src="/js/classList.min.js"></script><![endif]--><script src="/js/index.min.js"></script></body></html>
+함수형 프로그래밍은 성공적인 프로그래밍을 위해 부수효과를..."><meta itemprop="url" content="https://eclatant.io/2018/07/09/Functional-Programming-Intro/"><meta itemprop="mainEntityOfPage" content="https://eclatant.io/2018/07/09/Functional-Programming-Intro/"><div itemscope itemtype="https://schema.org/Organization" itemprop="publisher"><meta itemprop="name" content="The Pragmatic Programmer"><div itemscope itemprop="logo" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://eclatant.io/images/hollywood.png"></div></div><div itemscope itemtype="https://schema.org/ImageObject" itemprop="image"><meta itemprop="contentUrl" content="https://eclatant.io/images/hollywood.jpg"><meta itemprop="url" content="https://eclatant.io/images/hollywood.jpg"><meta itemprop="width" content="800"><meta itemprop="height" content="800"></div></article></div></div></div><footer id="footer"><div class="widgets"><div class="widgets-inner"><!-- Jade doesn't support dynamic inclusion with `each`.--><!-- So, I just hard coded the file names that will be included.--><div class="widgets__item"><h3 class="widgets__item__heading">Recent posts</h3><ul class="recent-posts"><li class="recent-posts__item"><a href="/2018/09/20/CodeSpitz-3-3/">코드스피츠 3기 함수와 OOP - 3강</a></li><li class="recent-posts__item"><a href="/2018/08/12/NodeJS-TextBook/">Node.js 교과서</a></li><li class="recent-posts__item"><a href="/2018/07/09/Functional-Programming-Intro/">실용적인 함수형 자바스크립트 Intro</a></li><li class="recent-posts__item"><a href="/2018/06/24/Awesome-Article1/">실용적인 아티클 1</a></li><li class="recent-posts__item"><a href="/2018/05/27/Ruby-Pickaxe-chapter3/">루비 곡괭이 3장 클래스, 객체, 변수</a></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Tag cloud</h3><div class="tag-cloud"><a href="/tags/Algorithm/" style="font-size: 1.5rem;">Algorithm</a> <a href="/tags/Article/" style="font-size: 0.75rem;">Article</a> <a href="/tags/CtCI/" style="font-size: 1.13rem;">CtCI</a> <a href="/tags/Dev/" style="font-size: 0.75rem;">Dev</a> <a href="/tags/English/" style="font-size: 0.75rem;">English</a> <a href="/tags/Essay/" style="font-size: 1.13rem;">Essay</a> <a href="/tags/FP/" style="font-size: 0.75rem;">FP</a> <a href="/tags/JS/" style="font-size: 0.75rem;">JS</a> <a href="/tags/Python/" style="font-size: 0.75rem;">Python</a> <a href="/tags/Rails/" style="font-size: 0.75rem;">Rails</a> <a href="/tags/React/" style="font-size: 1.13rem;">React</a> <a href="/tags/Ruby/" style="font-size: 1.5rem;">Ruby</a> <a href="/tags/node/" style="font-size: 0.75rem;">node</a></div></div><div class="widgets__item"><h3 class="widgets__item__heading">Categories</h3><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Article/">Article</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CtCI/">CtCI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dev/">Dev</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Essay/">Essay</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rails/">Rails</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ruby/">Ruby</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li></ul></div></div></div><p class="copyright"><small>© 2018 Jeewhan<br>Powered by <a href="https://hexo.io" rel="external" target="_blank">Hexo</a>, Theme by <a href="https://github.com/hyunseob" rel="external" target="_blank">HyunSeob</a></small></p></footer><!--[if lt IE 10]><script src="/js/classList.min.js"></script><![endif]--><script src="/js/index.min.js"></script></body></html>
