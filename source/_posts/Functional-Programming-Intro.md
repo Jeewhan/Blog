@@ -747,6 +747,56 @@ function _each(list, iter) {
 
 ---
 ## 컬렉션 중심 프로그래밍
+### 수집하기 - map, values, pluck 등
+컬렉션은 배열이나 돌림직한 데이터를 뜻한다
+컬렉션을 잘 다루는 함수 세트들을 구성해나가는 프로그래밍 방식을 컬렉션 중심 프로그래밍이라고 합니다
+
+대표적인 컬렉션을 위한 함수들을 map, filter, reduce 입니다
+
+크게 네 가지 유형으로 나누어서 바라볼 수 있습니다
+- 수집하기 - map, values, pluck 등
+- 거르기 - filter, reject, compact, without 등
+- 찾아내기 - find, some, every 등
+- 접기 - reduce, min, max, group_by, count_by
+
+가장 앞에 있는 함수들이 가장 추상화 레벨이 높기 때문에 대표함수라고 지칭합니다, 각 유형별 대표함수들을 활용해서 케이스별 특화함수들을 만들 수 있게 됩니다
+
+이러한 기준으로 문제를 바라보고 해결해나가는 식으로 프로그래밍하는 것이 컬렉션 중심 프로그래밍이라고 할 수 있고, map/filter/reduce/find 등의 고차함수들을 중심으로 하는 프로그래밍이라고 볼 수 있습니다
+
+```javascript
+function _identity(val) {
+  return val;
+}
+
+var a = 10;
+console.log(_identity(a)); // 10
+
+// 값을 수집하는 함수
+// function _values(data) {
+//   return _map(data, _identity);
+// }
+
+var _values = _map(_identity);
+_values(users[0]);
+
+console.log(users[0]); // {id: 10, name: "ID", age: 36}
+console.log(_keys(users[0])); // ["id", "name", "age"]
+console.log(_values(users[0])); // [10, "ID", 36]
+
+// 배열 내부에 있는 객체에 있는 키를 통해서 꺼내진 값들을 수집하는 함수
+// 내부에 있는 값을 수집한다면 _map을 활용하면 됩니다
+function _pluck(data, key) {
+//   return _map(data, function(obj) {
+//     return obj[key];
+//   });
+  return _map(data, _get(key));
+}
+
+console.log(_pluck(users, 'age')); // [36, 32, 32, ...]
+```
+
+
+---
 
 ## 자바스크립트에서의 지연 평가
 
