@@ -4,7 +4,6 @@ title:  "실용적인 함수형 자바스크립트 Intro"
 date: 2018-07-09
 tags: [FP]
 ---
-
 # 자바스크립트로 알아보는 함수형 프로그래밍
 
 ## 함수형 프로그래밍 개요
@@ -57,9 +56,7 @@ tags: [FP]
   - 리턴 외의 출력이 없음
   - 인자를 변경하지 않음
     - 원하는 부분이 변형된 새로운 값을 만들어 리턴하는 방식으로 진행
-
 ---
-
 ### 일급함수, add_maker, 함수로 함수 실행하기
 
 일급함수
@@ -117,9 +114,7 @@ console.log(
 순수함수를 만들고 조합하는 평가시점과 방법, 어떤 로직 사이에서 평가를 할 것인지 결정하면서 큰 로직을 구성
 
 비동기, 동시성을 확보할 수 있도록 원하는 시점까지 값으로 함수를 가지고 다니다가 원하는 시점 또는 필요한 부분에서 받아둔 함수를 여러 번 실행하는 등의 로직을 구현 가능
-
 ---
-
 ### 요즘 개발 이야기, 함수형 프로그래밍 정의
 
 요즘 개발 이야기
@@ -155,9 +150,7 @@ moveRight(dog);
 - 객체지향에서는 데이터를 먼저 디자인하고, 그 데이터에 맞는 메소드를 만드는 방식으로 진행하고, 함수형은 함수를 만들고 함수에 맞게 데이터셋을 구성하는 방식으로 진행한다 (데이터의 형태를 함수를 사용할 수 있도록 디자인)
 
 왜? 보다는 어떻게!를 다루겠다고 하셨음, 어떻게를 알려면 어떻게 전환하는가? 전환해왔는가? 를 아는 것이 중요함
-
 ---
-
 ## 함수형으로 전환하기
 
 ### 회원 목록, map, filter
@@ -254,9 +247,7 @@ console.log(
 값을 만들어놓고 문장을 내려가면서 변형해가는 것이 아니라, 함수를 통과해가면서 한 번에 값을 새롭게 만들어가는 방식으로 함수형 프로그래밍이 진행됨
 
 대입문이 없으면 보다 간결한 코드를 만들 수 있습니다
-
 ---
-
 ### each
 
 ```javascript
@@ -291,9 +282,7 @@ function _filter(list, predicate) {
 ```
 
 코드가 점점 간결해지고, 명령적인 코드가 숨고 선언적인 코드표현, 단순해지고 오류가 줄어들고 보다 정확하게 코딩을 하고 있다는 확신을 쉽게 느낄 수 있음
-
 ---
-
 ### 다형성
 
 이미 자바스크립트에는 map, filter와 같은 함수들이 구현되어있는데, 우리는 왜 또다시 구현했을까?
@@ -342,9 +331,7 @@ mapper : 무엇과 무엇을 매핑하는 함수
 > 상태를 변경하는 일이 특정 함수나 동작의 마지막 즈음에서만 이러난다면, 좀 더 상태를 다루기 쉽지 않으실까 생각됩니다. 반대 되는 경우를 설명해보자면 객체의 특정 값을 변경해둔 상태에 의존해서 다음 메서드가 실행되어 그것에 따라 달리 동작하도록 하는식으로 코딩한다면 상대적으로 거미줄 처럼 전체 코드들이 엮이면서 관리가 어려워지기 시작합니다.
 >
 > 함수형과 조합할 때는 뷰를 갱신하기위한 최종 상태만 변경하는 식으로 코딩하는 것이 유리합니다. 하나씩 해보시면 감이 오실거라 생각이 됩니다.
-
 ---
-
 ### 커링, curry, curryr
 
 커링은 함수와 인자를 다루는 기법, 함수에 인자를 하나씩 저장해나가다가 필요한 인자가 모두 채워지면 함수의 본체를 실행하는 기법, 일급함수가 지원되고 평가시점를 자유롭게 다룰 수 있으므로 구현 가능하다
@@ -458,9 +445,7 @@ console.log(
 ```
 
 함수를 통해서 또 다른 함수를 만들어서 map의 iteratee로 활용할 수 있다
-
 ---
-
 ### reduce
 
 재귀적으로 연속적으로 실행한 결과를 만들어주는 함수
@@ -529,9 +514,7 @@ console.log(_reduce([1, 2, 3, 4], add, 10)); // 20
 ```
 
 reduce는 받은 iteratee를 list의 값들에 연속적으로 적용하면서 memo라는 결과로 축약해나가는 함수
-
 ---
-
 ### 파이프라인, \_go, \_pipe, 화살표 함수
 
 pipe는 reduce를 활용해서 만들 수 있습니다, 함수를 리턴해주는 함수인데, 함수들을 인자로 받아서 이 함수들을 연속적으로 실행해주는 함수를 리턴해주는 함수입니다
@@ -646,9 +629,7 @@ var = (a, b) => a + b;
 var = (a, b) => { return a + b; };
 var add = (a, b) => ({ val: a + b});
 ```
-
 ---
-
 ### 다형성 높이기, \_keys, 에러
 
 다형성, 데이터 다루는 방법, 에러를 다루는 방법 등을 이야기해보도록 하겠습니다
@@ -744,7 +725,6 @@ function _each(list, iter) {
 함수형 프로그래밍에서는 해당하는 고차함수가 주재료로 받는 인자의 데이터 형에 따라 내부 동작을 모두 지원하도록 최대한 다형성이 높도록 코드를 구성하고, 인자가 하나만 들어오면 함수를 리턴하는 등 인자와 함수를 잘 다루는 방식으로 프로그래밍합니다, 어떤 데이터가 들어오든지 최대한 흘러갈 수 있도록 하여 연속 실행에  큰 문제가 없도록 하는 방식으로 함수를 구성합니다
 
 형을 굉장히 강하게 체크하면서 프로그래밍하는 방식도 있지만, 이렇게 다형성을 극대화시키면서 프로그래밍하는 방식도 있습니다
-
 ---
 ## 컬렉션 중심 프로그래밍
 ### 수집하기 - map, values, pluck 등
@@ -794,10 +774,173 @@ function _pluck(data, key) {
 
 console.log(_pluck(users, 'age')); // [36, 32, 32, ...]
 ```
-
-
 ---
+### 거르기 - reject, compact
 
+reject 함수는 filter 함수를 반대로 동작시킨 함수입니다, true 평가된 값들을 제외시키는 함수입니다, 고차함수의 변경을 통해 보다 선언적으로 프로그래밍해나갈 수 있습니다
+
+순수함수들의 평가시점들을 다루거나 함수가 함수를 리턴하거나 실행해주거나 인자로 받은 함수를 실행해준 뒤에 결과를 반대로 바꿔 리턴해준다거나 함수들의 응용과 조합을 강조하는 것이 함수형 프로그래밍입니다
+
+```javascript
+console.log(
+  _filter(users, function(user) {
+    return user.age > 30;
+  })
+)
+
+function _negate(func) {
+  return function(val) {
+    return !func(val);
+  }
+}
+
+// function _reject(data, predi) {
+//   return _filter(data, function(val) {
+//     return !predi(val);
+//   })
+// }
+
+function _reject(data, predi) {
+  return _filter(data, _negate(predi));
+}
+
+console.log(
+  _reject(users, function(user) {
+    return user.age > 30;
+  })
+)
+```
+
+compact 함수는 truthy한 값만 남기는 함수입니다
+
+```javascript
+var _compact = _filter(_identity);
+
+console.log(_compact([1, 2, 0, false, null, {}])); // [1, 2, {}]
+```
+
+함수형 프로그래밍에선 함수를 간결하게 조합시켜서 약간 변경된 다양한 로직을 가진 함수들을 만드는 것을 목표로 합니다, 컬렉션 중심 프로그래밍도 마찬가지로 이러한 컬렉션을 다루는 다양하고 약간씩 다른 함수세트들을 모으는 것이 목표입니다
+
+10개의 굉장히 복잡한 많은 기능을 하는 함수나 클래스를 만드는 것보다, 서로 다른 100개의 함수를 만드는 것이 프로그래밍 하는 것에 있어 훨씬 유리합니다
+---
+### 찾아내기- find, find_index, some, every
+
+find는 조건에 해당하는 값을 처음 만났을 때 리턴해주는 함수입니다
+findIndex는 해당하는 값을 처음 만났을 때 index값을 리턴해주는 함수입니다
+
+filter 함수는 predicate를 거친 결과가 truthy한 모든 값을 수집하는 것이라면, find는 걸러지는 그 값 하나만을 리턴해주는 함수입니다
+
+나중에 다룰 지연평가와도 연관이 있는 중요한 함수입니다
+
+```javascript
+function _find(list, predi) {
+  var keys = _keys(list);
+  for (var i = 0, len = keys.length; i < len; i++) {
+    var val = list[keys[i]];
+    if (predi(val)) return val;
+  }
+}
+
+console.log(
+  _find(users, function(user) {
+    return user.age < 30;
+  })
+)
+
+console.log(
+  _find(users, function(user) {
+    return user.id == 20;
+  })
+)
+
+function _find_index(list, predi) {
+  var keys = _keys(list);
+  for (var i = 0, len = keys.length; i < len; i++) {
+    if (predi(list[keys[i]])) return i;
+  }
+  return -1;
+}
+
+console.log(
+  _find_index(users, function(user) {
+    return user.name == 'BJ';
+  })
+)
+
+console.log(
+  _get(_find_index(users, function(user) {
+    return user.id == 20;
+  }), 'name')
+)
+
+var _find = curryr(_find), _find_index = curryr(_find_index);
+
+_go(users,
+  _find(function(user) { return user.id == 50; }),
+  _get('name'),
+  console.log
+);
+
+_go(users,
+  _find_index(function(user) { return user.id == 50; }),
+  console.log
+)
+```
+
+some은 조건에 만족하는 값이 존재하면 true를 리턴해주는 함수입니다, every는 모든 값이 조건을 만족하면 true를 리턴해주는 함수입니다
+```javascript
+function _some(data, predi) {
+  return _find_index(data, predi) != -1;
+}
+
+function _every(data, predi) {
+  return _find_index(data, _negate(predi)) == -1;
+}
+
+console.log(_some([1, 2, 5, 10, 20], function(val) {
+  return val > 10;
+})) // true
+
+console.log(_every([1, 2, 5, 10, 20], function(val) {
+  return val > 10;
+}) // false
+```
+
+some과 every는 predi가 없어도 동작을 해야 합니다
+
+```javascript
+console.log([1, 2, 0, 10], _identity) // true
+console.log(_some([null, false, 0], _identity)) // false
+
+function _some(data, predi) {
+  return _find_index(data, predi || _identity) != -1;
+}
+
+function _every(data, predi) {
+  return _find_index(data, _negate(predi || _identity)) == -1;
+}
+
+console.log(_some([null, false, 0, 1])) // true
+
+console.log(
+  _some(users, function(user) {
+    return user.age < 20;
+  })
+)
+```
+
+find, find_index, some, every 모두 고차함수로 쓰여 보조함수를 받기 때문에, 많은 것들을 해낼 수 있습니다
+
+find_index의 경우, indexOf는 완전히 값이 같은 경우만을 해당하는 값이 몇 번째 인덱스에 있는지 찾을 수 있는 것과 달리, 보조함수를 만족하는 첫 번째 값이 몇 번째에 있는지 확인할 수 있습니다
+
+some, every를 활용하면, 있긴 있느냐 모두 그러하냐 등도 확인할 수 있습니다
+
+고차함수와 보조함수의 합으로 프로그래밍하는 것은 로직을 조합해나가는 것과 동일한 것입니다
+
+하나라도 그러하느냐 => some, 그러한 조건이 무엇이냐 => predicate
+
+이런 식으로 로직을 완성해나가는 것이 함수형 프로그래밍입니다
+---
 ## 자바스크립트에서의 지연 평가
 
 ## 실전코드조각 1
