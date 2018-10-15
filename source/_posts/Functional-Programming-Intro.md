@@ -859,7 +859,7 @@ function _find_index(list, predi) {
     if (predi(list[keys[i]])) return i;
   }
   return -1;
-}
+}다
 
 console.log(
   _find_index(users, function(user) {
@@ -940,6 +940,98 @@ some, every를 활용하면, 있긴 있느냐 모두 그러하냐 등도 확인�
 하나라도 그러하느냐 => some, 그러한 조건이 무엇이냐 => predicate
 
 이런 식으로 로직을 완성해나가는 것이 함수형 프로그래밍입니다
+---
+### 접기 - reduce, min_by, max_by
+
+접기 또는 축약이라 볼 수 있습니다
+
+Array안의 값이나 Iterable한 객체에 있는 값들을 통해서, 접혀진 값을 만들기 위해 사용합니다
+
+순차적인 for문을 대체하는 식으로 reduce를 사용하기 보다는 함수형적인 관점에서 바라보는 것이 중요합니다
+
+순수함수로서 평가 순서에 상관없이 접어나가는 함수로서 이해하는 것이 필요합니다
+
+find와 달리 전체를 확인하고 특정 값으로 접어내는 함수입니다
+
+평가순서와 상관없이 어떤 해당하는 결과를 만들 수 있는 식으로 사고하는 것이 좋습니다, 값들이 앞에서부터 순서대로 들어온다고 생각하지 않고 프로그래밍하는 것이 중요합니다, reduce라는 함수가 모든 값들을 특정 함수에게 평가시킬 것이니까 순서와 상관없도록 한 가지 로직만 생각하면서 작성하는 것입니다
+
+reduce를 for문을 대체하는 형태로 사용한다면 그다지 함수형 프로그래밍이라고 보기 어렵고, 좋은 코드가 나오지 않을 가능성이 높습니다, 그냥 두 개의 값이 있다는 식으로 생각하면서 프로그래밍할 수 있습니다
+
+```javascript
+// _min을 작성할 때 다른 고민할 필요없이 reduce를 작성하는 것이 좋습니다
+
+function _min(data) {
+  return _reduce(data, function(a, b) {
+    return a < b ? a : b; // 두 개를 비교해서 작은 값을 리턴해나가다보면 reduce에 의해 하나의 값으로 접힐 것
+  });
+}
+
+function _max(data) {
+  return _reduce(data, function(a, b) {
+    return a > b ? a : b;
+  })
+}
+
+_min([1, 2, 4, 10, 5, -4]); // -4
+_max([1, 2, 4, 10, 5, -4]); // 10
+```
+
+min\_by와 max\_by는 어떤 조건을 통해서 비교를 할 것이냐를 추가적인 iteratee를 받는 것입니다, min과 max는 값을 직접 비교하는데 그래서 다형성이 상대적으로 낮습니다, 그러나 min\_by나 max\_by는 filter와 같이 보조함수를 받기 때문에 들어있는 값이 어떤 값이든지 어떤 것을 가지고 비교할지 보조함수가 한 번 더 가능성을 열어주기 때문에 더 많은 것들을 할 수 있는 min, max함수가 될 수 있습니다
+
+예를 들어서 절대값으로의 변환 후에 비교도 가능합니다
+```javascript
+function _min_by(data, iter) {
+  return _reduce(data, function(a, b) {
+    return iter(a) < iter(b) ? a : b;
+  }
+}
+
+function _max_by(data, iter) {
+  return _reduce(data, function(a, b) {
+    return iter(a) > iter(b) ? a : b;
+  }
+}
+
+_min_by([1, 2, 4, 10, 5, -4], Math.abs);
+_max_by([1, 2, 4, 10, 5, -4, -11], Math.abs);
+```
+
+상태를 변화시키지 않고 비교한다는 점이 대단히 중요한데, 만약 map을 거친 뒤에 max를 하게 되면 -11이 있을 때 -11이 나오는 것이 아니라 11이 나와버리게 됩니다, 그러면 코딩이 어려워집니다, 따라서 값을 변경시키지 않고 비교해주는 max_by와 같은 함수가 있는 것을 통해 더 쉽게 프로그래밍할 수 있게 됩니다
+
+이런 함수적 아이디어를 통해서 계속해서 특정 부분의 다형성을 높이거나 특정 부분의 확장성을 높여서 다양한 로직들을 만들어갈 수 있게 됩니다
+
+숫자형 데이터가 아니더라도 실무적인 데이터에도 사용할 수 있게 됩니다
+
+```javascript
+_max_by(users, function(user) { return user.age; });
+_min_by(users, function(user) { return user.age; });
+
+var _min_by = _curryr(_min_by), _max_by = _curryr(_max_by), _reject = _curryr(_reject);
+
+_go(
+  users,
+  _filter(user => user.age >= 30),
+  _min_by(_get('age')),
+  _get('age'),
+  console.log
+)
+
+_go(
+  users,
+  _filter(user => user.age >= 30),
+  _map(_get('age')),
+  _min,
+  console.log
+)
+
+_go(
+  users,
+  _reject(user => user.age >= 30),
+  _max_by(_get('age')), // max_by가 있기 때문에 나이가 아닌 user를 리턴할 수 있습니다
+  _get('name'), // 추가적으로 필요한 로직 적용
+  console.log
+)
+```
 ---
 ## 자바스크립트에서의 지연 평가
 
