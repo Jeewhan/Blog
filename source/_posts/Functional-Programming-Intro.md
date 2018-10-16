@@ -11,7 +11,6 @@ tags: [FP]
 ### 함수형 프로그래밍 정의, 순수함수
 
 성공적인 프로그래밍이란?
-
 - 좋은 프로그램을 만드는 일
   - 사용성, 성능, 확장성, 기획 변경에 대한 대응력이 좋은 것
 - 위 사항들을 효율적이고 생산적으로 이루어지는 것이 성공적인 프로그래밍
@@ -19,7 +18,6 @@ tags: [FP]
 
 
 함수형 프로그래밍은 성공적인 프로그래밍을 위해 부수효과를 미워하고 조합성을 강조하는 프로그래밍 패러다임
-
 - 부수효과를 미워한다 => 순수함수를 만든다
   - 순수함수란?
     - 부수효과가 없음
@@ -30,19 +28,13 @@ tags: [FP]
     - 인자가 동일하면 동일한 결과를 반환
     - 상수적 자유변수를 참조할 수 없다는 것은 아님
   - 오류는 적고 안정성은 높다
-
-
 - 조합성을 강조한다 => 모듈화 수준을 높인다
   - 순수함수의 조합으로 프로그래밍 진행
   - 모듈화 수준이 높다 = 생산성을 높인다
     - 모듈화 수준이 높다는 것은 성공적인 프로그래밍의 척도
     - 재사용성이 높고 팀웍도 좋고 기획 변경에 대한 대응력이 높음
 
-
-
-
 순수함수란?
-
 - 인자가 동일하면 동일한 결과를 반환
   - 평가 시점이 중요하지 않음
     - 평가시점을 개발자가 다룰 수 있음
@@ -50,8 +42,6 @@ tags: [FP]
     - 항상 동일한 결과를 리턴할 것이기에 안전하고 다루기 쉬운 함수이고 따라서 조합성을 강조시킬 수 있음
       - 다른 함수의 인자로 넘겨주거나, 전혀 다른 곳에서 함수를 평가시켜도 항상 동일한 결과를 리턴
     - 그렇지 않은 함수들은 평가 시점에 따라 결과가 달라지게 됨
-
-
 - 부수효과가 없음
   - 리턴 외의 출력이 없음
   - 인자를 변경하지 않음
@@ -60,7 +50,6 @@ tags: [FP]
 ### 일급함수, add_maker, 함수로 함수 실행하기
 
 일급함수
-
 - 함수를 값으로 다룰 수 있음
   - 변수에 담을 수 있음
   - 인자로 넘겨줄 수 있음
@@ -1032,6 +1021,186 @@ _go(
   console.log
 )
 ```
+---
+### 접기 - group_by, count_by
+```javascript
+var users = [
+  { id: 10, name: 'ID', age: 36 },
+  { id: 20, name: 'BJ', age: 32 },
+  { id: 30, name: 'JM', age: 32 },
+  { id: 40, name: 'PJ', age: 27 },
+  { id: 50, name: 'HA', age: 25 },
+  { id: 60, name: 'JE', age: 26 },
+  { id: 70, name: 'JI', age: 31 },
+  { id: 80, name: 'MP', age: 23 },
+  { id: 90, name: 'FP', age: 13 },
+];
+
+// group_by 결과물
+var users2 = {
+  36: [{ id: 10, name: 'ID', age: 36 }],
+	32: [{ id: 20, name: 'BJ', age: 32 }, { id: 30, name: 'JM', age: 32 }],
+  27: [],
+  ...
+}
+
+// 이 시점까지는 아무런 고민없이 코딩할 수 있습니다
+// 배열을 통해 새로운 형태의 데이터를 만들 것이기 때문에 접기이고요, 그러니 reduce를 사용해야 하고, data를 주고 익명함수를 주고, 이 결과({})로 만들어나가겠다, 무엇을 조건으로 group_by를 할 것인지를 iterate에게 위임합니다
+var group_by = _curryr(function(data, iter) {
+  return _reduce(data, function(grouped, val) {
+    
+  }, {});
+})
+
+var group_by = _curryr(function(data, iter) {
+  return _reduce(data, function(grouped, val) {
+    var key = iter(val);
+    (grouped[key] = grouped[key] || []).push(val);
+    return grouped;
+  }, {});
+})
+
+function _push(obj, key, val) {
+  (obj[key] = obj[key] || []).push(val);
+  return obj;
+}
+
+var group_by = _curryr(function(data, iter) {
+  return _reduce(data, function(grouped, val) {
+    return _push(grouped, iter(val), val);
+  }, {});
+})
+
+_go(users,
+  _group_by(_get('age')),
+  console.log
+);
+
+_go(users,
+  _group_by(function(user) {
+    return user.age - user.age % 10;
+  }),
+  console.log
+);
+
+_go(users,
+  _group_by(function(user) {
+    return user.name[0];
+  }),
+  console.log
+);
+
+var _head = function(list) {
+  return list[0];
+}
+
+_go(users,
+  _group_by(_pipe(_get('name'), _head)),
+  console.log
+);
+```
+
+로직을 함수로 분리해내면 변수 선언이 줄어드는 결과를 볼 수 있습니다
+
+group_by는 보조함수에게 어떤 기준으로 묶을 것인지를 위임하는데 이렇게 하면 유연성이 굉장히 높아져서 다양한 방식으로 group_by를 할 수 있게 됩니다
+
+작은 로직도 함수의 연속 실행을 통해 만들어가는 프로그래밍이 함수형 프로그래밍입니다
+
+count_by는 group_by로 만들어낸 결과에 있는 key의 개수를 리턴해주는 함수입니다, 동일한 보조함수를 넘겨주면 키에 담긴 값이 data냐 length냐의 차이만 있습니다
+
+계속해서 이러한 접기를 만들 때, for문을 머릿 속에서 지우고 코딩을 하면 됩니다
+
+reduce를 하면서 모든 값들을 돌면서 특정 함수를 실행시킨 결과값이 나올 것이다, 순서보다는 들어온 값에 대해서 어떤 값을 리턴해주어야 하는지를 연속적으로 했을 때 결과가 나오도록 만들면 되는 것입니다
+
+```javascript
+var _count_by = _curryr(function(data, iter) {
+  return _reduce(data, function(count, val) {
+    var key = iter(val);
+    count[key] = count[key]++ ? count[key] = 1;
+    return count;
+  }, {})
+});
+
+_count_by(users, function(user) {
+  return user.age;
+})
+
+_count_by(users, function(user) {
+  return user.age - user.age % 10;
+})
+
+var _inc = function(count, key) {
+  count[key] = count[key]++ ? count[key] = 1;
+  return count;
+}
+
+var _count_by = _curryr(function(data, iter) {
+  return _reduce(data, function(count, val) {
+    return _inc(count, iter(val));
+  }, {})
+});
+```
+
+조금 더 실무적인 예제를 만들어보겠습니다
+
+```javascript
+function _each(list, iter) {
+  var keys = _keys(list);
+  for (var i = 0, len = keys.length; i < len; i++) {
+    iter(list[keys[i]], keys[i]);
+  }
+  return list;
+}
+
+function _map(list, mapper) {
+  var new_list = [];
+  _each(list, function(val, key) {
+    new_list.push(mapper(val, key));
+  })
+  return new_list;
+}
+
+_map(users[0], console.log); // 10 "id", ID name, 36 "age"
+
+// underscore의 pairs
+var pairs = _map(function(val, key) {
+  return [key, val];
+})
+
+var pairs = _map((val, key) => [key, val]);
+
+console.log(pairs(users[0]));
+
+var _document_write = document.write.bind(document);
+
+_go(users,
+  _reject(function(user) { return user.age < 20; }),
+  _count_by(function(user) { return user.age - user.age % 10; }),
+  _map((count, key) => `<li>${key}대는 ${count}명 입니다.</li>`),
+  list => `<ul>${list.join('')}</ul>`,
+  document.write.bind(document) // this에 대한 바인딩이 되어있어야만 document.write 사용 가능
+)
+
+var f1 = _pipe(users,
+  _count_by(function(user) { return user.age - user.age % 10; }),
+  _map((count, key) => `<li>${key}대는 ${count}명 입니다.</li>`),
+  list => `<ul>${list.join('')}</ul>`,
+  document.write.bind(document) // this에 대한 바인딩이 되어있어야만 document.write 사용 가능
+);
+
+f1(users);
+
+var f2 = _pipe(_reject(user => user.age < 20), f1);
+
+f2(users);
+_go(users, _reject(user => user.age < 20), f1);
+```
+
+어떤 로직을 만들 때, 값을 수집하는 것인지 걸러내는 것인지 특정 값을 찾아내는 것인지, 접는 것인지에 대한 유형을 먼저 분석한 다음에 프로그래밍을 해나가는 것이 좋습니다
+
+그러면 문제를 보다 잘 정리된 패턴으로 분석을 할 수 있고 과제가 쉬워져서 프로그래밍이 좀 더 쉽게 이루어지고, i의 변화나 for문 등이 없고, 모든 함수들이 다형성이 있으면서도 안정성이 확보된 함수들을 조립하면서 프로그래밍을 하기 때문에 내가 만든 이 로직이 잘 돌아갈 것이라는 확신을 좀 더 빨리 얻을 수 있고, 테스트도 훨씬 쉽습니다
+
+이미 테스트가 잘 된 함수들의 조합을 통해서 프로그래밍을 해나가면 보다 빠르게 이 코드가 잘 동작할 것이라는 확신을 가지면서 쉽게 함수조합을 해나갈 수 있습니다
 ---
 ## 자바스크립트에서의 지연 평가
 
