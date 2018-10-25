@@ -7,7 +7,6 @@ reduce method가 이미 있는데, 왜 새로 만들어야 하는가?
 ```javascript
 const reduce = (f, coll, acc) => {
   const iter = coll[Symbol.iterator]();
-  // acc = acc === undefined ? iter.next().value : acc;
   if (acc === undefined) acc = iter.next().value;
 
   for (const v of iter) {
@@ -28,7 +27,6 @@ const collIter = coll => coll[Symbol.iterator]();
 
 const reduce = (f, coll, acc) => {
   const iter = collIter(coll);
-  // acc = acc === undefined ? iter.next().value : acc;
   if (acc === undefined) acc = iter.next().value;
 
   for (const v of iter) {
