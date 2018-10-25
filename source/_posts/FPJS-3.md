@@ -49,9 +49,9 @@ function *valuesIter(obj) {
 }
     
 const toArray = obj => [...valuesIter(obj)];
-    
+const test = { a: 1, b: 2, c: 3 };
 console.log(
-  reduce((acc, a) => acc + a, valuesIter({ a: 1, b: 2, c: 3 }), 0)
+  reduce((acc, a) => acc + a, valuesIter(test), 0)
 )
 ```
 
