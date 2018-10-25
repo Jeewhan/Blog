@@ -1269,7 +1269,7 @@ console.log(mi, fi); // 12, 12
 
 그렇기에 내부적으로 순서를 재배치함으로서 최적화할 수 있는 여지가 생깁니다
 
-![image](./assets/lazy.jpg)
+![image](../images/lazy.jpg)
 
 
 ## 실전코드조각 1
