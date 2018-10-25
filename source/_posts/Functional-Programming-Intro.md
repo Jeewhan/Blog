@@ -1203,6 +1203,74 @@ _go(users, _reject(user => user.age < 20), f1);
 이미 테스트가 잘 된 함수들의 조합을 통해서 프로그래밍을 해나가면 보다 빠르게 이 코드가 잘 동작할 것이라는 확신을 가지면서 쉽게 함수조합을 해나갈 수 있습니다
 ---
 ## 자바스크립트에서의 지연 평가
+### 지연 평가
+
+지연 평가를 시작시키고 유지시키는(이어 가는) 함수
+- map, filter, reject
+
+지연 평가를 끝내는 함수
+- take, some, every, find
+
+```javascript
+var mi = 0, fi = 0;
+_.go(
+  _.range(100),
+  _.map(function(val) {
+    ++mi;
+    return val * val;
+  }),
+  _.filter(function(val) {
+    ++fi;
+    return val % 2;
+  }),
+  _.take(5),
+  console.log
+)
+console.log(mi, fi); // 100, 100
+
+var mi = 0, fi = 0;
+_.go(
+  _.range(100),
+  L.map(function(val) {
+    ++mi;
+    return val * val;
+  }),
+  L.filter(function(val) {
+    ++fi;
+    return val % 2;
+  }),
+  L.take(5),
+  console.log
+)
+console.log(mi, fi); // 10, 10
+
+var mi = 0, fi = 0;
+_.go(
+  _.range(100),
+  L.map(function(val) {
+    ++mi;
+    return val * val;
+  }),
+  L.filter(function(val) {
+    ++fi;
+    return val % 2;
+  }),
+  L.some(function(val) {
+    return val > 100;
+  }),
+  console.log
+)
+console.log(mi, fi); // 12, 12
+```
+
+순수함수로 이루어져있기에 가능합니다
+
+순수함수란 어느 시점에 평가를 해도 항상 동일한 결과를 돌려주기 때문입니다
+
+그렇기에 내부적으로 순서를 재배치함으로서 최적화할 수 있는 여지가 생깁니다
+
+![image](./assets/lazy.jpg)
+
 
 ## 실전코드조각 1
 
