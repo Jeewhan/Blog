@@ -1269,8 +1269,197 @@ console.log(mi, fi); // 12, 12
 
 그렇기에 내부적으로 순서를 재배치함으로서 최적화할 수 있는 여지가 생깁니다
 
-![image](https://github.com/JeewhanR/Blog/raw/master/images/lazy.jpg)
+[image:889E3C08-F08F-467C-976B-4AE17563703E-16635-0001586AF8CAA382/B72221B3-E4B0-408D-B6E9-DE9BB611C623.png]
 
+### 요약, 클로저, 엘릭서, 병렬성
+
+- 함수를 되도록 작게 만들기
+- 다형성 높은 함수 만들기
+- 상태를 변경하지 않거나 정확히 다루어 부수 효과를 최소화 하기
+	- 부수효과가 없을 수는 없습니다, 다만 부수효과는 해당 로직의 최종 목적이 되니, 부수효과 전까지의 과정에서는 상태를 변경하지 않는 프로그래밍을 하다가 (과정에서는 지속적으로 부수효과를 일으키거나 상태를 변경해나가면서 프로그래밍 하는 것이 아니라) 마지막에 목적이자 결과로 부수효과를 발생시키도록 프로그래밍합니다
+- 동일한 인자를 받으면 항상 동일한 결과를 리턴하는 순수 함수 만들기
+- 복잡한 객체 하나를 인자로 사용하기보다 되도록 일반적인 값 여러 개를 인자로 사용하기
+- 큰 로직을 고차 함수로 만들고 세부 로직을 보조 함수로 완성하기
+- 어느 곳에서든 바로 혹은 미뤄서 실행할 수 있도록 (메소드가 아닌) 일반 함수이자 순수 함수로 선언하기
+- 모델이나 컬렉션 등의 커스텀 객체보다는 (언어에서 지원하는 자료형인) 기본 객체를 이용하기
+- 로직의 흐름을 최대한 단방향으로 흐르게 하기
+- 작은 함수를 조합해서 큰 함수 만들기
+
+아래와 같은 데이터 흐름 프로그래밍을 하기
+
+```javascript
+_go(users,
+  _filter(function(user) { return user.age < 30 }),
+  _map(function(user) { return user.age; }),
+  console.log)
+
+_go(users,
+  _filter(user => user.age >= 30),
+  _map(user => user.name),
+  console.log)
+```
+
+#### 데이터 흐름 프로그래밍의 중요성
+
+함수형 프로그래밍은 특정 언어에 국한되는 것이 아니라 언어 위에 있는 패러다임입니다
+따라서 언어와 무관하게 적용 가능합니다
+
+Clojure와 Elixer 읽기
+
+```clojure
+(def users [
+  { :id 1 :name 'ID' :age 36 }
+  { :id 2 :name 'BJ' :age 32 }
+  { :id 3 :name 'JM' :age 34 }
+  { :id 4 :name 'PJ' :age 27 }
+  { :id 5 :name 'HA' :age 25 }
+  { :id 6 :name 'JE' :age 26 }
+  { :id 7 :name 'JI' :age 31 }
+  { :id 8 :name 'MP' :age 23 }])
+
+(println
+ (map (fn [user] (:name user))
+      (filter (fn [user] (< (:age user) 30)) users)))
+;(PJ' HA' JE' MP')
+
+;  console.log(
+;    _map(user => user.age)
+;      (_filter(user => user.age < 30)(users)));
+
+
+(->> users
+     (filter (fn [user] (< (:age user) 30)))
+     (map (fn [user] (:name user)))
+     println)
+; (PJ' HA' JE' MP')
+
+;  _go(users,
+;    _filter(user => user.age < 30),
+;    _map(user => user.name),
+;    console.log);
+
+(->> users
+     (filter #(>= (:age %) 30))
+     (map #(:name %))
+     println)
+;(ID' BJ' JM' JI')
+
+(->> users
+     (filter (fn [user] (< (:age user) 30)))
+     (map (fn [user] (:age user)))
+     println)
+; (27 25 26 23)
+
+(->> users
+     (filter #(< (:age %) 30))
+     (map #(:age %))
+     (reduce +)
+     println)
+; 101
+
+
+; 병렬 처리
+(defn word-frequency1 [text]
+  (->>
+   (s/split text #"\s+")
+   (r/map s/lower-case)
+   (r/remove (fn [word] (s/starts-with? word "function")))
+   (r/map (fn [word] { word 1 }))
+   (r/fold (partial merge-with +))))
+
+(defn -main []
+  (time (word-frequency1 page))
+  (time (word-frequency1 page))
+  (time (word-frequency1 page))
+  (time (word-frequency1 page)))
+```
+
+```elixir
+defmodule Console do
+    def log(v) do
+        IO.puts(inspect(v))
+    end
+end
+
+users = [
+    %{ id: 1, name: 'ID', age: 36 },
+    %{ id: 2, name: 'BJ', age: 32 },
+    %{ id: 3, name: 'JM', age: 34 },
+    %{ id: 4, name: 'PJ', age: 27 },
+    %{ id: 5, name: 'HA', age: 25 },
+    %{ id: 6, name: 'JE', age: 26 },
+    %{ id: 7, name: 'JI', age: 31 },
+    %{ id: 8, name: 'MP', age: 23 }
+]
+
+filtered = Enum.filter(users, fn u -> u.age >= 30 end);
+Console.log(filtered);
+
+# [%{age: 36, id: 1, name: 'ID'},
+#  %{age: 32, id: 2, name: 'BJ'},
+#  %{age: 34, id: 3, name: 'JM'},
+#  %{age: 31, id: 7, name: 'JI'}]
+
+
+Console.log(
+    Enum.map(
+        Enum.filter(users, fn user -> user.age >= 30 end),
+        fn user -> user.name end))
+# ['ID', 'BJ', 'JM', 'JI']
+
+# console.log(
+#   _map(
+#     _filter(users, function(user) { return user.age >= 30; }),
+#     function(user) { return user.name; }));
+
+
+users
+    |> Enum.filter(&(&1.age >= 30))
+    |> Enum.map(&(&1.name))
+    |> Console.log
+    # ['ID', 'BJ', 'JM', 'JI']
+
+#  _go(users,
+#    _filter(u => u.age >= 30),
+#    _map(u => u.name),
+#    console.log);
+
+
+users
+    |> Enum.filter(&(&1.age < 30))
+    |> Enum.map(&(&1.age))
+    |> Console.log
+    # [27, 25, 26, 23]
+
+users
+    |> Enum.filter_map(&(&1.age < 30), &(&1.age))
+    |> Console.log
+    # [27, 25, 26, 23]
+
+users
+    |> Enum.filter_map(&(&1.age < 30), &(&1.age))
+    |> Enum.reduce(&(&1 + &2))
+    |> Console.log
+    # 121
+
+users
+    |> Enum.filter(&(&1.age < 30))
+    |> Enum.map_reduce(0, fn(u, total) -> {u.age, u.age + total} end)
+    |> Console.log
+    # {[27, 25, 26, 23], 101}
+```
+
+#### 지연평가 + 병렬성 + 동시성
+
+지연평가가 가능한 것은 언제 평가해도 동일한 순수함수의 조합으로 프로그래밍을 하기 때문입니다, 마찬가지로 어느 시점에 평가해도 상관없는 순수함수는 동시에 다른 쓰레드에서 평가를 해도 상관이 없습니다, 따라서 병렬성과 동시성에 있어서 굉장히 유리합니다
+
+이 부분은 직접 강의를 들어봐야만 전달받을 수 있을 것!
+
+#### 비동기 I/O NodeJS
+
+뒷 수업에서 다루기로!
+
+---
 
 ## 실전코드조각 1
 
