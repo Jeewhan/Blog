@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://eclatant.io/"/>
-  <updated>2018-10-18T17:09:35.016Z</updated>
+  <updated>2018-11-11T12:25:12.140Z</updated>
   <id>https://eclatant.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>글쓰기 시작</title>
+    <link href="https://eclatant.io/2018/11/11/Start/"/>
+    <id>https://eclatant.io/2018/11/11/Start/</id>
+    <published>2018-11-10T15:00:00.000Z</published>
+    <updated>2018-11-11T12:25:12.140Z</updated>
+    
+    <content type="html"><![CDATA[<p>올해 초에 작성했던, 글쓰기 시작 다짐글을 다시 읽어보았다.</p><p>다짐을 지키지 못했다..</p><p>내용 중 일부는 다음과 같았다.</p><hr><p>최근에 읽은 아티클 중에 관련하여 글쓰기와 관련하여 가장 인상적이었던 것은 <a href="https://ppss.kr/archives/16682" target="_blank" rel="noopener">글쓰기가 안 되는 분들을 위한 4단계 작문법</a> 이었다.</p><p>위 내용을 보고 여태까지 글쓰기가 힘들었던 것은 정신병자 단계를 거치지 않고 판사와 같은 마음으로 바라보고 있었기 때문이라는 것을 느꼈다.</p><p>그러다보면 이터레이션 주기가 길어지고, 따라서 성공할 수가 없었던 것이다.</p><p>앞으로 최대한 편안한 마음으로 좋은 글이 아닌, 그저 지각하지 않고 제때 제출하는 것만을 목표로 써보려고 한다.</p><p>그 과정에서 다른 분들과 많이 교류하며 글쓰기 외에도 많은 것들을 얻어갈 수 있기를 바란다.</p><hr><p>이번에도 정말 동일한 마음이다.</p><p>이루지 못했던 이유는 무엇인가?</p><p>늘 그렇듯 너무 부담스러워했던 탓이다.</p><p>그러지 않기 위해선 어떻게 할 수 있는가?</p><p>매일 단 한 문장이라도 써야 한다.</p><p>부담스러운 마음에 멈칫하며 미루면 순식간에 마감일이 찾아온다.</p><p>글 퀄리티가 낮아서 부끄러운 것보다 제출시점을 지키지 못하는 것을 부끄러워하자.</p><p>모든 부담을 내려놓고 편안하게 그러나 꾸준히 하자.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;올해 초에 작성했던, 글쓰기 시작 다짐글을 다시 읽어보았다.&lt;/p&gt;
+&lt;p&gt;다짐을 지키지 못했다..&lt;/p&gt;
+&lt;p&gt;내용 중 일부는 다음과 같았다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;최근에 읽은 아티클 중에 관련하여 글쓰기와 관련하여 가장 인상적이었던 것은 &lt;a 
+      
+    
+    </summary>
+    
+      <category term="Essay" scheme="https://eclatant.io/categories/Essay/"/>
+    
+    
+      <category term="Essay" scheme="https://eclatant.io/tags/Essay/"/>
+    
+  </entry>
   
   <entry>
     <title>The Real TDD</title>
@@ -303,33 +332,6 @@
   </entry>
   
   <entry>
-    <title>React Fundamental</title>
-    <link href="https://eclatant.io/2018/04/22/React-Fundamental/"/>
-    <id>https://eclatant.io/2018/04/22/React-Fundamental/</id>
-    <published>2018-04-21T15:00:00.000Z</published>
-    <updated>2018-05-02T15:18:59.915Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Why-React"><a href="#Why-React" class="headerlink" title="Why React?"></a>Why React?</h1><p>Composition Model</p><ul><li>A good function should follow the “Do One Thing” rule</li><li>When you combine these simple functions together to form a more complex function, this is <strong>composition</strong>.</li><li><a href="https://www.linkedin.com/pulse/compose-me-function-composition-javascript-kevin-greene/" target="_blank" rel="noopener">Compose me That: Function Composition in JavaScript</a></li><li><a href="https://hackernoon.com/javascript-functional-composition-for-every-day-use-22421ef65a10" target="_blank" rel="noopener">Functional JavaScript: Function lComposition For Every Day Use.</a></li></ul><p>Declarative Code</p><ul><li>When JavaScript code is written <em>imperatively</em>, we tell JavaScript exactly <strong>what</strong> to do and <strong>how</strong> to do it. Think of it as if we’re giving JavaScript <em>commands</em> on exactly what steps it should take.</li><li>we <em>declare</em> what we want done, and JavaScript will take care of doing it.</li><li><em>Imperative</em> code instructs JavaScript on <em>how</em> it should perform each step. With <em>declarative</em> code, we tell JavaScript <em>what</em> we want to be done, and let JavaScript take care of performing the steps.</li><li><a href="https://tylermcginnis.com/imperative-vs-declarative-programming/" target="_blank" rel="noopener">Imperative vs Declarative Programming</a></li><li><a href="https://stackoverflow.com/questions/33655534/difference-between-declarative-and-imperative-in-react-js" target="_blank" rel="noopener">Difference between declarative and imperative in React.js?</a> from StackOverflow</li></ul><p>Unidirectional Data Flow</p><ul><li><em>Data flows down from parent component to child component. Data updates are sent to the parent component where the parent performs the actual change.</em> this might seem like extra work, but having the data flow in one direction and having one place where the data is modified makes it much easier to understand how the application works.</li><li>In React, data flows in only one direction, from parent to child. If data is shared between sibling child components, then the data should be stored in the parent component and passed to both of the child components that need it.</li></ul><p>Just JavaScript</p><ul><li>Why not look through some of your existing code and try converting your <code>for</code> loops to <code>.map()</code> calls or see if you can remove any <code>if</code> statements by using <code>.filter()</code>.</li></ul><h1 id="Rendering-UI-with-React"><a href="#Rendering-UI-with-React" class="headerlink" title="Rendering UI with React"></a>Rendering UI with React</h1><p>Creating Elements and JSX</p><ul><li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.createElement( <span class="comment">/* type */</span>, <span class="comment">/* props */</span>, <span class="comment">/* content */</span> );</span><br></pre></td></tr></table></figure></li><li><p>Let’s break down what each item can be:</p><ul><li><p><code>type</code> – either a string or a React Component</p><p>This can be a string of any existing HTML element (e.g. <code>&#39;p&#39;</code>, <code>&#39;span&#39;</code>, or <code>&#39;header&#39;</code>) or you could pass a React <em>component</em> (we’ll be creating components with JSX, in just a moment).</p></li></ul></li></ul><ul><li><p><code>props</code> – either <code>null</code> or an object</p><p>This is an object of HTML attributes and custom data about the element.</p></li></ul><ul><li><p><code>content</code> – <code>null</code>, a string, a React Element, or a React Component</p><p>Anything that you pass here will be the content of the rendered element. This can include plain text, JavaScript code, other React elements, etc.</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Why-React&quot;&gt;&lt;a href=&quot;#Why-React&quot; class=&quot;headerlink&quot; title=&quot;Why React?&quot;&gt;&lt;/a&gt;Why React?&lt;/h1&gt;&lt;p&gt;Composition Model&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;A good fu
-      
-    
-    </summary>
-    
-      <category term="React" scheme="https://eclatant.io/categories/React/"/>
-    
-    
-      <category term="React" scheme="https://eclatant.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Codility ~7</title>
     <link href="https://eclatant.io/2018/04/22/Codility7/"/>
     <id>https://eclatant.io/2018/04/22/Codility7/</id>
@@ -354,6 +356,33 @@
     
     
       <category term="Algorithm" scheme="https://eclatant.io/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React Fundamental</title>
+    <link href="https://eclatant.io/2018/04/22/React-Fundamental/"/>
+    <id>https://eclatant.io/2018/04/22/React-Fundamental/</id>
+    <published>2018-04-21T15:00:00.000Z</published>
+    <updated>2018-05-02T15:18:59.915Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Why-React"><a href="#Why-React" class="headerlink" title="Why React?"></a>Why React?</h1><p>Composition Model</p><ul><li>A good function should follow the “Do One Thing” rule</li><li>When you combine these simple functions together to form a more complex function, this is <strong>composition</strong>.</li><li><a href="https://www.linkedin.com/pulse/compose-me-function-composition-javascript-kevin-greene/" target="_blank" rel="noopener">Compose me That: Function Composition in JavaScript</a></li><li><a href="https://hackernoon.com/javascript-functional-composition-for-every-day-use-22421ef65a10" target="_blank" rel="noopener">Functional JavaScript: Function lComposition For Every Day Use.</a></li></ul><p>Declarative Code</p><ul><li>When JavaScript code is written <em>imperatively</em>, we tell JavaScript exactly <strong>what</strong> to do and <strong>how</strong> to do it. Think of it as if we’re giving JavaScript <em>commands</em> on exactly what steps it should take.</li><li>we <em>declare</em> what we want done, and JavaScript will take care of doing it.</li><li><em>Imperative</em> code instructs JavaScript on <em>how</em> it should perform each step. With <em>declarative</em> code, we tell JavaScript <em>what</em> we want to be done, and let JavaScript take care of performing the steps.</li><li><a href="https://tylermcginnis.com/imperative-vs-declarative-programming/" target="_blank" rel="noopener">Imperative vs Declarative Programming</a></li><li><a href="https://stackoverflow.com/questions/33655534/difference-between-declarative-and-imperative-in-react-js" target="_blank" rel="noopener">Difference between declarative and imperative in React.js?</a> from StackOverflow</li></ul><p>Unidirectional Data Flow</p><ul><li><em>Data flows down from parent component to child component. Data updates are sent to the parent component where the parent performs the actual change.</em> this might seem like extra work, but having the data flow in one direction and having one place where the data is modified makes it much easier to understand how the application works.</li><li>In React, data flows in only one direction, from parent to child. If data is shared between sibling child components, then the data should be stored in the parent component and passed to both of the child components that need it.</li></ul><p>Just JavaScript</p><ul><li>Why not look through some of your existing code and try converting your <code>for</code> loops to <code>.map()</code> calls or see if you can remove any <code>if</code> statements by using <code>.filter()</code>.</li></ul><h1 id="Rendering-UI-with-React"><a href="#Rendering-UI-with-React" class="headerlink" title="Rendering UI with React"></a>Rendering UI with React</h1><p>Creating Elements and JSX</p><ul><li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.createElement( <span class="comment">/* type */</span>, <span class="comment">/* props */</span>, <span class="comment">/* content */</span> );</span><br></pre></td></tr></table></figure></li><li><p>Let’s break down what each item can be:</p><ul><li><p><code>type</code> – either a string or a React Component</p><p>This can be a string of any existing HTML element (e.g. <code>&#39;p&#39;</code>, <code>&#39;span&#39;</code>, or <code>&#39;header&#39;</code>) or you could pass a React <em>component</em> (we’ll be creating components with JSX, in just a moment).</p></li></ul></li></ul><ul><li><p><code>props</code> – either <code>null</code> or an object</p><p>This is an object of HTML attributes and custom data about the element.</p></li></ul><ul><li><p><code>content</code> – <code>null</code>, a string, a React Element, or a React Component</p><p>Anything that you pass here will be the content of the rendered element. This can include plain text, JavaScript code, other React elements, etc.</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Why-React&quot;&gt;&lt;a href=&quot;#Why-React&quot; class=&quot;headerlink&quot; title=&quot;Why React?&quot;&gt;&lt;/a&gt;Why React?&lt;/h1&gt;&lt;p&gt;Composition Model&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A good fu
+      
+    
+    </summary>
+    
+      <category term="React" scheme="https://eclatant.io/categories/React/"/>
+    
+    
+      <category term="React" scheme="https://eclatant.io/tags/React/"/>
     
   </entry>
   
@@ -438,33 +467,6 @@
   </entry>
   
   <entry>
-    <title>React 입문</title>
-    <link href="https://eclatant.io/2018/03/07/React-Intro/"/>
-    <id>https://eclatant.io/2018/03/07/React-Intro/</id>
-    <published>2018-03-06T15:00:00.000Z</published>
-    <updated>2018-05-02T15:19:05.239Z</updated>
-    
-    <content type="html"><![CDATA[<p>미리 밝히자면 아래 내용은 결과론적일 수 있고, 필자의 개인적인 추측들이 담겨있으며, 마지막으로 필자는 Angular 또는 Vue로 프로젝트를 해본 경험이 전혀 없습니다.</p><hr><p>React는 Anti-Angular 목적이 담긴 라이브러리였다고 생각합니다.</p><p>예전에는 React에서 내세웠던 3가지 가치가 아래와 같았습니다.</p><p><code>Just the UI</code>, <code>Virtual DOM</code>, <code>Data Flow</code></p><p>첫 번째 내세운 가치인 Just the UI 는, Angular가 풀려는 문제가 매우 크고 그에 따른 해결책도 복잡했기에, React는 매우 단순하며 쉬운 <code>라이브러리</code>라는 점을 대단히 강조하고 싶었던 것 같습니다.</p><p>두 번째인 Virtual DOM은 Angular가 Digest Loop를 통해 변경사항을 반영했다면, React는 Virtual DOM을 통해서 효과적으로 Diff를 반영한다는 것을 내세우고 싶었던 것 같습니다.</p><p>마지막으로 Data Flow 역시 Angular는 Model-View 간의 양방향 바인딩을 지원했던 것에 비해, React는 단방향으로 Data의 변화를 View에 반영시키는 점도 Angular의 복잡성에 대한 차별성으로 나온 것이 아닐까 싶습니다.</p><p>최근에 React 공식 사이트가 Gatsby로 개편되면서 내용에도 일부 변화가 있었는데, 내세우는 3가지 가치가 아래와 같이 바뀌었습니다.</p><p><code>Declarative</code>, <code>Component-Based</code>, <code>Learn Once, Write Anywhere</code></p><p>첫 번째에서 말하는, 선언적인 View가 가능하다는 점은 제가 생각하는 React의 가장 큰 장점입니다.</p><p>Vanila나 jQuery로 개발했다면, Event Listener를 Delegation해놓고, 해당하는 Event Handler를 절차적으로 작성하여 User Interaction 또는 Data의 변화에 따른 View 수정을 했어야 했을 것입니다.</p><p>그에 비해서 React는 Component에 작성해놓은 방향대로 변화(User Interaction, Data Change)가 View에 반영되도록 돕습니다.</p><p>두 번째에서 말하는 Component는 굳이 언급이 필요했는지에 대해 잘 모르겠습니다. (React의 고유한 특징이라고 보기는 어려우므로) 오히려 하단에 적혀있는 아래 문구에 좀 더 방점이 찍혀있는 것인가 싶습니다.</p><blockquote><p>Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.</p></blockquote><p>마지막으로 Learn Once, Write Anywhere 역시 의미를 알기 어려웠는데, React Native 또는 React VR 등을 염두해두고 작성한 것인가 싶습니다.</p><p>어떤 라이브러리나 프레임워크를 사용할지 여부를 판단하기 위해 꼭 참고해야 할 Marketing Copy를 기준으로 React를 돌아보았습니다. 제가 알지 못하는 뒷배경들이 많겠지만, 적어도 제게는 예전 문구들이 훨씬 더 매력적이었던 것 같습니다.</p><p>실제로 React를 사용하기 위해선 Props, State, setState, Presentation Component, Container Component, Life Cycle, State Management, CRA, Webpack, SSR 등 알아야 할 것들이 많지만 해당 요소들은 다른 글을 통해 알아보기로 하겠습니다.</p><p>글에 대한 피드백은 언제든 환영합니다! :D</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;미리 밝히자면 아래 내용은 결과론적일 수 있고, 필자의 개인적인 추측들이 담겨있으며, 마지막으로 필자는 Angular 또는 Vue로 프로젝트를 해본 경험이 전혀 없습니다.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;React는 Anti-Angular 목적이 담긴 라이
-      
-    
-    </summary>
-    
-      <category term="React" scheme="https://eclatant.io/categories/React/"/>
-    
-    
-      <category term="React" scheme="https://eclatant.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
     <title>파이썬 기초</title>
     <link href="https://eclatant.io/2018/03/07/Python-Basic/"/>
     <id>https://eclatant.io/2018/03/07/Python-Basic/</id>
@@ -498,30 +500,29 @@
   </entry>
   
   <entry>
-    <title>글쓰기 시작</title>
-    <link href="https://eclatant.io/2018/02/12/Start/"/>
-    <id>https://eclatant.io/2018/02/12/Start/</id>
-    <published>2018-02-11T15:00:00.000Z</published>
-    <updated>2018-05-02T15:19:08.779Z</updated>
+    <title>React 입문</title>
+    <link href="https://eclatant.io/2018/03/07/React-Intro/"/>
+    <id>https://eclatant.io/2018/03/07/React-Intro/</id>
+    <published>2018-03-06T15:00:00.000Z</published>
+    <updated>2018-05-02T15:19:05.239Z</updated>
     
-    <content type="html"><![CDATA[<p>글쓰기는 내게 가장 어려운 일 중 하나였다.</p><p>스스로 가지고 있는 글쓰기 실력에 비해 눈높이가 높은 까닭일 것이다.</p><p>그래서 항상 미루고 또 미뤄왔고, 그렇기 때문에 더더욱 어렵게 느껴졌다.</p><p>그러던 내가 용기를 내게 된 것은 매일 한 문제 이상 알고리즘을 푼다는 습관이 성공적으로 정착되고 있는 ‘작은 성공’을 보면서 글쓰기도 할 수 있다고 생각하게 된 덕분이었다.</p><p>물론 이 습관도 그냥 생긴 것은 아니었으며, 매일 스스로 약속한 것을 지키고 인증하는 모임에 참여하고 있는 점이 가장 컸다.</p><p>해서, 성윤님이 모집하신 모임에 참여하면 글쓰기도 가능할 것이다 라고 생각하였고, 드디어 시작을 하게 되었다.</p><p>최근에 읽은 아티클 중에 관련하여 글쓰기와 관련하여 가장 인상적이었던 것은 <a href="http://ppss.kr/archives/151423" target="_blank" rel="noopener">글쓰기가 안 되는 분들을 위한 4단계 작문법</a> 이었다.</p><p>위 내용을 보고 여태까지 글쓰기가 힘들었던 것은 정신병자 단계를 거치지 않고 판사와 같은 마음으로 바라보고 있었기 때문이라는 것을 느꼈다.</p><p>그러다보면 이터레이션 주기가 길어지고, 따라서 성공할 수가 없었던 것이다. <img src="https://image.slidesharecdn.com/datamoney-150827021417-lva1-app6892/95/-21-1024.jpg?cb=1440662401" alt="image"></p><p>앞으로 최대한 편안한 마음으로 좋은 글이 아닌, 그저 지각하지 않고 제때 제출하는 것만을 목표로 써보려고 한다.</p><p>그 과정에서 다른 분들과 많이 교류하며 글쓰기 외에도 많은 것들을 얻어갈 수 있기를 바란다.</p>]]></content>
+    <content type="html"><![CDATA[<p>미리 밝히자면 아래 내용은 결과론적일 수 있고, 필자의 개인적인 추측들이 담겨있으며, 마지막으로 필자는 Angular 또는 Vue로 프로젝트를 해본 경험이 전혀 없습니다.</p><hr><p>React는 Anti-Angular 목적이 담긴 라이브러리였다고 생각합니다.</p><p>예전에는 React에서 내세웠던 3가지 가치가 아래와 같았습니다.</p><p><code>Just the UI</code>, <code>Virtual DOM</code>, <code>Data Flow</code></p><p>첫 번째 내세운 가치인 Just the UI 는, Angular가 풀려는 문제가 매우 크고 그에 따른 해결책도 복잡했기에, React는 매우 단순하며 쉬운 <code>라이브러리</code>라는 점을 대단히 강조하고 싶었던 것 같습니다.</p><p>두 번째인 Virtual DOM은 Angular가 Digest Loop를 통해 변경사항을 반영했다면, React는 Virtual DOM을 통해서 효과적으로 Diff를 반영한다는 것을 내세우고 싶었던 것 같습니다.</p><p>마지막으로 Data Flow 역시 Angular는 Model-View 간의 양방향 바인딩을 지원했던 것에 비해, React는 단방향으로 Data의 변화를 View에 반영시키는 점도 Angular의 복잡성에 대한 차별성으로 나온 것이 아닐까 싶습니다.</p><p>최근에 React 공식 사이트가 Gatsby로 개편되면서 내용에도 일부 변화가 있었는데, 내세우는 3가지 가치가 아래와 같이 바뀌었습니다.</p><p><code>Declarative</code>, <code>Component-Based</code>, <code>Learn Once, Write Anywhere</code></p><p>첫 번째에서 말하는, 선언적인 View가 가능하다는 점은 제가 생각하는 React의 가장 큰 장점입니다.</p><p>Vanila나 jQuery로 개발했다면, Event Listener를 Delegation해놓고, 해당하는 Event Handler를 절차적으로 작성하여 User Interaction 또는 Data의 변화에 따른 View 수정을 했어야 했을 것입니다.</p><p>그에 비해서 React는 Component에 작성해놓은 방향대로 변화(User Interaction, Data Change)가 View에 반영되도록 돕습니다.</p><p>두 번째에서 말하는 Component는 굳이 언급이 필요했는지에 대해 잘 모르겠습니다. (React의 고유한 특징이라고 보기는 어려우므로) 오히려 하단에 적혀있는 아래 문구에 좀 더 방점이 찍혀있는 것인가 싶습니다.</p><blockquote><p>Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.</p></blockquote><p>마지막으로 Learn Once, Write Anywhere 역시 의미를 알기 어려웠는데, React Native 또는 React VR 등을 염두해두고 작성한 것인가 싶습니다.</p><p>어떤 라이브러리나 프레임워크를 사용할지 여부를 판단하기 위해 꼭 참고해야 할 Marketing Copy를 기준으로 React를 돌아보았습니다. 제가 알지 못하는 뒷배경들이 많겠지만, 적어도 제게는 예전 문구들이 훨씬 더 매력적이었던 것 같습니다.</p><p>실제로 React를 사용하기 위해선 Props, State, setState, Presentation Component, Container Component, Life Cycle, State Management, CRA, Webpack, SSR 등 알아야 할 것들이 많지만 해당 요소들은 다른 글을 통해 알아보기로 하겠습니다.</p><p>글에 대한 피드백은 언제든 환영합니다! :D</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;글쓰기는 내게 가장 어려운 일 중 하나였다.&lt;/p&gt;
-&lt;p&gt;스스로 가지고 있는 글쓰기 실력에 비해 눈높이가 높은 까닭일 것이다.&lt;/p&gt;
-&lt;p&gt;그래서 항상 미루고 또 미뤄왔고, 그렇기 때문에 더더욱 어렵게 느껴졌다.&lt;/p&gt;
-&lt;p&gt;그러던 내가 용기를 
+        &lt;p&gt;미리 밝히자면 아래 내용은 결과론적일 수 있고, 필자의 개인적인 추측들이 담겨있으며, 마지막으로 필자는 Angular 또는 Vue로 프로젝트를 해본 경험이 전혀 없습니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;React는 Anti-Angular 목적이 담긴 라이
       
     
     </summary>
     
-      <category term="Essay" scheme="https://eclatant.io/categories/Essay/"/>
+      <category term="React" scheme="https://eclatant.io/categories/React/"/>
     
     
-      <category term="Essay" scheme="https://eclatant.io/tags/Essay/"/>
+      <category term="React" scheme="https://eclatant.io/tags/React/"/>
     
   </entry>
   
