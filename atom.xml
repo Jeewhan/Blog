@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://eclatant.io/"/>
-  <updated>2018-11-11T12:25:12.140Z</updated>
+  <updated>2018-11-18T14:59:11.434Z</updated>
   <id>https://eclatant.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>바닐라 자바스크립트로 모달창 만들기 클론</title>
+    <link href="https://eclatant.io/2018/11/18/2018-11-18-VanilaModal/"/>
+    <id>https://eclatant.io/2018/11/18/2018-11-18-VanilaModal/</id>
+    <published>2018-11-17T15:00:00.000Z</published>
+    <updated>2018-11-18T14:59:11.434Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.youtube.com/watch?v=V08wXKHF_Xw" target="_blank" rel="noopener">바닐라 자바스크립트로 5분만에 모달창 만들기 (Vanilla JS : making pop up screen in 5 min)</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=V08wXKHF_Xw&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;바닐라 자바스크립트로 5분만에 모달창 만들기 (Vanilla JS : making pop up
+      
+    
+    </summary>
+    
+      <category term="JS" scheme="https://eclatant.io/categories/JS/"/>
+    
+    
+      <category term="JS" scheme="https://eclatant.io/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>이번 주에 검색했던 것들 #1 : 18-11-18</title>
+    <link href="https://eclatant.io/2018/11/18/2018-11-18-SearchHistory/"/>
+    <id>https://eclatant.io/2018/11/18/2018-11-18-SearchHistory/</id>
+    <published>2018-11-17T15:00:00.000Z</published>
+    <updated>2018-11-18T13:58:31.933Z</updated>
+    
+    <content type="html"><![CDATA[<h3>자바스크립트 : Form 객체에 직접 접근</h3><p><a href="https://developer.mozilla.org/ko/docs/Web/API/Document/forms" target="_blank" rel="noopener">Document.forms</a></p><p>결론 : documents.forms를 통해 현재 document에 존재하는 Form element들이 담긴 collection 을 반환받을 수 있다</p><h3>자바스크립트 : Symbol -&gt; String</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/description" target="_blank" rel="noopener">Symbol.prototype.description</a></p><p>결론 : Math.floor를 사용하세요</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>(<span class="string">"desc"</span>).description); <span class="comment">// "desc"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Symbol</span>.iterator.description); <span class="comment">// "Symbol.iterator"</span></span><br></pre></td></tr></table></figure><h3>자바스크립트 : Object에서 key와 value를 동시에 얻고 싶을 때</h3><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/entries" target="_blank" rel="noopener">Object.entries()</a></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">foo</span>: <span class="string">'bar'</span>, <span class="attr">baz</span>: <span class="number">42</span> &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.entries(obj)); <span class="comment">// [ ['foo', 'bar'], ['baz', 42] ]</span></span><br></pre></td></tr></table></figure><p>주의사항 : forEach, map, filter, reduce 등과 달리 k, v 조합이다</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3&gt;자바스크립트 : Form 객체에 직접 접근&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/API/Document/forms&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Do
+      
+    
+    </summary>
+    
+      <category term="Dev" scheme="https://eclatant.io/categories/Dev/"/>
+    
+    
+      <category term="Dev" scheme="https://eclatant.io/tags/Dev/"/>
+    
+  </entry>
   
   <entry>
     <title>글쓰기 시작</title>
@@ -50,17 +101,17 @@
     <link href="https://eclatant.io/2018/11/11/2018-11-11-SearchHistory/"/>
     <id>https://eclatant.io/2018/11/11/2018-11-11-SearchHistory/</id>
     <published>2018-11-10T15:00:00.000Z</published>
-    <updated>2018-11-13T19:55:10.579Z</updated>
+    <updated>2018-11-18T14:01:35.996Z</updated>
     
-    <content type="html"><![CDATA[<p>몇 달 동안 자바스크립트 및 알고리즘 문제 풀이를 쉬고 있다가, 다시 시작했다.</p><p>생각보다 잊어버린 것들이 많았어서 좌절스럽기도 했지만, 그래도 다시 열심히 해보자.</p><h3>자바스크립트 : Integer -&gt; String, String(value) vs value.toString()</h3><p><a href="http://2ality.com/2012/03/converting-to-string.html" target="_blank" rel="noopener">Converting a value to string in JavaScript</a></p><p>결론 : value가 undefined || null 일 수 있으니 String(value)를 사용하라</p><h3>자바스크립트 : String -&gt; Integer, parseInt vs Math.floor</h3><p><a href="http://2ality.com/2013/01/parseint.html" target="_blank" rel="noopener">parseInt() doesn’t always correctly convert to integer</a></p><p>결론 : Math.floor를 사용하세요</p><h3>자바스크립트 : String -&gt; Array, split()은 기대와 다른 동작</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split" target="_blank" rel="noopener">String.prototype.split()</a></p><p><code>str.split([separator[, limit]])</code>, 새로운 문자열을 리턴</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"hello"</span>.split(); <span class="comment">// ["hello"]</span></span><br><span class="line"><span class="string">"hello"</span>.split(<span class="string">""</span>); <span class="comment">// ["h", "e", "l", "l", "o"]</span></span><br><span class="line"><span class="string">"hello"</span>.split(<span class="string">""</span>, <span class="number">3</span>); <span class="comment">// ["h", "e", "l"]</span></span><br></pre></td></tr></table></figure><p>관련 주의사항 : <a href="https://stackoverflow.com/a/34717402" target="_blank" rel="noopener">How do you get a string to a character array in JavaScript?</a></p><p>결론 : ES6를 사용해도 된다면, […str] || Array.from(str) 을 사용하자</p><h3>자바스크립트 : String 반복</h3><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/repeat" target="_blank" rel="noopener">String.prototype.repeat()</a> ES6</p><p><code>str.repeat(count)</code>, 새로운 문자열을 리턴</p><p>count는 양의 정수여야 한다</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'abc'</span>.repeat(<span class="number">-1</span>);   <span class="comment">// RangeError</span></span><br><span class="line"><span class="string">'abc'</span>.repeat(<span class="number">0</span>);    <span class="comment">// ''</span></span><br><span class="line"><span class="string">'abc'</span>.repeat(<span class="number">1</span>);    <span class="comment">// 'abc'</span></span><br><span class="line"><span class="string">'abc'</span>.repeat(<span class="number">2</span>);    <span class="comment">// 'abcabc'</span></span><br><span class="line"><span class="string">'abc'</span>.repeat(<span class="number">3.5</span>);  <span class="comment">// 'abcabcabc' (count will be converted to integer)</span></span><br></pre></td></tr></table></figure><p>만약 반복한 결과를 Array로 돌려받고 싶다면?</p><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill" target="_blank" rel="noopener">Array.prototype.fill()</a> ES6</p><p><code>arr.fill(value[, start[, end]])</code>, 부수효과를 일으키는 함수</p><p>순차적으로 증가하는 숫자가 담긴 배열이 필요하다면?</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[...Array(<span class="number">5</span> + <span class="number">1</span>).keys()].slice(<span class="number">1</span>); <span class="comment">// [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure><h3>자바스크립트 : 배열이 특정 길이인지 여부</h3><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank" rel="noopener">Array.prototype.includes()</a> ES7</p><p><code>arr.includes(searchElement[, fromIndex])</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">4</span>, <span class="number">6</span>].includes([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]); <span class="comment">// true</span></span><br><span class="line">[<span class="number">4</span>, <span class="number">6</span>].includes([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// false</span></span><br></pre></td></tr></table></figure><h3>자바스크립트 : 배열 요소중 최대값 구하기</h3><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/max" target="_blank" rel="noopener">Math.max()</a></p><p><code>Math.max([값1[, 값2[, ...]]])</code></p><p>만약 인수 중 하나라도 숫자로 변환하지 못한다면 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/NaN" target="_blank" rel="noopener"><code>NaN</code></a>로 반환합니다.</p><p>만약 아무 요소도 주어지지 않았다면 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/-Infinity" target="_blank" rel="noopener"><code>-Infinity</code></a>로 반환합니다.</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, numberArray);</span><br><span class="line"><span class="built_in">Math</span>.max(...numberArray);</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>몇 달 동안 자바스크립트 및 알고리즘 문제 풀이를 쉬고 있다가, 다시 시작했다</p><p>생각보다 잊어버린 것들이 많았어서 좌절스럽기도 했지만, 그래도 다시 열심히 해보자</p><h3>자바스크립트 : Integer -&gt; String, String(value) vs value.toString()</h3><p><a href="http://2ality.com/2012/03/converting-to-string.html" target="_blank" rel="noopener">Converting a value to string in JavaScript</a></p><p>결론 : value가 undefined || null 일 수 있으니 String(value)를 사용하라</p><h3>자바스크립트 : String -&gt; Integer, parseInt vs Math.floor</h3><p><a href="http://2ality.com/2013/01/parseint.html" target="_blank" rel="noopener">parseInt() doesn’t always correctly convert to integer</a></p><p>결론 : Math.floor를 사용하세요</p><h3>자바스크립트 : String -&gt; Array, split()은 기대와 다른 동작</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split" target="_blank" rel="noopener">String.prototype.split()</a></p><p><code>str.split([separator[, limit]])</code>, 새로운 문자열을 리턴</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"hello"</span>.split(); <span class="comment">// ["hello"]</span></span><br><span class="line"><span class="string">"hello"</span>.split(<span class="string">""</span>); <span class="comment">// ["h", "e", "l", "l", "o"]</span></span><br><span class="line"><span class="string">"hello"</span>.split(<span class="string">""</span>, <span class="number">3</span>); <span class="comment">// ["h", "e", "l"]</span></span><br></pre></td></tr></table></figure><p>관련 주의사항 : <a href="https://stackoverflow.com/a/34717402" target="_blank" rel="noopener">How do you get a string to a character array in JavaScript?</a></p><p>결론 : ES6를 사용해도 된다면, […str] || Array.from(str) 을 사용하자</p><h3>자바스크립트 : String 반복</h3><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/repeat" target="_blank" rel="noopener">String.prototype.repeat()</a> ES6</p><p><code>str.repeat(count)</code>, 새로운 문자열을 리턴</p><p>count는 양의 정수여야 한다</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'abc'</span>.repeat(<span class="number">-1</span>);   <span class="comment">// RangeError</span></span><br><span class="line"><span class="string">'abc'</span>.repeat(<span class="number">0</span>);    <span class="comment">// ''</span></span><br><span class="line"><span class="string">'abc'</span>.repeat(<span class="number">1</span>);    <span class="comment">// 'abc'</span></span><br><span class="line"><span class="string">'abc'</span>.repeat(<span class="number">2</span>);    <span class="comment">// 'abcabc'</span></span><br><span class="line"><span class="string">'abc'</span>.repeat(<span class="number">3.5</span>);  <span class="comment">// 'abcabcabc' (count will be converted to integer)</span></span><br></pre></td></tr></table></figure><p>만약 반복한 결과를 Array로 돌려받고 싶다면?</p><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill" target="_blank" rel="noopener">Array.prototype.fill()</a> ES6</p><p><code>arr.fill(value[, start[, end]])</code>, 부수효과를 일으키는 함수</p><p>순차적으로 증가하는 숫자가 담긴 배열이 필요하다면?</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[...Array(<span class="number">5</span> + <span class="number">1</span>).keys()].slice(<span class="number">1</span>); <span class="comment">// [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure><h3>자바스크립트 : 배열이 특정 길이인지 여부</h3><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank" rel="noopener">Array.prototype.includes()</a> ES7</p><p><code>arr.includes(searchElement[, fromIndex])</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">4</span>, <span class="number">6</span>].includes([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]); <span class="comment">// true</span></span><br><span class="line">[<span class="number">4</span>, <span class="number">6</span>].includes([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// false</span></span><br></pre></td></tr></table></figure><h3>자바스크립트 : 배열 요소중 최대값 구하기</h3><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/max" target="_blank" rel="noopener">Math.max()</a></p><p><code>Math.max([값1[, 값2[, ...]]])</code></p><p>만약 인수 중 하나라도 숫자로 변환하지 못한다면 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/NaN" target="_blank" rel="noopener"><code>NaN</code></a>로 반환합니다.</p><p>만약 아무 요소도 주어지지 않았다면 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/-Infinity" target="_blank" rel="noopener"><code>-Infinity</code></a>로 반환합니다.</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, numberArray);</span><br><span class="line"><span class="built_in">Math</span>.max(...numberArray);</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;몇 달 동안 자바스크립트 및 알고리즘 문제 풀이를 쉬고 있다가, 다시 시작했다.&lt;/p&gt;
-&lt;p&gt;생각보다 잊어버린 것들이 많았어서 좌절스럽기도 했지만, 그래도 다시 열심히 해보자.&lt;/p&gt;
-&lt;h3&gt;자바스크립트 : Integer -&amp;gt; String,
+        &lt;p&gt;몇 달 동안 자바스크립트 및 알고리즘 문제 풀이를 쉬고 있다가, 다시 시작했다&lt;/p&gt;
+&lt;p&gt;생각보다 잊어버린 것들이 많았어서 좌절스럽기도 했지만, 그래도 다시 열심히 해보자&lt;/p&gt;
+&lt;h3&gt;자바스크립트 : Integer -&amp;gt; String, S
       
     
     </summary>
@@ -359,6 +410,33 @@
   </entry>
   
   <entry>
+    <title>React Fundamental</title>
+    <link href="https://eclatant.io/2018/04/22/React-Fundamental/"/>
+    <id>https://eclatant.io/2018/04/22/React-Fundamental/</id>
+    <published>2018-04-21T15:00:00.000Z</published>
+    <updated>2018-05-02T15:18:59.915Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Why-React"><a href="#Why-React" class="headerlink" title="Why React?"></a>Why React?</h1><p>Composition Model</p><ul><li>A good function should follow the “Do One Thing” rule</li><li>When you combine these simple functions together to form a more complex function, this is <strong>composition</strong>.</li><li><a href="https://www.linkedin.com/pulse/compose-me-function-composition-javascript-kevin-greene/" target="_blank" rel="noopener">Compose me That: Function Composition in JavaScript</a></li><li><a href="https://hackernoon.com/javascript-functional-composition-for-every-day-use-22421ef65a10" target="_blank" rel="noopener">Functional JavaScript: Function lComposition For Every Day Use.</a></li></ul><p>Declarative Code</p><ul><li>When JavaScript code is written <em>imperatively</em>, we tell JavaScript exactly <strong>what</strong> to do and <strong>how</strong> to do it. Think of it as if we’re giving JavaScript <em>commands</em> on exactly what steps it should take.</li><li>we <em>declare</em> what we want done, and JavaScript will take care of doing it.</li><li><em>Imperative</em> code instructs JavaScript on <em>how</em> it should perform each step. With <em>declarative</em> code, we tell JavaScript <em>what</em> we want to be done, and let JavaScript take care of performing the steps.</li><li><a href="https://tylermcginnis.com/imperative-vs-declarative-programming/" target="_blank" rel="noopener">Imperative vs Declarative Programming</a></li><li><a href="https://stackoverflow.com/questions/33655534/difference-between-declarative-and-imperative-in-react-js" target="_blank" rel="noopener">Difference between declarative and imperative in React.js?</a> from StackOverflow</li></ul><p>Unidirectional Data Flow</p><ul><li><em>Data flows down from parent component to child component. Data updates are sent to the parent component where the parent performs the actual change.</em> this might seem like extra work, but having the data flow in one direction and having one place where the data is modified makes it much easier to understand how the application works.</li><li>In React, data flows in only one direction, from parent to child. If data is shared between sibling child components, then the data should be stored in the parent component and passed to both of the child components that need it.</li></ul><p>Just JavaScript</p><ul><li>Why not look through some of your existing code and try converting your <code>for</code> loops to <code>.map()</code> calls or see if you can remove any <code>if</code> statements by using <code>.filter()</code>.</li></ul><h1 id="Rendering-UI-with-React"><a href="#Rendering-UI-with-React" class="headerlink" title="Rendering UI with React"></a>Rendering UI with React</h1><p>Creating Elements and JSX</p><ul><li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.createElement( <span class="comment">/* type */</span>, <span class="comment">/* props */</span>, <span class="comment">/* content */</span> );</span><br></pre></td></tr></table></figure></li><li><p>Let’s break down what each item can be:</p><ul><li><p><code>type</code> – either a string or a React Component</p><p>This can be a string of any existing HTML element (e.g. <code>&#39;p&#39;</code>, <code>&#39;span&#39;</code>, or <code>&#39;header&#39;</code>) or you could pass a React <em>component</em> (we’ll be creating components with JSX, in just a moment).</p></li></ul></li></ul><ul><li><p><code>props</code> – either <code>null</code> or an object</p><p>This is an object of HTML attributes and custom data about the element.</p></li></ul><ul><li><p><code>content</code> – <code>null</code>, a string, a React Element, or a React Component</p><p>Anything that you pass here will be the content of the rendered element. This can include plain text, JavaScript code, other React elements, etc.</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Why-React&quot;&gt;&lt;a href=&quot;#Why-React&quot; class=&quot;headerlink&quot; title=&quot;Why React?&quot;&gt;&lt;/a&gt;Why React?&lt;/h1&gt;&lt;p&gt;Composition Model&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A good fu
+      
+    
+    </summary>
+    
+      <category term="React" scheme="https://eclatant.io/categories/React/"/>
+    
+    
+      <category term="React" scheme="https://eclatant.io/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Codility ~7</title>
     <link href="https://eclatant.io/2018/04/22/Codility7/"/>
     <id>https://eclatant.io/2018/04/22/Codility7/</id>
@@ -383,33 +461,6 @@
     
     
       <category term="Algorithm" scheme="https://eclatant.io/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React Fundamental</title>
-    <link href="https://eclatant.io/2018/04/22/React-Fundamental/"/>
-    <id>https://eclatant.io/2018/04/22/React-Fundamental/</id>
-    <published>2018-04-21T15:00:00.000Z</published>
-    <updated>2018-05-02T15:18:59.915Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Why-React"><a href="#Why-React" class="headerlink" title="Why React?"></a>Why React?</h1><p>Composition Model</p><ul><li>A good function should follow the “Do One Thing” rule</li><li>When you combine these simple functions together to form a more complex function, this is <strong>composition</strong>.</li><li><a href="https://www.linkedin.com/pulse/compose-me-function-composition-javascript-kevin-greene/" target="_blank" rel="noopener">Compose me That: Function Composition in JavaScript</a></li><li><a href="https://hackernoon.com/javascript-functional-composition-for-every-day-use-22421ef65a10" target="_blank" rel="noopener">Functional JavaScript: Function lComposition For Every Day Use.</a></li></ul><p>Declarative Code</p><ul><li>When JavaScript code is written <em>imperatively</em>, we tell JavaScript exactly <strong>what</strong> to do and <strong>how</strong> to do it. Think of it as if we’re giving JavaScript <em>commands</em> on exactly what steps it should take.</li><li>we <em>declare</em> what we want done, and JavaScript will take care of doing it.</li><li><em>Imperative</em> code instructs JavaScript on <em>how</em> it should perform each step. With <em>declarative</em> code, we tell JavaScript <em>what</em> we want to be done, and let JavaScript take care of performing the steps.</li><li><a href="https://tylermcginnis.com/imperative-vs-declarative-programming/" target="_blank" rel="noopener">Imperative vs Declarative Programming</a></li><li><a href="https://stackoverflow.com/questions/33655534/difference-between-declarative-and-imperative-in-react-js" target="_blank" rel="noopener">Difference between declarative and imperative in React.js?</a> from StackOverflow</li></ul><p>Unidirectional Data Flow</p><ul><li><em>Data flows down from parent component to child component. Data updates are sent to the parent component where the parent performs the actual change.</em> this might seem like extra work, but having the data flow in one direction and having one place where the data is modified makes it much easier to understand how the application works.</li><li>In React, data flows in only one direction, from parent to child. If data is shared between sibling child components, then the data should be stored in the parent component and passed to both of the child components that need it.</li></ul><p>Just JavaScript</p><ul><li>Why not look through some of your existing code and try converting your <code>for</code> loops to <code>.map()</code> calls or see if you can remove any <code>if</code> statements by using <code>.filter()</code>.</li></ul><h1 id="Rendering-UI-with-React"><a href="#Rendering-UI-with-React" class="headerlink" title="Rendering UI with React"></a>Rendering UI with React</h1><p>Creating Elements and JSX</p><ul><li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.createElement( <span class="comment">/* type */</span>, <span class="comment">/* props */</span>, <span class="comment">/* content */</span> );</span><br></pre></td></tr></table></figure></li><li><p>Let’s break down what each item can be:</p><ul><li><p><code>type</code> – either a string or a React Component</p><p>This can be a string of any existing HTML element (e.g. <code>&#39;p&#39;</code>, <code>&#39;span&#39;</code>, or <code>&#39;header&#39;</code>) or you could pass a React <em>component</em> (we’ll be creating components with JSX, in just a moment).</p></li></ul></li></ul><ul><li><p><code>props</code> – either <code>null</code> or an object</p><p>This is an object of HTML attributes and custom data about the element.</p></li></ul><ul><li><p><code>content</code> – <code>null</code>, a string, a React Element, or a React Component</p><p>Anything that you pass here will be the content of the rendered element. This can include plain text, JavaScript code, other React elements, etc.</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Why-React&quot;&gt;&lt;a href=&quot;#Why-React&quot; class=&quot;headerlink&quot; title=&quot;Why React?&quot;&gt;&lt;/a&gt;Why React?&lt;/h1&gt;&lt;p&gt;Composition Model&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;A good fu
-      
-    
-    </summary>
-    
-      <category term="React" scheme="https://eclatant.io/categories/React/"/>
-    
-    
-      <category term="React" scheme="https://eclatant.io/tags/React/"/>
     
   </entry>
   
