@@ -1,4 +1,4 @@
-hexo deploy -g
+npx hexo deploy -g
 git add .
 git commit -m "Update"
 git push
