@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "이번 주에 검색했던 것들 #2 : 18-11-25"
+title: "이번 주에 접했던 것들 #2 : 18-11-25"
 categories: Dev
 tags: Dev
 date: 2018-11-25
