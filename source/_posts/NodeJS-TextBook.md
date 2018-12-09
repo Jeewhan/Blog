@@ -171,7 +171,36 @@ var와 달리 block scope이고 재선언이 불가능하고 hoisting이 이루�
 
 #### 템플릿 문자열
 
-`${variable}` 형태의 string interpolation 또는 template substitution는 어렵지 않지만,  훨씬 어렵고 소중한 부분은 tagged templates이다
+`${variable}` 형태의 string interpolation 또는 template substitution는 어렵지 않지만,  훨씬 어렵고 소중한 부분은 tagged templates이다, reduce와 결합하면 템플릿 엔진 부럽지 않게 만들 수 있다
 
 - [Tagged templates](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates)
 - [ES6 In Depth: 템플릿 문자열](http://hacks.mozilla.or.kr/2015/08/es6-in-depth-template-strings-2/)
+
+#### 화살표 함수
+
+단순 문법을 넘어서서 함수와 결정적 차이는 책에 나오는 this binding 이외에도 prototype와 arguments이다
+
+인자의 정보를 받아오고 싶다면 Rest parameter를 사용하거나, scope chain을 통해 상위 함수(당연히 이 함수는 화살표 함수가 아니어야 한다)의 arguments를 참조해야 한다
+
+```javascript
+const func = (...args) => console.log(...args);
+func(1, 2, 3, 4, 5);
+
+function hoc() {
+  return () => console.log(arguments);
+}
+hoc(1, 2, 3, 4, 5)();
+```
+
+- [화살표 함수 - prototype](https://poiemaweb.com/es6-arrow-function#42-prototype)
+- [ES6 In Depth: 레스트 파라메터와 디폴트 파라메터](http://hacks.mozilla.or.kr/2015/08/es6-in-depth-rest-parameters-and-defaults/)
+
+#### 비구조화 할당
+
+- [ES6 In Depth: 디스트럭처링(Destructuring)](http://hacks.mozilla.or.kr/2015/09/es6-in-depth-destructuring/)
+
+#### 프로미스
+
+비동기 연산을 다루는 객체이다
+
+...ing
