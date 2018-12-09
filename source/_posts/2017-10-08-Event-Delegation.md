@@ -14,7 +14,6 @@ date: 2017-10-08
     - Event Object
       - Event Target
 
-
 ---
 
 ### Content
@@ -124,6 +123,9 @@ true일 경우 `Window`부터 이벤트가 발생한 `node`까지 `Event`가 전
 - `stopImmediatePropagation()`
   `stopPropagation()`와 더불어 `Sibling Node`에게도 `Event`가 전달되지 않도록 합니다.
 
+---
+
+Capture Phase 관련해서 착각해서는 안 되는 점은 위 그림에서 td tag에 있는 event listener는 도착한 시점에만 발생한다는 점입니다. td가 아닌 tr을 클릭했을 경우 td에 대한 capturing option의 event listener일지라도 호출되지 않습니다. 다만 tr 관련해서 td에 이벤트 위임을 해두었다면 td를 클릭하는 것만으로도 td의 event listener가 호출되겠지만, event target이 td일 것이므로 tr의 event handler는 호출되지 않을 것입니다.
 
 ---
 
