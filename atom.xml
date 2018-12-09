@@ -18,21 +18,18 @@
   
   <entry>
     <title>Cookie || Web Storage</title>
-    <link href="https://eclatant.io/2018/12/09/2018-12-09-Cookie-Web%20Storage/"/>
-    <id>https://eclatant.io/2018/12/09/2018-12-09-Cookie-Web Storage/</id>
+    <link href="https://eclatant.io/2018/12/09/2018-12-09-Cookie-Web-Storage/"/>
+    <id>https://eclatant.io/2018/12/09/2018-12-09-Cookie-Web-Storage/</id>
     <published>2018-12-08T15:00:00.000Z</published>
     <updated>2018-12-09T14:55:53.436Z</updated>
     
-    <content type="html"><![CDATA[<h3>쿠키, 로컬스토리지, 세션스토리지</h3><h4>Why?</h4><p>우선 Cookie와 Web Storage 두 가지로 나뉘지만 그 이전에 사용해야 하는 이유가 중요할 것이다</p><p>HTTP 프로토콜 특징상 Stateless이므로 상태 정보를 유지하지 않는다</p><p>그러나 웹 애플리케이션을 만들다보면 로그인과 같이 상태 정보가 필요한 때가 있다 (세션 관리, 개인화, 트래킹)</p><h4>How?</h4><h5>Cookie</h5><p>client local에 저장되는 key/value로 이루어진 file이다</p><p>요청시 cookie가 없다면 webpage를 response로 받으면서 cookie를 client local에 저장하고, 요청시 cookie가 있다면 request에 Cookie header를 통해 cookie도 함께 전송한다</p><p>response header에 Set-Cookie 속성을 이용하면 쿠키를 만들 수 있다</p><p>단점</p><ul><li>총 300개까지 cookie를 저장할 수 있고, 하나의 도메인당 20개의 값만 가질 수 있으며 하나당 4kb만 저장할 수 있다</li><li>매 HTTP 요청마다 포함되어 전달되므로 퍼포먼스상 좋지는 않다</li><li>별도의 암호화 없이 전달되므로 감청을 당할시 위험할 수 있다</li></ul><h5>Web Storage</h5><p>cookie와 달리 서버로 자동 전송되지 않는다</p><p>local storage와 session storage의 차이는 데이터가 소멸하는 시점이다, session storage는 세션이 종료되면 즉 브라우저의 탭이 꺼지면 데이터가 사라지지만 local storage는 별도로 삭제하거나 브라우저에 의해 비활성화되지 않는다면 사용가능하다</p><p>각각 window에 포함되어있는 localStorage 와 sessionStorage 를 통해 활용할 수 있다</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(<span class="string">'myCat'</span>, <span class="string">'Tom'</span>);</span><br><span class="line"></span><br><span class="line">sessionStorage.setItem(<span class="string">'myCat'</span>, <span class="string">'Tom'</span>);</span><br><span class="line">sessionStorage.getItem(<span class="string">"autosave"</span>)</span><br></pre></td></tr></table></figure><p>참고 사이트</p><ul><li><a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies#%EC%84%B8%EC%85%98_%EC%BF%A0%ED%82%A4" target="_blank" rel="noopener">MDN HTTP 쿠키</a></li><li><a href="https://developer.mozilla.org/ko/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API" target="_blank" rel="noopener">Web Storage API 사용하기</a></li><li><a href="https://jeong-pro.tistory.com/80" target="_blank" rel="noopener">쿠키와 세션의 차이, 용도, 사용법(cookie,session)</a></li><li><a href="https://isme2n.github.io/devlog/2017/06/21/storage-cookie/" target="_blank" rel="noopener">로컬스토리지, 세션스토리지 그리고 쿠키</a></li><li><a href="https://www.zerocho.com/category/HTML/post/5918515b1ed39f00182d3048" target="_blank" rel="noopener">로컬스토리지, 세션스토리지</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="쿠키-로컬스토리지-세션스토리지"><a href="#쿠키-로컬스토리지-세션스토리지" class="headerlink" title="쿠키, 로컬스토리지, 세션스토리지"></a>쿠키, 로컬스토리지, 세션스토리지</h3><h4 id="Why"><a href="#Why" class="headerlink" title="Why?"></a>Why?</h4><p>우선 Cookie와 Web Storage 두 가지로 나뉘지만 그 이전에 사용해야 하는 이유가 중요할 것이다</p><p>HTTP 프로토콜 특징상 Stateless이므로 상태 정보를 유지하지 않는다</p><p>그러나 웹 애플리케이션을 만들다보면 로그인과 같이 상태 정보가 필요한 때가 있다 (세션 관리, 개인화, 트래킹)</p><h4 id="How"><a href="#How" class="headerlink" title="How?"></a>How?</h4><h5 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h5><p>client local에 저장되는 key/value로 이루어진 file이다</p><p>요청시 cookie가 없다면 webpage를 response로 받으면서 cookie를 client local에 저장하고, 요청시 cookie가 있다면 request에 Cookie header를 통해 cookie도 함께 전송한다</p><p>response header에 Set-Cookie 속성을 이용하면 쿠키를 만들 수 있다</p><p>단점</p><ul><li>총 300개까지 cookie를 저장할 수 있고, 하나의 도메인당 20개의 값만 가질 수 있으며 하나당 4kb만 저장할 수 있다</li><li>매 HTTP 요청마다 포함되어 전달되므로 퍼포먼스상 좋지는 않다</li><li>별도의 암호화 없이 전달되므로 감청을 당할시 위험할 수 있다</li></ul><h5 id="Web-Storage"><a href="#Web-Storage" class="headerlink" title="Web Storage"></a>Web Storage</h5><p>cookie와 달리 서버로 자동 전송되지 않는다</p><p>local storage와 session storage의 차이는 데이터가 소멸하는 시점이다, session storage는 세션이 종료되면 즉 브라우저의 탭이 꺼지면 데이터가 사라지지만 local storage는 별도로 삭제하거나 브라우저에 의해 비활성화되지 않는다면 사용가능하다</p><p>각각 window에 포함되어있는 localStorage 와 sessionStorage 를 통해 활용할 수 있다</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(<span class="string">'myCat'</span>, <span class="string">'Tom'</span>);</span><br><span class="line"></span><br><span class="line">sessionStorage.setItem(<span class="string">'myCat'</span>, <span class="string">'Tom'</span>);</span><br><span class="line">sessionStorage.getItem(<span class="string">"autosave"</span>)</span><br></pre></td></tr></table></figure><p>참고 사이트</p><ul><li><a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies#세션_쿠키" target="_blank" rel="noopener">MDN HTTP 쿠키</a></li><li><a href="https://developer.mozilla.org/ko/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API" target="_blank" rel="noopener">Web Storage API 사용하기</a></li><li><a href="https://jeong-pro.tistory.com/80" target="_blank" rel="noopener">쿠키와 세션의 차이, 용도, 사용법(cookie,session)</a></li><li><a href="https://isme2n.github.io/devlog/2017/06/21/storage-cookie/" target="_blank" rel="noopener">로컬스토리지, 세션스토리지 그리고 쿠키</a></li><li><a href="https://www.zerocho.com/category/HTML/post/5918515b1ed39f00182d3048" target="_blank" rel="noopener">로컬스토리지, 세션스토리지</a></li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3&gt;쿠키, 로컬스토리지, 세션스토리지&lt;/h3&gt;
-&lt;h4&gt;Why?&lt;/h4&gt;
-&lt;p&gt;우선 Cookie와 Web Storage 두 가지로 나뉘지만 그 이전에 사용해야 하는 이유가 중요할 것이다&lt;/p&gt;
-&lt;p&gt;HTTP 프로토콜 특징상 Stateless이므로 상
+        &lt;h3 id=&quot;쿠키-로컬스토리지-세션스토리지&quot;&gt;&lt;a href=&quot;#쿠키-로컬스토리지-세션스토리지&quot; class=&quot;headerlink&quot; title=&quot;쿠키, 로컬스토리지, 세션스토리지&quot;&gt;&lt;/a&gt;쿠키, 로컬스토리지, 세션스토리지&lt;/h3&gt;&lt;h4 id=&quot;Why&quot;&gt;
       
     
     </summary>
@@ -626,6 +623,33 @@
   </entry>
   
   <entry>
+    <title>React 입문</title>
+    <link href="https://eclatant.io/2018/03/07/React-Intro/"/>
+    <id>https://eclatant.io/2018/03/07/React-Intro/</id>
+    <published>2018-03-06T15:00:00.000Z</published>
+    <updated>2018-05-02T15:19:05.239Z</updated>
+    
+    <content type="html"><![CDATA[<p>미리 밝히자면 아래 내용은 결과론적일 수 있고, 필자의 개인적인 추측들이 담겨있으며, 마지막으로 필자는 Angular 또는 Vue로 프로젝트를 해본 경험이 전혀 없습니다.</p><hr><p>React는 Anti-Angular 목적이 담긴 라이브러리였다고 생각합니다.</p><p>예전에는 React에서 내세웠던 3가지 가치가 아래와 같았습니다.</p><p><code>Just the UI</code>, <code>Virtual DOM</code>, <code>Data Flow</code></p><p>첫 번째 내세운 가치인 Just the UI 는, Angular가 풀려는 문제가 매우 크고 그에 따른 해결책도 복잡했기에, React는 매우 단순하며 쉬운 <code>라이브러리</code>라는 점을 대단히 강조하고 싶었던 것 같습니다.</p><p>두 번째인 Virtual DOM은 Angular가 Digest Loop를 통해 변경사항을 반영했다면, React는 Virtual DOM을 통해서 효과적으로 Diff를 반영한다는 것을 내세우고 싶었던 것 같습니다.</p><p>마지막으로 Data Flow 역시 Angular는 Model-View 간의 양방향 바인딩을 지원했던 것에 비해, React는 단방향으로 Data의 변화를 View에 반영시키는 점도 Angular의 복잡성에 대한 차별성으로 나온 것이 아닐까 싶습니다.</p><p>최근에 React 공식 사이트가 Gatsby로 개편되면서 내용에도 일부 변화가 있었는데, 내세우는 3가지 가치가 아래와 같이 바뀌었습니다.</p><p><code>Declarative</code>, <code>Component-Based</code>, <code>Learn Once, Write Anywhere</code></p><p>첫 번째에서 말하는, 선언적인 View가 가능하다는 점은 제가 생각하는 React의 가장 큰 장점입니다.</p><p>Vanila나 jQuery로 개발했다면, Event Listener를 Delegation해놓고, 해당하는 Event Handler를 절차적으로 작성하여 User Interaction 또는 Data의 변화에 따른 View 수정을 했어야 했을 것입니다.</p><p>그에 비해서 React는 Component에 작성해놓은 방향대로 변화(User Interaction, Data Change)가 View에 반영되도록 돕습니다.</p><p>두 번째에서 말하는 Component는 굳이 언급이 필요했는지에 대해 잘 모르겠습니다. (React의 고유한 특징이라고 보기는 어려우므로) 오히려 하단에 적혀있는 아래 문구에 좀 더 방점이 찍혀있는 것인가 싶습니다.</p><blockquote><p>Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.</p></blockquote><p>마지막으로 Learn Once, Write Anywhere 역시 의미를 알기 어려웠는데, React Native 또는 React VR 등을 염두해두고 작성한 것인가 싶습니다.</p><p>어떤 라이브러리나 프레임워크를 사용할지 여부를 판단하기 위해 꼭 참고해야 할 Marketing Copy를 기준으로 React를 돌아보았습니다. 제가 알지 못하는 뒷배경들이 많겠지만, 적어도 제게는 예전 문구들이 훨씬 더 매력적이었던 것 같습니다.</p><p>실제로 React를 사용하기 위해선 Props, State, setState, Presentation Component, Container Component, Life Cycle, State Management, CRA, Webpack, SSR 등 알아야 할 것들이 많지만 해당 요소들은 다른 글을 통해 알아보기로 하겠습니다.</p><p>글에 대한 피드백은 언제든 환영합니다! :D</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;미리 밝히자면 아래 내용은 결과론적일 수 있고, 필자의 개인적인 추측들이 담겨있으며, 마지막으로 필자는 Angular 또는 Vue로 프로젝트를 해본 경험이 전혀 없습니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;React는 Anti-Angular 목적이 담긴 라이
+      
+    
+    </summary>
+    
+      <category term="React" scheme="https://eclatant.io/categories/React/"/>
+    
+    
+      <category term="React" scheme="https://eclatant.io/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
     <title>파이썬 기초</title>
     <link href="https://eclatant.io/2018/03/07/Python-Basic/"/>
     <id>https://eclatant.io/2018/03/07/Python-Basic/</id>
@@ -655,33 +679,6 @@
     
     
       <category term="Python" scheme="https://eclatant.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React 입문</title>
-    <link href="https://eclatant.io/2018/03/07/React-Intro/"/>
-    <id>https://eclatant.io/2018/03/07/React-Intro/</id>
-    <published>2018-03-06T15:00:00.000Z</published>
-    <updated>2018-05-02T15:19:05.239Z</updated>
-    
-    <content type="html"><![CDATA[<p>미리 밝히자면 아래 내용은 결과론적일 수 있고, 필자의 개인적인 추측들이 담겨있으며, 마지막으로 필자는 Angular 또는 Vue로 프로젝트를 해본 경험이 전혀 없습니다.</p><hr><p>React는 Anti-Angular 목적이 담긴 라이브러리였다고 생각합니다.</p><p>예전에는 React에서 내세웠던 3가지 가치가 아래와 같았습니다.</p><p><code>Just the UI</code>, <code>Virtual DOM</code>, <code>Data Flow</code></p><p>첫 번째 내세운 가치인 Just the UI 는, Angular가 풀려는 문제가 매우 크고 그에 따른 해결책도 복잡했기에, React는 매우 단순하며 쉬운 <code>라이브러리</code>라는 점을 대단히 강조하고 싶었던 것 같습니다.</p><p>두 번째인 Virtual DOM은 Angular가 Digest Loop를 통해 변경사항을 반영했다면, React는 Virtual DOM을 통해서 효과적으로 Diff를 반영한다는 것을 내세우고 싶었던 것 같습니다.</p><p>마지막으로 Data Flow 역시 Angular는 Model-View 간의 양방향 바인딩을 지원했던 것에 비해, React는 단방향으로 Data의 변화를 View에 반영시키는 점도 Angular의 복잡성에 대한 차별성으로 나온 것이 아닐까 싶습니다.</p><p>최근에 React 공식 사이트가 Gatsby로 개편되면서 내용에도 일부 변화가 있었는데, 내세우는 3가지 가치가 아래와 같이 바뀌었습니다.</p><p><code>Declarative</code>, <code>Component-Based</code>, <code>Learn Once, Write Anywhere</code></p><p>첫 번째에서 말하는, 선언적인 View가 가능하다는 점은 제가 생각하는 React의 가장 큰 장점입니다.</p><p>Vanila나 jQuery로 개발했다면, Event Listener를 Delegation해놓고, 해당하는 Event Handler를 절차적으로 작성하여 User Interaction 또는 Data의 변화에 따른 View 수정을 했어야 했을 것입니다.</p><p>그에 비해서 React는 Component에 작성해놓은 방향대로 변화(User Interaction, Data Change)가 View에 반영되도록 돕습니다.</p><p>두 번째에서 말하는 Component는 굳이 언급이 필요했는지에 대해 잘 모르겠습니다. (React의 고유한 특징이라고 보기는 어려우므로) 오히려 하단에 적혀있는 아래 문구에 좀 더 방점이 찍혀있는 것인가 싶습니다.</p><blockquote><p>Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.</p></blockquote><p>마지막으로 Learn Once, Write Anywhere 역시 의미를 알기 어려웠는데, React Native 또는 React VR 등을 염두해두고 작성한 것인가 싶습니다.</p><p>어떤 라이브러리나 프레임워크를 사용할지 여부를 판단하기 위해 꼭 참고해야 할 Marketing Copy를 기준으로 React를 돌아보았습니다. 제가 알지 못하는 뒷배경들이 많겠지만, 적어도 제게는 예전 문구들이 훨씬 더 매력적이었던 것 같습니다.</p><p>실제로 React를 사용하기 위해선 Props, State, setState, Presentation Component, Container Component, Life Cycle, State Management, CRA, Webpack, SSR 등 알아야 할 것들이 많지만 해당 요소들은 다른 글을 통해 알아보기로 하겠습니다.</p><p>글에 대한 피드백은 언제든 환영합니다! :D</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;미리 밝히자면 아래 내용은 결과론적일 수 있고, 필자의 개인적인 추측들이 담겨있으며, 마지막으로 필자는 Angular 또는 Vue로 프로젝트를 해본 경험이 전혀 없습니다.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;React는 Anti-Angular 목적이 담긴 라이
-      
-    
-    </summary>
-    
-      <category term="React" scheme="https://eclatant.io/categories/React/"/>
-    
-    
-      <category term="React" scheme="https://eclatant.io/tags/React/"/>
     
   </entry>
   
