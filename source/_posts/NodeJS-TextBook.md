@@ -40,7 +40,7 @@ Node.js는 libuv 라이브러리를 통해 이벤트 기반, 논 블록킹 I/O �
 
 논 블록킹 I/O에 대해 이해하기 위해서 Blocking, NonBlocking, Sync, Async 에 대해 살펴보자
 
-- []()
+- [Block, NonBlock, Sync, Async](https://eclatant.io/2018/12/09/2018-12-09-Block-NonBlock-Sync-Async/)
 
 ---
 
