@@ -3,7 +3,7 @@ layout: post
 title: "이벤트 델리게이션"
 categories: JS
 tags: JS
-date: 2017-10-08
+date: 2018-12-09
 ---
 
 ### Concept
