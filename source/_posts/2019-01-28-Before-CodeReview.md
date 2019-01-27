@@ -14,7 +14,7 @@ date: 2019-01-28
 
 개인의 취향과도 밀접하게 맞닿아있는 내용들도 많아서 조심스럽지만, 주니어 개발자인 필자의 주관적인 의견에 불과하다.
 
----
+
 
 0. [Prettier](https://prettier.io/), [ESLint](https://eslint.org/) 적용
 
@@ -38,9 +38,10 @@ https://www.youtube.com/watch?v=ya78lQi5vVI
 
 https://github.com/airbnb/javascript
 
----
 
-1. 변수를 선언할 때 var, let, const 키워드를 생략하지는 않았는가? (또는 변수에 할당할 때 this를 생략하지는 않았는가?)
+
+1. 변수를 선언할 때 var, let, const 키워드를 생략하지는 않았는가?
+(또는 변수에 할당할 때 this를 생략하지는 않았는가?)
 
 설령 현재 코드가 동작이 제대로 되는 것처럼 보일지라도, 정확한 대상을 지정한 결과가 아니라면 나중에는 문제가 발생하기 마련입니다.
 
@@ -51,9 +52,9 @@ https://github.com/airbnb/javascript
 
 this의 경우, 인터뷰 단골 질문이며 관련해서 call, apply, bind, arrow function 등과 연결되지만 초심자가 우선적으로 공부할 대상은 아닐 수 있습니다.
 
----
 
-2. 내가 해결하려는 로직을 언어 내장 메소드로 해결할 수 있는가?
+
+2. 언어 내장 메소드로 해결할 수 있는가?
 
 보통 가장 많이 사용하게 될 자료구조 중 하나는 배열일 것이라고 생각합니다.
 
@@ -82,7 +83,7 @@ https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Ar
 
 이러한 다양한 메소드들이 존재하니, 언어에서 기본적으로 제공해주는 메소드들은 최대한 눈에 익혀두고, 나중에 필요할 때 다시 찾아서 사용해보는 것을 반복하는 것을 추천합니다.
 
----
+
 
 3. 적절한 자료구조를 사용하고 있는가?
 
@@ -92,25 +93,25 @@ https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Ar
 
 어떨 때는 배열이 좋고, 어떨 때는 객체가 좋고 하는 부분들은 충분히 고민해볼만한 포인트라고 생각됩니다.
 
----
 
-3. 중복이 존재하지는 않은가?
+
+4. 중복이 존재하지는 않은가?
 
 만약 내가 하려는 로직이 동일하게 2~3번 반복된다면 함수로 추상화시켜서 반복을 줄일 수 있을 것입니다.
 
 이 외에도 어떤 로직과 어떤 로직이 매우 비슷한데 사소한 1~2곳이 다르다면 그 부분을 제외한 영역은 중복을 줄일 수 있을지 고민해보는 것도 매우 좋을 것 같습니다.
 
----
 
-4. Primitive Type과 Reference Type의 차이점을 알고 있는가?
+
+5. Primitive Type과 Reference Type의 차이점을 알고 있는가?
 
 JavaScript에는 6가지 Primitive Type이 존재하고, 그 외에는 모두 Reference Type입니다.
 
 함수에 인수로 넘기고 return으로 받는 과정에서 분명한 차이가 존재하므로 꼭 제대로 이해하고 있어야만 하는 포인트입니다.
 
----
 
-5. Event Delegation에 대해 이해하고 있는가?
+
+6. Event Delegation에 대해 이해하고 있는가?
 
 면접에 빈번하게 나오는 질문입니다.
 
