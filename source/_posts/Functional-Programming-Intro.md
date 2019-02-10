@@ -1902,6 +1902,34 @@ _.go(products,
 ## 비동기
 
 ```javascript
+function square(a) {
+  return new Promise(function(resolve) {
+    setTimeout(function() {
+      resolve(a * a);
+    }, 500);
+  });
+}
+
+var list = [2, 3, 4];
+
+new Promise(function(resolve) {
+  (function recur(res) {
+    if (list.length == res.length) return resolve(res);
+    square(list[res.length]).then(function(val) {
+      res.push(val);
+      recur(res);
+    });
+  })([]);
+}).then(console.log);
+
+// 위와 동일한 결과이며, 중첩 로직을 수행해야 할 때 훨씬 쉽게 만들 수 있음
+_.go(list,
+  _.map(square),
+//  _.map(square),
+//  _.map(square),
+  console.log
+)
+
 (function(w) {
   w._identity = w._idtt = function(v) { return v };
   w._noop = function() {};
