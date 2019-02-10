@@ -1199,7 +1199,9 @@ _go(users, _reject(user => user.age < 20), f1);
 그러면 문제를 보다 잘 정리된 패턴으로 분석을 할 수 있고 과제가 쉬워져서 프로그래밍이 좀 더 쉽게 이루어지고, i의 변화나 for문 등이 없고, 모든 함수들이 다형성이 있으면서도 안정성이 확보된 함수들을 조립하면서 프로그래밍을 하기 때문에 내가 만든 이 로직이 잘 돌아갈 것이라는 확신을 좀 더 빨리 얻을 수 있고, 테스트도 훨씬 쉽습니다
 
 이미 테스트가 잘 된 함수들의 조합을 통해서 프로그래밍을 해나가면 보다 빠르게 이 코드가 잘 동작할 것이라는 확신을 가지면서 쉽게 함수조합을 해나갈 수 있습니다
+
 ---
+
 ## 자바스크립트에서의 지연 평가
 ### 지연 평가
 
@@ -1266,8 +1268,6 @@ console.log(mi, fi); // 12, 12
 순수함수란 어느 시점에 평가를 해도 항상 동일한 결과를 돌려주기 때문입니다
 
 그렇기에 내부적으로 순서를 재배치함으로서 최적화할 수 있는 여지가 생깁니다
-
-[image:889E3C08-F08F-467C-976B-4AE17563703E-16635-0001586AF8CAA382/B72221B3-E4B0-408D-B6E9-DE9BB611C623.png]
 
 ### 요약, 클로저, 엘릭서, 병렬성
 
@@ -1712,19 +1712,30 @@ _.go(
 ---
 ### 효율 높이기
 
+이어질 로직들을 처리하기 좋게 데이터를 먼저 변형하고 진행하겠다라고 생각하면 좋습니다 (문제가 간결해집니다)
+
+users 밑에 posts가 속해있고, 각각의 posts에는 comments가 속하도록 변경해두고 시작하면 뒷 부분에서 효율성을 획득할 수 있습니다
+
+불변적으로 데이터를 다루는 것이 좋습니다, 보다 안전하고 많은 문제를 해결해주며 쉽게 해줍니다
+
+값을 한 번 변경해놓으면 다른 로직에서 다시 참조할 때에도 문제가 발생할 수 있습니다
+
 ```javascript
 // 5. users + posts + comments (index_by와 group_by로 효율 높이기)
-
-var users2 = _.index_by(users, 'id');
+// function find_user_by_id(user_id) { _.find(users, function(user) { return user.id == comment.user_id; }) }
+// function find_user_by_id(user_id) { return user2[user_id] }
+var users2 = _.index_by(users, 'id'); // 배열을 주어진 키를 기준으로 인덱싱한 새로운 객체를 만들어 리턴해주는 함수
 
 var comments2 = _.go(
   comments,
   _.map(function(comment) {
-    return _.extend({
+    return _.extend({ // 값 복사해주는 함수
+      // user: _.find(users, function(user) { return user.id == comment.user_id; })
+      // user: find_user_by_id(comment.user_id)
       user: users2[comment.user_id]
     }, comment);
   }),
-  _.group_by('post_id'));
+  _.group_by('post_id')); // 해당하는 key를 기준으로 배열을 담은 새로운 객체를 만들어 리턴해주는 함수
 
 console.log(comments2);
 
@@ -1732,6 +1743,7 @@ var posts2 = _.go(
   posts,
   _.map(function(post) {
     return _.extend({
+      // comments: _.filter(comments2, function(comment) { return comment.post_id == post.id }),
       comments: comments2[post.id] || [],
       user: users2[post.user_id]
     }, post);
@@ -1739,6 +1751,24 @@ var posts2 = _.go(
 
 var posts3 = _.group_by(posts2, 'user_id');
 console.log(posts3);
+
+/*
+ * _.each(users2, function(user) {
+ *   user.posts. = _.filter(posts2, function(post) {
+ *     return post.user_id == user.id;
+ *   })
+ * });
+ * 위와 같이 변경하면 안에 담긴 값들이 계속해서 서로 연결되는 형태가 됩니다
+ * 그렇게 되면 계속해서 재귀가 되는 형태가 되므로 JSON.stringify가 불가능합니다
+ */
+
+/*
+ * var users3 = _.map(users2, function(user) {
+ *   return _.extend({
+ *     posts: posts2[user.id] || []
+ *   }, user);
+ * });
+ */
 
 var users3 = _.map(users2, function(user) {
   return _.extend({
@@ -1749,14 +1779,14 @@ var users3 = _.map(users2, function(user) {
 console.log(users3);
 
 // 5.1. 특정인의 posts의 모든 comments 거르기
-var user = users3[0];
+var user = users3[0]; // 특정인 지정
 
 _.go(user.posts,
   _.pluck('comments'),
-  _.flatten,
+  _.flatten, // 합쳐주는 역할
   console.log);
 
-console.log(_.deep_pluck(user, 'posts.comments'));
+console.log(_.deep_pluck(user, 'posts.comments')); // 깊이있는 값을 path를 따라서 pluck + flatten을 해주는 함수
 
 // 5.2. 특정인의 posts에 comments를 단 친구의 이름들 뽑기
 _.go(user.posts,
@@ -1767,6 +1797,8 @@ _.go(user.posts,
   _.uniq,
   console.log);
 
+// console.log(_.uniq(_.deep_pluck(user, 'posts.comments.user.name')));
+// 함수의 중첩이 생겼으니 go로 변환한다
 _.go(user, _.deep_pluck('posts.comments.user.name'), _.uniq, console.log);
 
 // 5.3. 특정인의 posts에 comments를 단 친구들 카운트 정보
@@ -1794,7 +1826,209 @@ console.log(
 ---
 ## 실전코드조각 2
 
+reduce 등을 사용하게 되면 명령적인 코드들이 사라지므로 문제해결에만 집중할 수 있게 됩니다
+
+```javascript
+var products = [
+  {
+    is_selected: true, // <--- 장바구니에서 체크 박스 선택
+    name: "반팔티",
+    price: 10000, // <--- 기본 가격
+    sizes: [ // <---- 장바구니에 담은 동일 상품의 사이즈 별 수량과 가격
+      { name: "L", quantity: 4, price: 0 },
+      { name: "XL", quantity: 2, price: 0 },
+      { name: "2XL", quantity: 3, price: 2000 }, // <-- 옵션의 추가 가격
+    ]
+  },
+  {
+    is_selected: true,
+    name: "후드티",
+    price: 21000,
+    sizes: [
+      { name: "L", quantity: 2, price: -1000 },
+      { name: "2XL", quantity: 4, price: 2000 },
+    ]
+  },
+  {
+    is_selected: false,
+    name: "맨투맨",
+    price: 16000,
+    sizes: [
+      { name: "L", quantity: 10, price: 0 }
+    ]
+  }
+];
+
+// 1. 모든 수량
+var total_quantity = _.reduce(function(tq, product) {
+  return _.reduce(product.sizes, function(tq, size) {
+    return tq + size.quantity;
+  }, tq);
+}, 0);
+
+_.go(products,
+  total_quantity,
+  console.log);
+
+// 2. 선택 된 총 수량
+
+_.go(products,
+  _.filter(_get('is_selected')),
+  total_quantity,
+  console.log);
+
+// 3. 모든 가격
+
+var total_price = _.reduce(function(tp, product) {
+  return _.reduce(product.sizes, function(tp, size) {
+    return tp + (product.price + size.price) * size.quantity;
+  }, tp);
+}, 0);
+
+_.go(products,
+  total_price,
+  console.log);
+
+// 4. 선택 된 총 가격
+
+_.go(products,
+  _.filter(_get('is_selected')),
+  total_price,
+  console.log);
+```
+
+---
+
 ## 비동기
+
+```javascript
+(function(w) {
+  w._identity = w._idtt = function(v) { return v };
+  w._noop = function() {};
+  w._keys = function(obj) { return obj ? Object.keys(obj) : [] };
+  w._mr = function() { return arguments._mr = true, arguments };
+
+  w._pipe = function() {
+    var fs = arguments, len = fs.length;
+    return function(res) {
+      var i = -1;
+      while (++i < len) res = res && res._mr ? fs[i].apply(null, res) : fs[i](res);
+      return res;
+    }
+  };
+
+  w._go = function() {
+    var i = 0, fs = arguments, len = fs.length, res = arguments[0];
+    while (++i < len) res = res && res._mr ? fs[i].apply(null, res) : fs[i](res);
+    return res;
+  };
+
+  w._each = function f(arr, iter) {
+    if (!iter) return function(arr2) { return f(arr2, arr) };
+    var i = -1, len = arr && arr.length;
+    while (++i < len) iter(arr[i]);
+    return arr;
+  };
+
+  w._oeach = function f(obj, iter) {
+    if (!iter) return function(obj2) { return f(obj2, obj) };
+    var i = -1, keys = _keys(obj), len = keys.length;
+    while (++i < len) iter(obj[keys[i]]);
+    return obj;
+  };
+
+  w._map = function f(arr, iter) {
+    if (!iter) return function(arr2) { return f(arr2, arr) };
+    var i = -1, len = arr && arr.length, res = [];
+    while (++i < len) res[i] = iter(arr[i]);
+    return res;
+  };
+
+  w._omap = function f(obj, iter) {
+    if (!iter) return function(obj2) { return f(obj2, obj) };
+    var i = -1, keys = _keys(obj), len = keys.length, res = [];
+    while (++i < len) res[i] = iter(obj[keys[i]]);
+    return res;
+  };
+
+  w._flatmap = w._mapcat = function f(arr, iter) {
+    if (!iter) return function(arr2) { return f(arr2, arr) };
+    var i = -1, len = arr && arr.length, res = [], evd;
+    while (++i < len) Array.isArray(evd = iter(arr[i])) ? res.push.apply(res, evd) : res.push(evd);
+    return res;
+  };
+
+  w._oflatmap = w._omapcat = function f(obj, iter) {
+    if (!iter) return function(obj2) { return f(obj2, obj) };
+    var i = -1, keys = _keys(obj), len = keys.length, res = [], evd;
+    while (++i < len) Array.isArray(evd = iter(obj[keys[i]])) ? res.push.apply(res, evd) : res.push(evd);
+    return res;
+  };
+
+  w._filter = function f(arr, iter) {
+    if (!iter) return function(arr2) { return f(arr2, arr) };
+    var i = -1, len = arr && arr.length, res = [];
+    while (++i < len) if (iter(arr[i])) res[i].push(arr[i]);
+    return res;
+  };
+
+  w._ofilter = function f(obj, iter) {
+    if (!iter) return function(obj2) { return f(obj2, obj) };
+    var i = -1, keys = _keys(obj), len = keys.length, res = [];
+    while (++i < len) if (iter(obj[keys[i]])) res[i].push(obj[keys[i]]);
+    return res;
+  };
+
+  w._reject = function f(arr, iter) {
+    if (!iter) return function(arr2) { return f(arr2, arr) };
+    var i = -1, len = arr && arr.length, res = [];
+    while (++i < len) if (!iter(arr[i])) res[i].push(arr[i]);
+    return res;
+  };
+
+  w._oreject = function f(obj, iter) {
+    if (!iter) return function(obj2) { return f(obj2, obj) };
+    var i = -1, keys = _keys(obj), len = keys.length, res = [];
+    while (++i < len) if (!iter(obj[keys[i]])) res[i].push(obj[keys[i]]);
+    return res;
+  };
+
+  w._reduce = function f(arr, iter, init) {
+    if (typeof arr == "function") return function(arr2){ return f(arr2, arr, iter) };
+    var i = -1, len = arr && arr.length, res = init || arr[++i];
+    while (++i < len) res = iter(res, arr[i]);
+    return res;
+  };
+
+  w._oreduce = function f(obj, iter, init) {
+    if (typeof obj == "function") return function(obj2){ return f(obj2, obj, iter) };
+    var i = -1, keys = _keys(obj), len = keys.length, res = init || obj[keys[++i]];
+    while (++i < len) res = iter(res, obj[keys[i]]);
+    return res;
+  };
+
+  w._find = function f(arr, iter) {
+    if (!iter) return function(arr2) { return f(arr2, arr) };
+    var i = -1, len = arr && arr.length;
+    while (++i < len) if (iter(arr[i])) return arr[i];
+  };
+
+  w._ofind = function f(obj, iter) {
+    if (!iter) return function(obj2) { return f(obj2, obj) };
+    var i = -1, keys = _keys(obj), len = keys.length;
+    while (++i < len) if (iter(obj[keys[i]])) return obj[keys[i]];
+  };
+
+  w._range = function(start, stop, step) {
+    if (stop == null) { stop = start || 0; start = 0; }
+    step = step || 1;
+    var length = Math.max(Math.ceil((stop - start) / step), 0), range = Array(length);
+    for (var idx = 0; idx < length; idx++, start += step) range[idx] = start;
+    return range;
+  };
+
+})(typeof global == 'object' ? global : window);
+```
 
 ---
 ## 특강
@@ -1841,10 +2075,10 @@ console.log(
 5종류 함수를 적절히 조합, 문보다는 함수(표현식)를 위주로 프로그래밍, 변수 사용을 줄이고 값을 변경하지 않는다, 꼭 필요한 부수 효과 함수를 제외하고는 부수 효과를 로직에 이용하지 않는다.
 
 ```javascript
-    function log(val) {
-      console.log.apply(null, arguments);
-      return val;
-    }
+function log(val) {
+  console.log.apply(null, arguments);
+  return val;
+}
 ```
 
 함수형 프로그래밍
@@ -1864,11 +2098,11 @@ console.log(
 함수 이름은 자세히 써주고, 변수는 한 글자 수준으로 축약하곤 함, k key l length v value f func
 
 ```javascript
-    function add_all(list) {
-      var i = 0, l = list.length, memo = list[i++];
-      while (i < l) memo = add(memo, list[i++]);
-      return memo;
-    }
+function add_all(list) {
+  var i = 0, l = list.length, memo = list[i++];
+  while (i < l) memo = add(memo, list[i++]);
+  return memo;
+}
 ```
 
 reduce란 순회하면서 보조함수로 축약하는 것
@@ -1895,7 +2129,7 @@ reduce도 클로저 위에 쌓여있음
 ```javascript
     function reduce(list, fn, memo) {
       var i = 0, l = list.length, memo = memo === undefined ? list[i++] : memo;
-      // while (i < l) { memo = fn(memo)}
+      // while (i < l) { memo = fn(memo) }
     }
 ```
 
@@ -1904,16 +2138,16 @@ reduce도 클로저 위에 쌓여있음
 실용적인 클로져들을 만드는 것이 함수형 프로그래밍
 
 ```javascript
-    function pipe() {
-      var fns = arguments;
-      return function(arg) {
-        return reduce(fns, function(arg, f) {
-          return f(arg);
-        }, arg);
-      }
-    }
+function pipe() {
+  var fns = arguments;
+  return function(arg) {
+    return reduce(fns, function(arg, f) {
+      return f(arg);
+    }, arg);
+  }
+}
     
-    function go() {
+function go() {
       return reduce(arguments, )
     }
     
@@ -1931,11 +2165,11 @@ reduce도 클로저 위에 쌓여있음
 for, while은 코드의 모양이 익숙한 것이지, 코드의 로직이 익숙한 것이 아님
 
 ```javascript
-    const filter = curryr((list, predicate) => reduce(list, (new_list, val) => predicate(val) ? append(new_list, val) : new_list ))
+const filter = curryr((list, predicate) => reduce(list, (new_list, val) => predicate(val) ? append(new_list, val) : new_list ))
 
-    function append(list, val) {
-      return list.push(val), list; // 좌측이 실행된 뒤에 우측이 리턴됨
-    }
+function append(list, val) {
+  return list.push(val), list; // 좌측이 실행된 뒤에 우측이 리턴됨
+}
 ```
 
 함수 + 파이프라인적 사고로 진행하는 것이 중요합니다
