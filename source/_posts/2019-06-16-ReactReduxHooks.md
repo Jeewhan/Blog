@@ -36,13 +36,19 @@ useSelector의 경우 mapStateToProps와 유사하지만 몇 가지 다른 지�
 
 객체가 아닌 어떤 값이든 리턴할 수 있고, props를 직접적으로 인수로 넘겨받지 않는다
 
-가장 중요한 차이점은 기존 값과의 비교를 할 때 기본적으로 ===를 사용하므로 객체로 리턴받으면 값이 동일하더라도 디스패치시마다조 항상 새로 렌더링하게 된다 (문서에 따르면 mapStateToProps는 property별로 순회하며 값을 확인해서 리렌더링 여부를 판단해주었다고 한다)
+가장 중요한 차이점은 기존 값과의 비교를 할 때 기본적으로 ===를 사용하므로 객체로 리턴받으면 값이 동일하더라도 디스패치시마다 항상 새로 렌더링하게 된다
+
+(문서에 따르면 mapStateToProps는 property별로 순회하며 값을 확인해서 리렌더링 여부를 판단해주었다고 한다)
 
 따라서 선택지는 두 가지인데, 객체를 반환받지 않고, 각각의 값별로 useSelector를 쓰거나 shallowEqual를 export해서 두 번째 인자로 넣어주는 것이다
 
 
 hooks에서 함수를 캐싱해둘 수 있는 방법으로는 useCallback이 있다
 
-실제 내부 구현을 어떻게 했는지는 모르지만, 클로저로 참조하고 있는 변수에 대해서는 deps에 지정하지 않고도 기대한 결과가 나올 것이라 생각했지만 그렇지 않아서 사실상 함수에서 사용하는 모든 변수를 두 번째 인자인 deps에 언급해주어야 한다고 느꼈다
+실제 내부 구현을 어떻게 했는지는 모르지만, 클로저로 참조하고 있는 변수에 대해서는 deps에 지정하지 않고도 기대한 결과가 나올 것이라 생각했다
 
-기존 connect 방식에서는 actionCreator를 import하고, mapDispatchToProps에 넣어주고, props에 있는 actionCreator명을 호출해주어야 하는 번거로움이 있었는데, 이제는 import해오고 useDispatch를 통해 받아온 dispatch에 넘겨주기만 하면 되어서 세상 편하다
+그러나 그렇지 않아서 사실상 함수에서 사용하는 모든 변수를 두 번째 인자인 deps에 언급해주어야 한다고 느꼈다
+
+기존 connect 방식에서는 actionCreator를 import하고, mapDispatchToProps에 넣어주고, props에 있는 actionCreator명을 호출해주어야 하는 번거로움이 있었다
+
+이제는 import해오고 useDispatch를 통해 받아온 dispatch에 넘겨주기만 하면 되어서 세상 편하다
