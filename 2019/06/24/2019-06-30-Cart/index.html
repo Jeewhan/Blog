@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>장바구니 만들기 | The Pragmatic Programmer</title><link rel="stylesheet" href="/libs/spoqa-han-sans-kr/css/SpoqaHanSans-kr.css"><link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/highlights/dracula.css"><link rel="canonical" href="https://eclatant.io/2019/06/24/2019-06-30-Cart/"/>
+<meta name="description" content="이번에 주어진 요구사항은 장바구니 관련 개선이었다 관련하여 정리해본 요구사항은 다음과 같았다  장바구니 페이지에서 스토어 + 최신순으로 옵션을 나열한다 마이페이지에서 장바구니에 최근 담은 옵션 4가지를 보여준다 Nav에서 장바구니에 담긴 총 옵션…">
+<meta name="keywords" content="Dev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="장바구니 만들기">
+<meta property="og:url" content="https://eclatant.io/2019/06/24/2019-06-30-Cart/">
+<meta property="og:site_name" content="The Pragmatic Programmer">
+<meta property="og:description" content="이번에 주어진 요구사항은 장바구니 관련 개선이었다 관련하여 정리해본 요구사항은 다음과 같았다  장바구니 페이지에서 스토어 + 최신순으로 옵션을 나열한다 마이페이지에서 장바구니에 최근 담은 옵션 4가지를 보여준다 Nav에서 장바구니에 담긴 총 옵션…">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="https://eclatant.io/images/hollywood.jpg">
+<meta property="og:updated_time" content="2019-06-30T16:26:43.149Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="장바구니 만들기">
+<meta name="twitter:description" content="이번에 주어진 요구사항은 장바구니 관련 개선이었다 관련하여 정리해본 요구사항은 다음과 같았다  장바구니 페이지에서 스토어 + 최신순으로 옵션을 나열한다 마이페이지에서 장바구니에 최근 담은 옵션 4가지를 보여준다 Nav에서 장바구니에 담긴 총 옵션…">
+<meta name="twitter:image" content="https://eclatant.io/images/hollywood.jpg"><meta property="article:author" content="Jeewhan"><meta property="twitter:label1" content="Published at"><meta property="twitter:data1" content="2019-06-24 00:00:00"><meta property="twitter:label2" content="Written by"><meta property="twitter:data2" content="Jeewhan"><link rel="icon" href="/images/hollywood.png"><link rel="alternate" href="/atom.xml" type="application/atom+xml" title="The Pragmatic Programmer"></head><body itemscope itemtype="https://schema.org/WebPage"><nav class="menu" id="menu"><div class="menu-inner"><div class="menu__left-area"><div class="menu__item"><a class="menu__item__link menu__item__link--brand" href="/" title="Home" rel="home"><img class="menu__item__link--brand__image" src="/images/hollywood.png" alt="The Pragmatic Programmer"><span class="menu__item__link--brand__label">The Pragmatic Programmer</span></a></div></div><div class="menu__right-area"><div class="menu__item"><a class="menu__item__link" href="/">Home</a></div><div class="menu__item"><a class="menu__item__link" href="/about">About</a></div><div class="menu__item"><a class="menu__item__link" href="/archives">Archives</a></div></div></div></nav><div class="page-background"></div><div class="content-container"><div class="content-outer"><div class="content-inner" itemscope itemtype="https://schema.org/Blog"><article class="article" id="article" itemscope itemtype="https://schema.org/BlogPosting"><h1 class="article__title" itemprop="headline">장바구니 만들기</h1><div class="article__meta"><time class="article__meta__time" datetime="2019-06-23T15:00:00.000Z" itemprop="datePublished">2019-06-24 00:00:00</time><div class="article__meta__categories"><a class="article__meta__categories__item" href="/categories/Dev/">Dev</a></div></div><hr><div class="article__contents"><p>이번에 주어진 요구사항은 장바구니 관련 개선이었다</p>
+<p>관련하여 정리해본 요구사항은 다음과 같았다</p>
+<ol start="0">
+<li>장바구니 페이지에서 스토어 + 최신순으로 옵션을 나열한다</li>
+<li>마이페이지에서 장바구니에 최근 담은 옵션 4가지를 보여준다</li>
+<li>Nav에서 장바구니에 담긴 총 옵션 개수를 배지 형식으로 보여준다</li>
+</ol>
+<p>상품은 여러 가지 옵션을 가진다</p>
+<p>사용자는 특정 상품을 사는 것이 아니라, 특정 상품의 특정 옵션을 구매하는 것이어서 옵션이라 지칭한다</p>
+<p>아래 순서로 옵션을 담는다고 가정해보자</p>
+<ol start="0">
+<li>가(스토어) + a(옵션)</li>
+<li>가 + b</li>
+<li>나 + 1</li>
+<li>나 + 2</li>
+<li>가 + c</li>
+</ol>
+<p>그러면 보여줘야 하는 순서는 다음과 같다</p>
+<p>가</p>
+<ul>
+<li>c</li>
+<li>b</li>
+<li>a</li>
+</ul>
+<p>나</p>
+<ul>
+<li>2</li>
+<li>1</li>
+</ul>
+<p>API로부터 받아오는 데이터는 최신순으로 옵션이 담긴 배열이다 (아래는 단순화한 예시)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'c'</span>, <span class="attr">store</span>: <span class="string">'가'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'2'</span>, <span class="attr">store</span>: <span class="string">'나'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'1'</span>, <span class="attr">store</span>: <span class="string">'나'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'b'</span>, <span class="attr">store</span>: <span class="string">'가'</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'a'</span>, <span class="attr">store</span>: <span class="string">'가'</span> &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>그렇다면 해야 할 일은 아래와 같다</p>
+<ol start="0">
+<li>옵션 배열을 통해 그룹핑해야 하는 스토어가 무엇무엇이 있는지 파악</li>
+<li>스토어를 기준으로 옵션들을 그룹핑해서 보여줄 수 있도록 전처리</li>
+</ol>
+<p>처음에는 아래와 같은 형태를 생각했었다</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">'가'</span>: [ <span class="string">'c'</span>, <span class="string">'b'</span>, <span class="string">'a'</span> ],</span><br><span class="line">  <span class="string">'나'</span>: [ <span class="string">'2,'</span>, <span class="string">'1'</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">options.reduce(<span class="function">(<span class="params">acc, &#123; name, store &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (acc[store]) acc[store].push(name);</span><br><span class="line">  <span class="keyword">else</span> acc[store] = [name];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> acc;</span><br><span class="line">&#125;, &#123;&#125;)</span><br></pre></td></tr></table></figure>
+<p>그런데 위 형태를 생각하고 보니, 장바구니 페이지에서 보여주어야 할 때 Object.keys를 통해 스토어명을 가져와야 한다</p>
+<p>Object.keys를 쓰는 것이 썩 마음에 들지는 않았고 또한 스토어명이 과연 내가 원하는 순서가 보장될 것인가에 대해 고민하게 되었다</p>
+<p>그리고 전체 옵션 개수를 파악해야 할 때 reduce를 써야하는 부분도 아주 좋지는 않았다</p>
+<p>그러고 보니 얼마 전에 다른 스터디에서 지인 분의 코드에서 보았던 Map이 떠올랐다</p>
+<p>그러니 우선 MDN을 통해 Map에 대해 알아보았다 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noopener">Map</a></p>
+<p>The <strong>Map</strong> object holds key-value pairs and remembers the original insertion order of the keys.</p>
+<p>첫 문장에 이미 내가 원하는 조건 중 하나가 충족되었다 (순서보장)</p>
+<p>The keys in Map are ordered while keys added to object are not. Thus, when iterating over it, a Map object returns keys in order of insertion. (Note that in the ECMAScript 2015 spec objects do preserve creation order for string and <code>Symbol</code> keys, so traversal of an object with ie only string keys would yield keys in order of insertion)</p>
+<p>위 문장대로라면 Object를 통해서도 목적을 달성할 수는 있다</p>
+<p>그러나 아래 세 문장의 측면에서 Map이 훨씬 적합하다</p>
+<ul>
+<li>A <code>Map</code> is an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/iterable" target="_blank" rel="noopener">iterable</a> and can thus be directly iterated, whereas iterating over an <code>Object</code>requires obtaining its keys in some fashion and iterating over them.</li>
+<li>A <code>Map</code> may perform better in scenarios involving frequent addition and removal of key pairs.</li>
+<li>Use maps over objects when keys are unknown until run time, and when all keys are the same type and all values are the same type.</li>
+</ul>
+<p>그래서 아까의 코드를 변경하게 되었다</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [<span class="string">'가'</span>]: [ <span class="string">'c'</span>, <span class="string">'b'</span>, <span class="string">'a'</span> ],</span><br><span class="line">  [<span class="string">'나'</span>]: [ <span class="string">'2,'</span>, <span class="string">'1'</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">options.reduce(<span class="function">(<span class="params">acc, &#123; name, store &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (acc.has(store)) acc.get(store).push(name);</span><br><span class="line">  <span class="keyword">else</span> acc.set(store, [name]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> acc;</span><br><span class="line">&#125;, <span class="keyword">new</span> <span class="built_in">Map</span>())</span><br></pre></td></tr></table></figure>
+<p>하지만 이렇게 되니까 요구사항 1번과 2번이 처리하기 번거로워진다</p>
+<ol>
+<li>마이페이지에선 4개까지만 보여주기</li>
+<li>옵션 전체의 개수 보여주기</li>
+</ol>
+<p>Map으로 묶음으로서 스토어 순서에 따라 4개를 보여주는 것은 기존 API의 형태보다 훨씬 더 수월하지만, 반대로 시간순으로 4개를 보여주기는 어려워졌다</p>
+<p>또한 옵션 전체의 개수를 보여주기 위해선 여전히 reduce가 필요하다, Map의 size는 key의 개수를 보여주기 때문이다</p>
+<p>따라서 범용성을 생각하면 본래의 API 형태로 Redux Store에서 들고 있되, 렌더링을 위해 필요한 시점에 Map으로 묶어주는 것이 좋다고 판단을 내렸다</p>
+<p>또한 불변성을 확보하기 위해서 보통 많이 사용할 immer에서도 Map을 지원해주지 않는다</p>
+<p>따라서 불변성을 확보하기 위해선 기존 state를 iterable로 변환하여 배열 형태로 치환하여 새롭게 Map을 만드는 과정이 필요하므로 코드 가독성 측면에서도 좋지 않다</p>
+<p>id를 기준으로 데이터 유무 또는 해당 데이터에 접속하는 것은 배열에 비하면 O(1)로 처리할 수 있고 가독성도 훌륭하지만, 장바구니 페이지에서 선택기능을 구현할 때는 이미 선택된 상품인지 찾을 때 외에는 (불변성 확보를 위해 계속 새롭게 만들어야 하므로) 큰 이점이 없어진다</p>
+<p>장바구니를 구현할 때는 이미 선택된 상품들을 조회해야 하는 경우가 많은데, 이때는 useMemo가 매우 유용하게 쓰였다</p>
+<p>선택된 상품들이 필요한 기능마다 useMemo로 캐싱해둔 데이터를 시작점으로 삼아 해당 기능에 필요한 로직만 붙여주면 되었기 때문이다</p>
+<p>요구사항별로 다르겠으나, 장바구니 -&gt; 주문하기 -&gt; 쿠폰적용 등까지 대상 상품들이 이어진다면, 각 상황에 맞추어 타입스크립트의 타입을 조금씩 바꿔가는 것도 유의미할 것 같다</p>
+<p>장바구니에서 상품을 다루는 타입인 ICartViewModel의 status는 SALE, SOLDOUT 등으로 다양하지만 ICartViewModel을 extends한 IOrderProductViewModel의 status는 반드시 status이며 쿠폰적용을 위한 프로퍼티들을 추가적으로 갖도록 설계하였다</p>
+<p>타입을 통해 주문하기 페이지에 들어와선 안 되는 데이터들을 검증하고 나면 코드의 중복도 적어지고, 실수로 중복을 허용했을 때 피드백을 받을 수 있으므로 Model 관련 코드에만 타입스크립트를 적용했을 때와 또 다른 이점을 맛보고 있다</p>
+</div><div class="article__tags"><a class="article__tags__item" href="/tags/Dev/">Dev</a></div><div class="article__author" itemscope itemprop="author" itemtype="https://schema.org/Person"><img class="article__author__image" src="/images/avatar.jpg" alt="Jeewhan"><a class="article__author__link" title="About Jeewhan" rel="author">Jeewhan</a><p class="article__author__desc">Dev Blog</p><div class="article__author__socials"><a class="article__author__socials__item" href="/atom.xml" title="rss" target="_blank"><i class="fa fa-rss"></i></a></div><meta itemprop="name" content="Jeewhan"></div><div class="sharer" id="sharer"><div class="sharer-inner"><div class="sharer__right"><button class="sharer__item" id="sharer-facebook"><i class="fa fa-facebook-official"></i></button><button class="sharer__item" id="sharer-twitter"><i class="fa fa-twitter"></i></button><button class="sharer__item" id="sharer-pinterest"><i class="fa fa-pinterest"></i></button><button class="sharer__item" id="sharer-pocket"><i class="fa fa-get-pocket"></i></button></div></div></div><!-- Disqus Code--><!-- Meta Tags for Structured Data--><meta itemprop="dateModified" content="2019-06-30T16:26:43.149Z"><meta itemprop="articleBody" content="이번에 주어진 요구사항은 장바구니 관련 개선이었다
+관련하여 정리해본 요구사항은 다음과 같았다
+
+장바구니 페이지에서 스토어 + 최신순으로 옵션을 나열한다
+마이페이지에서 장바구니에 최근 담은 옵션 4가지를 보여준다
+Nav에서 장바구니에 담긴 총 옵션 개수를 배지 형식으로 보여준다
+
+상품은 여러 가지 옵션을 가진다
+사용자는 특정 상품을 사는 것이 아니라,..."><meta itemprop="url" content="https://eclatant.io/2019/06/24/2019-06-30-Cart/"><meta itemprop="mainEntityOfPage" content="https://eclatant.io/2019/06/24/2019-06-30-Cart/"><div itemscope itemtype="https://schema.org/Organization" itemprop="publisher"><meta itemprop="name" content="The Pragmatic Programmer"><div itemscope itemprop="logo" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://eclatant.io/images/hollywood.png"></div></div><div itemscope itemtype="https://schema.org/ImageObject" itemprop="image"><meta itemprop="contentUrl" content="https://eclatant.io/images/hollywood.jpg"><meta itemprop="url" content="https://eclatant.io/images/hollywood.jpg"><meta itemprop="width" content="800"><meta itemprop="height" content="800"></div></article><section class="related-posts"><h3>Related posts</h3><div class="related-posts__item__wrapper"><a class="related-posts__item" href="/2018/11/18/2018-11-18-WeeklyHistory/"><div class="related-posts__item__background" style="background-image:url('/images/hollywood.jpg');"></div><div class="related-posts__item__overlay"></div><span class="related-posts__item__title">이번 주에 접했던 것들 #1 : 18-11-18</span></a></div><div class="related-posts__item__wrapper"><a class="related-posts__item" href="/2018/11/11/2018-11-11-WeeklyHistory/"><div class="related-posts__item__background" style="background-image:url('/images/hollywood.jpg');"></div><div class="related-posts__item__overlay"></div><span class="related-posts__item__title">이번 주에 접했던 것들 #0 : 18-11-11</span></a></div><div class="related-posts__item__wrapper"><a class="related-posts__item" href="/2018/11/25/2018-11-25-WeeklyHistory/"><div class="related-posts__item__background" style="background-image:url('/images/hollywood.jpg');"></div><div class="related-posts__item__overlay"></div><span class="related-posts__item__title">이번 주에 접했던 것들 #2 : 18-11-25</span></a></div></section></div></div></div><footer id="footer"><div class="widgets"><div class="widgets-inner"><!-- Jade doesn't support dynamic inclusion with `each`.--><!-- So, I just hard coded the file names that will be included.--><div class="widgets__item"><h3 class="widgets__item__heading">Recent posts</h3><ul class="recent-posts"><li class="recent-posts__item"><a href="/2019/06/24/2019-06-30-Cart/">장바구니 만들기</a></li><li class="recent-posts__item"><a href="/2019/06/16/2019-06-16-ReactReduxHooks/">React Redux Hooks</a></li><li class="recent-posts__item"><a href="/2019/04/08/2019-04-08-KakaoAndNaver/">카카오와 네이버를 통한 소셜 로그인</a></li><li class="recent-posts__item"><a href="/2019/02/25/2019-02-25-Refactoring-Order/">리팩토링의 순서</a></li><li class="recent-posts__item"><a href="/2019/02/23/2019-02-23-Ruby/">루비 인터뷰 질문</a></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Tag cloud</h3><div class="tag-cloud"><a href="/tags/Algorithm/" style="font-size: 1.13rem;">Algorithm</a> <a href="/tags/Article/" style="font-size: 0.75rem;">Article</a> <a href="/tags/CtCI/" style="font-size: 0.75rem;">CtCI</a> <a href="/tags/Dev/" style="font-size: 1.5rem;">Dev</a> <a href="/tags/English/" style="font-size: 0.75rem;">English</a> <a href="/tags/Essay/" style="font-size: 0.94rem;">Essay</a> <a href="/tags/FP/" style="font-size: 0.75rem;">FP</a> <a href="/tags/JS/" style="font-size: 1.13rem;">JS</a> <a href="/tags/Python/" style="font-size: 0.75rem;">Python</a> <a href="/tags/Rails/" style="font-size: 0.75rem;">Rails</a> <a href="/tags/React/" style="font-size: 0.94rem;">React</a> <a href="/tags/Ruby/" style="font-size: 1.31rem;">Ruby</a> <a href="/tags/TDD/" style="font-size: 0.75rem;">TDD</a> <a href="/tags/node/" style="font-size: 0.75rem;">node</a></div></div><div class="widgets__item"><h3 class="widgets__item__heading">Categories</h3><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Article/">Article</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CodeSquad/">CodeSquad</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CtCI/">CtCI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Dev/">Dev</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Essay/">Essay</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rails/">Rails</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ruby/">Ruby</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li></ul></div></div></div><p class="copyright"><small>© 2019 Jeewhan<br>Powered by <a href="https://hexo.io" rel="external" target="_blank">Hexo</a>, Theme by <a href="https://github.com/hyunseob" rel="external" target="_blank">HyunSeob</a></small></p></footer><!--[if lt IE 10]><script src="/js/classList.min.js"></script><![endif]--><script src="/js/index.min.js"></script></body></html>
